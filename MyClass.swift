@@ -11,6 +11,8 @@ class MyClass {
     
     var name: String = ""
     
+    var age: Int = 10
+
     var city = "Moscow"
     
 }

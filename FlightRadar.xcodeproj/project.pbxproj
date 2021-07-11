@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3952CB65269ADD6500B6C234 /* MyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952CB64269ADD6500B6C234 /* MyClass.swift */; };
+		3952CB67269AE09000B6C234 /* AnotherClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952CB66269AE09000B6C234 /* AnotherClass.swift */; };
 		39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */; };
 		39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */; };
 		39AEA0EB268CA94F00108EF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0EA268CA94F00108EF1 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		3952CB64269ADD6500B6C234 /* MyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClass.swift; sourceTree = "<group>"; };
+		3952CB66269AE09000B6C234 /* AnotherClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherClass.swift; sourceTree = "<group>"; };
 		39AEA0E3268CA94F00108EF1 /* FlightRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				3952CB64269ADD6500B6C234 /* MyClass.swift */,
+				3952CB66269AE09000B6C234 /* AnotherClass.swift */,
 				39AEA0E5268CA94F00108EF1 /* FlightRadar */,
 				39AEA0FC268CA95100108EF1 /* FlightRadarTests */,
 				39AEA107268CA95100108EF1 /* FlightRadarUITests */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3952CB67269AE09000B6C234 /* AnotherClass.swift in Sources */,
 				3952CB65269ADD6500B6C234 /* MyClass.swift in Sources */,
 				39AEA0EB268CA94F00108EF1 /* ViewController.swift in Sources */,
 				39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */,
