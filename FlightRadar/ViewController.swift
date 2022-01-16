@@ -25,6 +25,7 @@ extension UIColor {
 
 class ViewController: UIViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,17 +33,23 @@ class ViewController: UIViewController {
         view.backgroundColor = backgroundColor
         //        view.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         
-        let logoImage = UIImage(named: "FirstScreenLogo")
-        let logoImage1 = #imageLiteral(resourceName: "SomeLogo")
-        let logoView = UIImageView(image: logoImage1)
-        logoView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        logoView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(logoView)
         
-        NSLayoutConstraint.activate([
-            logoView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            logoView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        ])
+        let logoImage = UIImage(named: "FirstScreenLogo")
+                let logoView = UIImageView(image: logoImage)
+                logoView.backgroundColor = .red
+                logoView.contentMode = .scaleAspectFit
+                logoView.clipsToBounds = true
+                logoView.translatesAutoresizingMaskIntoConstraints = false
+                view.addSubview(logoView)
+                
+                NSLayoutConstraint.activate([
+                    logoView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+                    logoView.widthAnchor.constraint(equalToConstant: 150),
+                    logoView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+                    logoView.heightAnchor.constraint(equalToConstant: 150)
+                ])
+        
+       
     }
     
     
