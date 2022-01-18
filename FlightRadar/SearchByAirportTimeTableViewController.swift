@@ -1,17 +1,17 @@
 //
-//  LaunchViewController.swift
+//  SearchByAirportTimeTableViewController.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 15.01.2022.
+//  Created by Alexander Kurbatov on 18.01.2022.
 //
 
 import UIKit
 
-class LaunchViewController: UIViewController {
-    
+class SearchByAirportTimeTableViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .green
         // Do any additional setup after loading the view.
     }
     
