@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39317D9C278AFECF009B9C95 /* ColorPallete.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */; };
+		39317D9E278C7F6F009B9C95 /* Logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39317D9D278C7F6E009B9C95 /* Logos.xcassets */; };
 		3952CB65269ADD6500B6C234 /* MyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952CB64269ADD6500B6C234 /* MyClass.swift */; };
 		3952CB67269AE09000B6C234 /* AnotherClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952CB66269AE09000B6C234 /* AnotherClass.swift */; };
+		3957FEEA279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3957FEE9279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift */; };
+		3982F9E727933AAA0050C27C /* SearchByFlightNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */; };
 		39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */; };
 		39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */; };
-		39AEA0EB268CA94F00108EF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0EA268CA94F00108EF1 /* ViewController.swift */; };
-		39AEA0EE268CA94F00108EF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0EC268CA94F00108EF1 /* Main.storyboard */; };
+		39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */; };
 		39AEA0F0268CA95100108EF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0EF268CA95100108EF1 /* Assets.xcassets */; };
 		39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */; };
 		39AEA0FE268CA95100108EF1 /* FlightRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0FD268CA95100108EF1 /* FlightRadarTests.swift */; };
@@ -37,13 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPallete.xcassets; sourceTree = "<group>"; };
+		39317D9D278C7F6E009B9C95 /* Logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Logos.xcassets; sourceTree = "<group>"; };
 		3952CB64269ADD6500B6C234 /* MyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClass.swift; sourceTree = "<group>"; };
 		3952CB66269AE09000B6C234 /* AnotherClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherClass.swift; sourceTree = "<group>"; };
+		3957FEE9279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByAirportTimeTableViewController.swift; sourceTree = "<group>"; };
+		3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByFlightNumberViewController.swift; sourceTree = "<group>"; };
 		39AEA0E3268CA94F00108EF1 /* FlightRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		39AEA0EA268CA94F00108EF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		39AEA0ED268CA94F00108EF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		39AEA0EF268CA95100108EF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39AEA0F2268CA95100108EF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39AEA0F4268CA95100108EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,11 +113,14 @@
 			children = (
 				39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */,
 				39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */,
-				39AEA0EA268CA94F00108EF1 /* ViewController.swift */,
-				39AEA0EC268CA94F00108EF1 /* Main.storyboard */,
-				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
 				39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */,
+				39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */,
+				3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */,
+				3957FEE9279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift */,
+				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
 				39AEA0F4268CA95100108EF1 /* Info.plist */,
+				39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */,
+				39317D9D278C7F6E009B9C95 /* Logos.xcassets */,
 			);
 			path = FlightRadar;
 			sourceTree = "<group>";
@@ -239,7 +248,8 @@
 			files = (
 				39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */,
 				39AEA0F0268CA95100108EF1 /* Assets.xcassets in Resources */,
-				39AEA0EE268CA94F00108EF1 /* Main.storyboard in Resources */,
+				39317D9C278AFECF009B9C95 /* ColorPallete.xcassets in Resources */,
+				39317D9E278C7F6F009B9C95 /* Logos.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3952CB67269AE09000B6C234 /* AnotherClass.swift in Sources */,
+				3957FEEA279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift in Sources */,
+				3982F9E727933AAA0050C27C /* SearchByFlightNumberViewController.swift in Sources */,
 				3952CB65269ADD6500B6C234 /* MyClass.swift in Sources */,
-				39AEA0EB268CA94F00108EF1 /* ViewController.swift in Sources */,
+				39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */,
 				39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */,
 				39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */,
 			);
@@ -304,14 +316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		39AEA0EC268CA94F00108EF1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39AEA0ED268CA94F00108EF1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -374,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -447,6 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PYVDQ5VE2Y;
 				INFOPLIST_FILE = FlightRadar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PYVDQ5VE2Y;
 				INFOPLIST_FILE = FlightRadar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
