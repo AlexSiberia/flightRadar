@@ -27,7 +27,7 @@ class SearchByFlightNumberViewController: UIViewController {
         label = UILabel()
         label.text = "Find a Plane"
         label.textColor = UIColor.appColor(.textColor)
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50)
+        label.font = UIFont.systemFont(ofSize: 50).boldItalics()
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         

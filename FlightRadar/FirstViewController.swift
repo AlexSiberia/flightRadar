@@ -10,6 +10,7 @@ import UIKit
 enum FirstScreenColor {
     case backgroundColor
     case textColor
+    case shadowColor
 }
 
 extension UIColor {
@@ -19,7 +20,36 @@ extension UIColor {
             return UIColor(named: "BackgroundColor")
         case .textColor:
             return UIColor(named: "TextColor")
+        case .shadowColor:
+            return UIColor(named: "ShadowColor")
         }
+    }
+}
+
+extension UIFont {
+
+    func withTraits(_ traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+
+        // create a new font descriptor with the given traits
+        guard let fd = fontDescriptor.withSymbolicTraits(traits) else {
+            // the given traits couldn't be applied, return self
+            return self
+        }
+            
+        // return a new font with the created font descriptor
+        return UIFont(descriptor: fd, size: pointSize)
+    }
+
+    func italics() -> UIFont {
+        return withTraits(.traitItalic)
+    }
+
+    func bold() -> UIFont {
+        return withTraits(.traitBold)
+    }
+
+    func boldItalics() -> UIFont {
+        return withTraits([ .traitBold, .traitItalic ])
     }
 }
 
@@ -35,13 +65,40 @@ class FirstViewController: UIViewController {
         let backgroundColor = UIColor.appColor(.backgroundColor)
         view.backgroundColor = backgroundColor
         
+        let text1: String = "Find a "
+        let text2: String = "Plane"
+        let font1: UIFont = UIFont.systemFont(ofSize: 50).bold()
+        let font2: UIFont = UIFont.systemFont(ofSize: 50).boldItalics()
+        let shadow: NSShadow = NSShadow()
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        
+        shadow.shadowColor = UIColor.appColor(.shadowColor)
+        shadow.shadowBlurRadius = 5
+        
+        paragraphStyle.alignment = .center
+        paragraphStyle.firstLineHeadIndent = 5.0
+        
+        let atributes1: [NSAttributedString.Key: Any] = [
+            .font: font1,
+            .shadow: shadow,
+        ]
+        
+        let aributes2: [NSAttributedString.Key: Any] = [
+            .font: font2,
+            .shadow: shadow
+        ]
+        
+        let atributedText1: NSMutableAttributedString = NSMutableAttributedString(string: text1, attributes: atributes1)
+        let atributesText2: NSMutableAttributedString = NSMutableAttributedString(string: text2, attributes: aributes2)
+        atributedText1.append(atributesText2)
+        
         label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        label.text = "Find a Plane"
+        label.attributedText = atributedText1
         label.textColor = UIColor.appColor(.textColor)
-        label.font = UIFont.systemFont(ofSize: 50.0)
-        label.font = UIFont.boldSystemFont(ofSize: 50.0)
-        label.font = UIFont.italicSystemFont(ofSize: 50.0)
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50.0)
+//        label.font = UIFont.systemFont(ofSize: 50.0).boldItalics()
+//        label.font = UIFont.boldSystemFont(ofSize: 50.0)
+//        label.font = UIFont.italicSystemFont(ofSize: 50.0)
+//        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         view.addSubview(label)
@@ -123,7 +180,7 @@ class FirstViewController: UIViewController {
         //                    logoView.heightAnchor.constraint(equalToConstant: 150)
         //                ])
         
-        
+       
         
     }
     
