@@ -103,8 +103,9 @@ class FirstViewController: UIViewController {
         label.clipsToBounds = true
         view.addSubview(label)
         
-        searchByFlightNumberButton = UIButton()
+        searchByFlightNumberButton = UIButton(type: .system)
         searchByFlightNumberButton.setTitle("Search by flight number", for: .normal)
+        searchByFlightNumberButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         searchByFlightNumberButton.setTitleColor(UIColor.appColor(.textColor), for: .normal)
         searchByFlightNumberButton.backgroundColor = UIColor.appColor(.backgroundColor)
         searchByFlightNumberButton.layer.cornerRadius = 10.0
@@ -117,8 +118,9 @@ class FirstViewController: UIViewController {
             for: .touchUpInside)
         view.addSubview(searchByFlightNumberButton)
         
-        searchByAirportTimeTableButton = UIButton()
+        searchByAirportTimeTableButton = UIButton(type: .system)
         searchByAirportTimeTableButton.setTitle("Search by airport timetable", for: .normal)
+        searchByAirportTimeTableButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         searchByAirportTimeTableButton.setTitleColor(
             UIColor.appColor(.textColor),
             for: .normal)
