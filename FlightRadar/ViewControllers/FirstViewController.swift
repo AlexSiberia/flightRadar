@@ -7,63 +7,9 @@
 
 import UIKit
 
-enum FirstScreenColor {
-    case backgroundColor
-    case textColor
-    case shadowColor
-}
-
-extension UIColor {
-    static func appColor(_ name: FirstScreenColor) -> UIColor? {
-        switch name {
-        case .backgroundColor:
-            return UIColor(named: "BackgroundColor")
-        case .textColor:
-            return UIColor(named: "TextColor")
-        case .shadowColor:
-            return UIColor(named: "ShadowColor")
-        }
-    }
-}
-
-extension UIFont {
-
-    func withTraits(_ traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
-
-        // create a new font descriptor with the given traits
-        guard let fd = fontDescriptor.withSymbolicTraits(traits) else {
-            // the given traits couldn't be applied, return self
-            return self
-        }
-            
-        // return a new font with the created font descriptor
-        return UIFont(descriptor: fd, size: pointSize)
-    }
-
-    func italics() -> UIFont {
-        return withTraits(.traitItalic)
-    }
-
-    func bold() -> UIFont {
-        return withTraits(.traitBold)
-    }
-
-    func boldItalics() -> UIFont {
-        return withTraits([ .traitBold, .traitItalic ])
-    }
-}
-
-class FirstViewController: UIViewController {
+class FirstViewController: BaseViewController {
     
-    var label: UILabel!
-    var searchByFlightNumberButton: UIButton!
-    var searchByAirportTimeTableButton: UIButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let backgroundColor = UIColor.appColor(.backgroundColor)
-        view.backgroundColor = backgroundColor
+    lazy var label: UILabel = {
         
         let text1: String = "Find a "
         let text2: String = "Plane"
@@ -92,16 +38,16 @@ class FirstViewController: UIViewController {
         let atributesText2: NSMutableAttributedString = NSMutableAttributedString(string: text2, attributes: aributes2)
         atributedText1.append(atributesText2)
         
-        label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        label = UILabel()
         label.attributedText = atributedText1
         label.textColor = UIColor.appColor(.textColor)
-//        label.font = UIFont.systemFont(ofSize: 50.0).boldItalics()
-//        label.font = UIFont.boldSystemFont(ofSize: 50.0)
-//        label.font = UIFont.italicSystemFont(ofSize: 50.0)
-//        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
-        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var searchByFlightNumberButton: UIButton = {
         
         searchByFlightNumberButton = UIButton(type: .system)
         searchByFlightNumberButton.setTitle("Search by flight number", for: .normal)
@@ -116,7 +62,11 @@ class FirstViewController: UIViewController {
             self,
             action: #selector(searchByFlightNumberButtonAction),
             for: .touchUpInside)
-        view.addSubview(searchByFlightNumberButton)
+      
+        return searchByFlightNumberButton
+    }()
+    
+   lazy var searchByAirportTimeTableButton: UIButton = {
         
         searchByAirportTimeTableButton = UIButton(type: .system)
         searchByAirportTimeTableButton.setTitle("Search by airport timetable", for: .normal)
@@ -133,13 +83,29 @@ class FirstViewController: UIViewController {
             self,
             action: #selector(searchByAirportTimeTableButtonAction),
             for: .touchUpInside)
-        view.addSubview(searchByAirportTimeTableButton)
         
+        return searchByAirportTimeTableButton
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        setupConstraints()
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
 //        navigationController?.navigationBar.barTintColor = UIColor.appColor(.textColor)
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!]
+        
+        
+        
+    }
+    
+    private func setupViews() {
+        view.addSubviews(label, searchByFlightNumberButton, searchByAirportTimeTableButton)
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             
@@ -159,31 +125,6 @@ class FirstViewController: UIViewController {
             searchByAirportTimeTableButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
-        
-        
-        
-        
-        
-        
-        //        view.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        
-        //        let logoImage = UIImage(named: "FirstScreenLogo")
-        //                let logoView = UIImageView(image: logoImage)
-        //                logoView.backgroundColor = .red
-        //                logoView.contentMode = .scaleAspectFit
-        //                logoView.clipsToBounds = true
-        //                logoView.translatesAutoresizingMaskIntoConstraints = false
-        //                view.addSubview(logoView)
-        //
-        //                NSLayoutConstraint.activate([
-        //                    logoView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-        //                    logoView.widthAnchor.constraint(equalToConstant: 150),
-        //                    logoView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-        //                    logoView.heightAnchor.constraint(equalToConstant: 150)
-        //                ])
-        
-       
-        
     }
     
     @objc func searchByFlightNumberButtonAction(sender: UIButton!) {

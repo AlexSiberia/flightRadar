@@ -7,29 +7,20 @@
 
 import UIKit
 
-class SearchByFlightNumberViewController: UIViewController {
+class SearchByFlightNumberViewController: BaseViewController {
     
-    var label: UILabel!
-    var textField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Add title on controller
-        title = "Search by flight number"
-        
-        let backgroundColor = UIColor.appColor(.backgroundColor)
-        view.backgroundColor = backgroundColor
-        
-//        let labelText = "Find a Plane"
-//        let atributedText = NSMutableAttributedString(string: labelText)
+    lazy var label: UILabel = {
         
         label = UILabel()
         label.text = "Find a Plane"
         label.textColor = UIColor.appColor(.textColor)
         label.font = UIFont.systemFont(ofSize: 50).boldItalics()
         label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+        
+        return label
+    }()
+    
+    lazy var textField: UITextField = {
         
         textField = UITextField()
         textField.placeholder = "Flight number"
@@ -40,26 +31,48 @@ class SearchByFlightNumberViewController: UIViewController {
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.leftViewMode = UITextField.ViewMode.always
-        
-        // Add search icon - magnifyingglass
-        let iconImage = UIImage(systemName: "magnifyingglass")
-        let iconView = UIImageView(image: iconImage)
-        let iconViewLeftView = UIView()
-      
-        iconViewLeftView.translatesAutoresizingMaskIntoConstraints = false
-        iconView.translatesAutoresizingMaskIntoConstraints = false
-        iconViewLeftView.addSubview(iconView)
-        
         textField.leftView = iconViewLeftView
-
         // Change search incon color
         textField.tintColor = UIColor.appColor(.textColor)
-        // textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.layer.borderColor = UIColor.appColor(.textColor)?.cgColor
         textField.layer.cornerRadius = 10.0
         textField.layer.borderWidth = 2
         textField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textField)
+        
+        return textField
+    }()
+    
+    // Add search icon - magnifyingglass
+    lazy var iconView: UIImageView = {
+        
+        let iconImage = UIImage(systemName: "magnifyingglass")
+        let iconView = UIImageView(image: iconImage)
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        return iconView
+    }()
+    
+    lazy var iconViewLeftView: UIView = {
+        let iconViewLeftView = UIView()
+        iconViewLeftView.translatesAutoresizingMaskIntoConstraints = false
+        return iconViewLeftView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupSubviews()
+        setupConstraints()
+        
+        // Add title on controller
+        title = "Search by flight number"
+    }
+    
+    
+    private func setupSubviews() {
+        view.addSubviews(label, textField)
+        iconViewLeftView.addSubview(iconView)
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -78,7 +91,7 @@ class SearchByFlightNumberViewController: UIViewController {
             iconView.leadingAnchor.constraint(equalTo: iconViewLeftView.safeAreaLayoutGuide.leadingAnchor, constant:  3),
             iconView.centerYAnchor.constraint(equalTo: iconViewLeftView.safeAreaLayoutGuide.centerYAnchor),
         ])
-    
+        
     }
     
 }

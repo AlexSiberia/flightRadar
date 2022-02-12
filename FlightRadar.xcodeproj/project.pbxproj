@@ -21,6 +21,8 @@
 		39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */; };
 		39AEA0FE268CA95100108EF1 /* FlightRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0FD268CA95100108EF1 /* FlightRadarTests.swift */; };
 		39AEA109268CA95100108EF1 /* FlightRadarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA108268CA95100108EF1 /* FlightRadarUITests.swift */; };
+		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
+		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		39AEA104268CA95100108EF1 /* FlightRadarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightRadarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AEA108268CA95100108EF1 /* FlightRadarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightRadarUITests.swift; sourceTree = "<group>"; };
 		39AEA10A268CA95100108EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +120,9 @@
 				39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */,
 				39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */,
 				39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */,
-				39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */,
-				3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */,
-				3957FEE9279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift */,
+				39E9B7AC27B2BF9E009D7EE1 /* Models */,
+				39E9B7AD27B2BFB1009D7EE1 /* ViewControllers */,
+				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
 				39AEA0F4268CA95100108EF1 /* Info.plist */,
 				39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */,
@@ -144,6 +148,32 @@
 				39AEA10A268CA95100108EF1 /* Info.plist */,
 			);
 			path = FlightRadarUITests;
+			sourceTree = "<group>";
+		};
+		39E9B7AC27B2BF9E009D7EE1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		39E9B7AD27B2BFB1009D7EE1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */,
+				39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */,
+				3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */,
+				3957FEE9279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		39E9B7AE27B2C035009D7EE1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +312,8 @@
 				3982F9E727933AAA0050C27C /* SearchByFlightNumberViewController.swift in Sources */,
 				3952CB65269ADD6500B6C234 /* MyClass.swift in Sources */,
 				39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */,
+				39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */,
+				39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */,
 				39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */,
 				39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */,
 				392791C327A1A99400350A30 /* KeyboardAppearListener.swift in Sources */,
