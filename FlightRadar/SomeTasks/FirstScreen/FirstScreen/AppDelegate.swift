@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  FlightRadar
+//  FirstScreen
 //
-//  Created by Alexander Kurbatov on 30.06.2021.
+//  Created by Alexander Kurbatov on 27.01.2022.
 //
 
 import UIKit
@@ -13,16 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        let familyNames = UIFont.familyNames
-//
-//        for family in familyNames {
-//            print("Family name " + family)
-//            let fontNames = UIFont.fontNames(forFamilyName: family)
-//            
-//            for font in fontNames {
-//                print("    Font name: " + font)
-//            }
-//        }
+        // Override point for customization after application launch.
         return true
     }
 
