@@ -55,9 +55,10 @@ extension UIFont {
 }
 
 extension UIView {
+    
+    /// Добавляем группу subview
+    /// - Parameter views: массив добавляемых view
     func addSubviews(_ views: UIView...) {
-        for view in views {
-            addSubview(view)
-        }
+        views.forEach { addSubview($0) }
     }
 }
