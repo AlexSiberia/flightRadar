@@ -120,7 +120,6 @@
 				39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */,
 				39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */,
 				39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */,
-				39E9B7AC27B2BF9E009D7EE1 /* Models */,
 				39E9B7AD27B2BFB1009D7EE1 /* ViewControllers */,
 				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
@@ -148,13 +147,6 @@
 				39AEA10A268CA95100108EF1 /* Info.plist */,
 			);
 			path = FlightRadarUITests;
-			sourceTree = "<group>";
-		};
-		39E9B7AC27B2BF9E009D7EE1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		39E9B7AD27B2BFB1009D7EE1 /* ViewControllers */ = {
