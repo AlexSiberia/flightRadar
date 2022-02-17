@@ -8,11 +8,15 @@
 import Foundation
 import UIKit
 
+    // MARK: Enum
+
 enum FirstScreenColor {
     case backgroundColor
     case textColor
     case shadowColor
 }
+
+    // MARK: Extention
 
 extension UIColor {
     static func appColor(_ name: FirstScreenColor) -> UIColor? {
