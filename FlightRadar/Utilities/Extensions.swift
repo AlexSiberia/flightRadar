@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-    // MARK: Enum
+// MARK: Enum
 
 enum FirstScreenColor {
     case backgroundColor
@@ -16,7 +16,7 @@ enum FirstScreenColor {
     case shadowColor
 }
 
-    // MARK: Extention
+// MARK: Extention
 
 extension UIColor {
     static func appColor(_ name: FirstScreenColor) -> UIColor? {

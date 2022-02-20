@@ -1,3 +1,10 @@
+//
+//  TimeTableAssembly.swift
+//  FlightRadar
+//
+//  Created by Alexander Kurbatov on 10.03.2022.
+//
+
 import Foundation
 
 class TimeTableAssembly {

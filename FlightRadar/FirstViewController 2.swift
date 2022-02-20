@@ -9,9 +9,14 @@ import UIKit
 
 class FirstViewController: BaseViewController {
     
-    // MARK: - Subviews
+    var label: UILabel!
+    var searchByFlightNumberButton: UIButton!
+    var searchByAirportTimeTableButton: UIButton!
     
-    lazy var label: UILabel = {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+     
         
         let text1: String = "Find a "
         let text2: String = "Plane"
@@ -40,16 +45,16 @@ class FirstViewController: BaseViewController {
         let atributesText2: NSMutableAttributedString = NSMutableAttributedString(string: text2, attributes: aributes2)
         atributedText1.append(atributesText2)
         
-        label = UILabel()
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         label.attributedText = atributedText1
         label.textColor = UIColor.appColor(.textColor)
+//        label.font = UIFont.systemFont(ofSize: 50.0).boldItalics()
+//        label.font = UIFont.boldSystemFont(ofSize: 50.0)
+//        label.font = UIFont.italicSystemFont(ofSize: 50.0)
+//        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var searchByFlightNumberButton: UIButton = {
+        view.addSubview(label)
         
         searchByFlightNumberButton = UIButton(type: .system)
         searchByFlightNumberButton.setTitle("Search by flight number", for: .normal)
@@ -64,11 +69,7 @@ class FirstViewController: BaseViewController {
             self,
             action: #selector(searchByFlightNumberButtonAction),
             for: .touchUpInside)
-      
-        return searchByFlightNumberButton
-    }()
-    
-   lazy var searchByAirportTimeTableButton: UIButton = {
+        view.addSubview(searchByFlightNumberButton)
         
         searchByAirportTimeTableButton = UIButton(type: .system)
         searchByAirportTimeTableButton.setTitle("Search by airport timetable", for: .normal)
@@ -85,31 +86,13 @@ class FirstViewController: BaseViewController {
             self,
             action: #selector(searchByAirportTimeTableButtonAction),
             for: .touchUpInside)
+        view.addSubview(searchByAirportTimeTableButton)
         
-        return searchByAirportTimeTableButton
-    }()
-    
-    
-    // MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupConstraints()
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
 //        navigationController?.navigationBar.barTintColor = UIColor.appColor(.textColor)
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!]
-        
-        
-        
-    }
-    
-    private func setupViews() {
-        view.addSubviews(label, searchByFlightNumberButton, searchByAirportTimeTableButton)
-    }
-    
-    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             
@@ -129,17 +112,42 @@ class FirstViewController: BaseViewController {
             searchByAirportTimeTableButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
+        
+        
+        
+        
+        
+        
+        //        view.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        
+        //        let logoImage = UIImage(named: "FirstScreenLogo")
+        //                let logoView = UIImageView(image: logoImage)
+        //                logoView.backgroundColor = .red
+        //                logoView.contentMode = .scaleAspectFit
+        //                logoView.clipsToBounds = true
+        //                logoView.translatesAutoresizingMaskIntoConstraints = false
+        //                view.addSubview(logoView)
+        //
+        //                NSLayoutConstraint.activate([
+        //                    logoView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+        //                    logoView.widthAnchor.constraint(equalToConstant: 150),
+        //                    logoView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+        //                    logoView.heightAnchor.constraint(equalToConstant: 150)
+        //                ])
+        
+       
+        
     }
     
     @objc func searchByFlightNumberButtonAction(sender: UIButton!) {
         navigationController?.pushViewController(
-            SearchByFlightNumberAssembly().create(),
+            SearchByFlightNumberViewController(),
             animated: true)
     }
     
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
         navigationController?.pushViewController(
-            SearchByAirportTimeTablePresenterAssembly().create(),
+            SearchByAirportTimeTableViewController(),
             animated: true)
     }
     

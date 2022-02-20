@@ -1,5 +1,5 @@
 //
-//  TimeTablePresenter.swift
+//  PlaneInformationPresenter.swift
 //  FlightRadar
 //
 //  Created by Alexander Kurbatov on 10.03.2022.
@@ -7,16 +7,15 @@
 
 import Foundation
 
-class TimeTablePresenter {
+class PlaneInformationPresenter {
     
-    weak var view: AirportTimeTableViewController?
-    
-    // var timeTableService: TimeTableService
+    weak var view: PlaneInformationViewController?
     
     func didLoadView() {
-
+        
         // идем в сеть за данными
-        // обрабатываем (например, сортируем)
+        // обрабатываем (например сортируем)
         // отдаем на отображение
+        
     }
 }

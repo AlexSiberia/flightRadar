@@ -23,7 +23,7 @@ class SearchByAirportTimeTableViewController: BaseViewController {
     lazy  var textField: UITextField = {
         
         textField = UITextField()
-        textField.placeholder = "City airport"
+        textField.placeholder = "City or airport"
         textField.textColor = UIColor.appColor(.textColor)
         textField.font = UIFont.systemFont(ofSize: 20)
         textField.keyboardType = UIKeyboardType.default
@@ -57,6 +57,24 @@ class SearchByAirportTimeTableViewController: BaseViewController {
         return iconViewLeftView
     }()
     
+    lazy var searchButton: UIButton = {
+        searchButton = UIButton(type: .system)
+        searchButton.setTitle("Search", for: .normal)
+        searchButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        searchButton.setTitleColor(UIColor.appColor(.textColor), for: .normal)
+        searchButton.backgroundColor = UIColor.appColor(.backgroundColor)
+        searchButton.layer.cornerRadius = 10.0
+        searchButton.layer.borderWidth = 2.0
+        searchButton.layer.borderColor = UIColor.appColor(.textColor)?.cgColor
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.addTarget(
+            self,
+            action: #selector(airportTimeTableButtonAction),
+            for: .touchUpInside)
+
+        return searchButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -67,7 +85,7 @@ class SearchByAirportTimeTableViewController: BaseViewController {
     }
     
     private func setupSubviews() {
-        view.addSubviews(label, textField)
+        view.addSubviews(label, textField, searchButton)
         iconViewLeftView.addSubview(iconView)
     }
     
@@ -90,8 +108,19 @@ class SearchByAirportTimeTableViewController: BaseViewController {
             iconView.leadingAnchor.constraint(equalTo: iconViewLeftView.leadingAnchor, constant: 3),
             iconView.centerYAnchor.constraint(equalTo: iconViewLeftView.safeAreaLayoutGuide.centerYAnchor),
             
+            searchButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            searchButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 50),
+            searchButton.widthAnchor.constraint(equalToConstant: 250),
+            searchButton.heightAnchor.constraint(equalToConstant: 50),
+            
             
         ])
+    }
+    
+    @objc func airportTimeTableButtonAction(sender: UIButton) {
+        navigationController?.pushViewController(
+            AirportTimeTableViewController(),
+            animated: true)
     }
     
 }

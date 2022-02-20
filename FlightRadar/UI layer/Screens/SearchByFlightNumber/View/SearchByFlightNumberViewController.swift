@@ -9,6 +9,8 @@ import UIKit
 
 class SearchByFlightNumberViewController: BaseViewController {
     
+    var presenter: SearchByFlightNumberPresenter?
+    
     lazy var label: UILabel = {
         
         label = UILabel()
@@ -120,7 +122,7 @@ class SearchByFlightNumberViewController: BaseViewController {
     
     @objc func flightInformationButtonAction(sender: UIButton) {
         navigationController?.pushViewController(
-            FlightInformationViewController(),
+            FlightInformationAssembly().create(),
             animated: true)
     }
     

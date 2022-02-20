@@ -1,13 +1,15 @@
 //
-//  LaunchViewController.swift
+//  SearchByAirportTimeTableViewController.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 15.01.2022.
+//  Created by Alexander Kurbatov on 18.01.2022.
 //
 
 import UIKit
 
-class SearchByFlightNumberViewController: BaseViewController {
+class SearchByAirportTimeTableViewController: BaseViewController {
+    
+    var presenter: SearchByAirportTimeTablePresenter?
     
     lazy var label: UILabel = {
         
@@ -20,10 +22,10 @@ class SearchByFlightNumberViewController: BaseViewController {
         return label
     }()
     
-    lazy var textField: UITextField = {
+    lazy  var textField: UITextField = {
         
         textField = UITextField()
-        textField.placeholder = "Flight number"
+        textField.placeholder = "City or airport"
         textField.textColor = UIColor.appColor(.textColor)
         textField.font = UIFont.systemFont(ofSize: 20)
         textField.keyboardType = UIKeyboardType.default
@@ -69,7 +71,7 @@ class SearchByFlightNumberViewController: BaseViewController {
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(
             self,
-            action: #selector(flightInformationButtonAction),
+            action: #selector(airportTimeTableButtonAction),
             for: .touchUpInside)
 
         return searchButton
@@ -81,9 +83,8 @@ class SearchByFlightNumberViewController: BaseViewController {
         setupConstraints()
         
         // Add title on controller
-        title = "Search by flight number"
+        title = "Search by airport timetable"
     }
-    
     
     private func setupSubviews() {
         view.addSubviews(label, textField, searchButton)
@@ -106,7 +107,7 @@ class SearchByFlightNumberViewController: BaseViewController {
             iconViewLeftView.widthAnchor.constraint(equalToConstant: 25),
             iconViewLeftView.heightAnchor.constraint(equalToConstant: 50),
             
-            iconView.leadingAnchor.constraint(equalTo: iconViewLeftView.safeAreaLayoutGuide.leadingAnchor, constant:  3),
+            iconView.leadingAnchor.constraint(equalTo: iconViewLeftView.leadingAnchor, constant: 3),
             iconView.centerYAnchor.constraint(equalTo: iconViewLeftView.safeAreaLayoutGuide.centerYAnchor),
             
             searchButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -114,13 +115,13 @@ class SearchByFlightNumberViewController: BaseViewController {
             searchButton.widthAnchor.constraint(equalToConstant: 250),
             searchButton.heightAnchor.constraint(equalToConstant: 50),
             
+            
         ])
-        
     }
     
-    @objc func flightInformationButtonAction(sender: UIButton) {
+    @objc func airportTimeTableButtonAction(sender: UIButton) {
         navigationController?.pushViewController(
-            FlightInformationViewController(),
+            TimeTableAssembly().create(),
             animated: true)
     }
     
