@@ -135,7 +135,7 @@ class FirstViewController: BaseViewController {
     
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
         navigationController?.pushViewController(
-            SearchByAirportTimeTableViewController(),
+            TimeTableAssembly().create(),
             animated: true)
     }
     
