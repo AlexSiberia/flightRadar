@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,6 @@
 		395EB7AE280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395EB7AD280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift */; };
 		395EB7B0280FF4C300C9D628 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395EB7AF280FF4C300C9D628 /* Reusable.swift */; };
 		395EB7B2280FF55400C9D628 /* ResultOrSearchByFlightNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395EB7B1280FF55400C9D628 /* ResultOrSearchByFlightNumberTableViewCell.swift */; };
-		395EB7B5281FC05900C9D628 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395EB7B4281FC05900C9D628 /* TableDataSource.swift */; };
 		3961ED4B27D8FF1B002224A0 /* StandartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961ED4A27D8FF1B002224A0 /* StandartButton.swift */; };
 		3961ED5B27DA345F002224A0 /* TimeTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961ED5A27DA345F002224A0 /* TimeTablePresenter.swift */; };
 		3961ED5F27DA35B5002224A0 /* TimeTableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961ED5E27DA35B5002224A0 /* TimeTableAssembly.swift */; };
@@ -44,6 +43,7 @@
 		39AEADBB27CA7BEC0008C2B9 /* FlightInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */; };
 		39AEADBD27CA84FA0008C2B9 /* PlaneInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */; };
 		39AEADBF27CA85150008C2B9 /* PlaneOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */; };
+		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 		AFB6F8FC281059FE00D83F3F /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */; };
@@ -78,7 +78,6 @@
 		395EB7AD280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFlightNumberTableViewDataSource.swift; sourceTree = "<group>"; };
 		395EB7AF280FF4C300C9D628 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		395EB7B1280FF55400C9D628 /* ResultOrSearchByFlightNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOrSearchByFlightNumberTableViewCell.swift; sourceTree = "<group>"; };
-		395EB7B4281FC05900C9D628 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		3961ED4A27D8FF1B002224A0 /* StandartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartButton.swift; sourceTree = "<group>"; };
 		3961ED5A27DA345F002224A0 /* TimeTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTablePresenter.swift; sourceTree = "<group>"; };
 		3961ED5E27DA35B5002224A0 /* TimeTableAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableAssembly.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D4BC9628424083002EEBB8 /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,15 +191,6 @@
 				395EB7AD280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift */,
 			);
 			path = DataSources;
-			sourceTree = "<group>";
-		};
-		395EB7B3281FBFC700C9D628 /* Common stuff */ = {
-			isa = PBXGroup;
-			children = (
-				395EB7AF280FF4C300C9D628 /* Reusable.swift */,
-				395EB7B4281FC05900C9D628 /* TableDataSource.swift */,
-			);
-			path = "Common stuff";
 			sourceTree = "<group>";
 		};
 		3961ED4827D8FE29002224A0 /* Common UI controls */ = {
@@ -608,6 +599,9 @@
 			dependencies = (
 			);
 			name = FlightRadar;
+			packageProductDependencies = (
+				39D4BC9528424083002EEBB8 /* Fakery */,
+			);
 			productName = FlightRadar;
 			productReference = 39AEA0E3268CA94F00108EF1 /* FlightRadar.app */;
 			productType = "com.apple.product-type.application";
@@ -679,6 +673,9 @@
 				Base,
 			);
 			mainGroup = 39AEA0DA268CA94F00108EF1;
+			packageReferences = (
+				39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */,
+			);
 			productRefGroup = 39AEA0E4268CA94F00108EF1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1082,6 +1079,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		39D4BC9528424083002EEBB8 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 39AEA0DB268CA94F00108EF1 /* Project object */;
 }
