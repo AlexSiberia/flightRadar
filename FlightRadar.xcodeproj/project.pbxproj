@@ -46,6 +46,9 @@
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
+		AF5574F22858FEF0005D61E7 /* FlightsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5574F12858FEF0005D61E7 /* FlightsListViewController.swift */; };
+		AF5574F428590066005D61E7 /* FlightsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5574F328590066005D61E7 /* FlightsListPresenter.swift */; };
+		AF5574F628590D82005D61E7 /* FlightListLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5574F528590D82005D61E7 /* FlightListLayoutManager.swift */; };
 		AFB6F8FC281059FE00D83F3F /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +114,9 @@
 		39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneOnMapViewController.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AF5574F12858FEF0005D61E7 /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
+		AF5574F328590066005D61E7 /* FlightsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListPresenter.swift; sourceTree = "<group>"; };
+		AF5574F528590D82005D61E7 /* FlightListLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListLayoutManager.swift; sourceTree = "<group>"; };
 		AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +210,7 @@
 		3961ED4927D8FECB002224A0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AF5574F02858FED3005D61E7 /* FlightList */,
 				3961ED5927D90F66002224A0 /* StartScreen */,
 				3961ED4D27D8FF41002224A0 /* SearchByFlightNumber */,
 				395EB79F280FEEBB00C9D628 /* ResultOfSearchByFlightNumber */,
@@ -451,8 +458,8 @@
 		39AEA0E5268CA94F00108EF1 /* FlightRadar */ = {
 			isa = PBXGroup;
 			children = (
-				39AEADAC27CA23F90008C2B9 /* UI layer */,
-				39AEADB327CA38AA0008C2B9 /* Service layer */,
+				39AEADAC27CA23F90008C2B9 /* Presentation layer */,
+				39AEADB327CA38AA0008C2B9 /* Bussiness logic layer */,
 				39AEADB627CA38F20008C2B9 /* Model layer */,
 				39AEADB727CA38FF0008C2B9 /* Core layer */,
 				39AEADAB27CA1D500008C2B9 /* Application layer */,
@@ -510,7 +517,7 @@
 			path = "Application layer";
 			sourceTree = "<group>";
 		};
-		39AEADAC27CA23F90008C2B9 /* UI layer */ = {
+		39AEADAC27CA23F90008C2B9 /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
 				AFB6F8FA281059B500D83F3F /* Common stuff */,
@@ -518,7 +525,7 @@
 				39AEADAE27CA243C0008C2B9 /* Common controllers */,
 				3961ED4927D8FECB002224A0 /* Screens */,
 			);
-			path = "UI layer";
+			path = "Presentation layer";
 			sourceTree = "<group>";
 		};
 		39AEADAE27CA243C0008C2B9 /* Common controllers */ = {
@@ -529,13 +536,13 @@
 			path = "Common controllers";
 			sourceTree = "<group>";
 		};
-		39AEADB327CA38AA0008C2B9 /* Service layer */ = {
+		39AEADB327CA38AA0008C2B9 /* Bussiness logic layer */ = {
 			isa = PBXGroup;
 			children = (
 				39AEADB527CA38DE0008C2B9 /* Feed service */,
 				39AEADB427CA38C30008C2B9 /* Push service */,
 			);
-			path = "Service layer";
+			path = "Bussiness logic layer";
 			sourceTree = "<group>";
 		};
 		39AEADB427CA38C30008C2B9 /* Push service */ = {
@@ -572,6 +579,32 @@
 				39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AF5574F02858FED3005D61E7 /* FlightList */ = {
+			isa = PBXGroup;
+			children = (
+				AF5574F828590E13005D61E7 /* Presenter */,
+				AF5574F728590E07005D61E7 /* View */,
+			);
+			path = FlightList;
+			sourceTree = "<group>";
+		};
+		AF5574F728590E07005D61E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF5574F528590D82005D61E7 /* FlightListLayoutManager.swift */,
+				AF5574F12858FEF0005D61E7 /* FlightsListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF5574F828590E13005D61E7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AF5574F328590066005D61E7 /* FlightsListPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
@@ -721,7 +754,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				395EB7AA280FF3B100C9D628 /* FlightNumberModel.swift in Sources */,
+				AF5574F428590066005D61E7 /* FlightsListPresenter.swift in Sources */,
 				395EB7B0280FF4C300C9D628 /* Reusable.swift in Sources */,
+				AF5574F628590D82005D61E7 /* FlightListLayoutManager.swift in Sources */,
 				395EB7A1280FEF0C00C9D628 /* ResultOfSearchByFlightNumberViewController.swift in Sources */,
 				3961ED7B27DDB02C002224A0 /* FlightInformationPresenter.swift in Sources */,
 				39AEADB927CA6A600008C2B9 /* AirportTimeTableViewController.swift in Sources */,
@@ -732,6 +767,7 @@
 				3961ED8027DDB501002224A0 /* PlaneOnMapViewPresenter.swift in Sources */,
 				3961ED6327DA4466002224A0 /* PlaneInformationPresenter.swift in Sources */,
 				3961ED6627DA4491002224A0 /* PlaneInformationAssembly.swift in Sources */,
+				AF5574F22858FEF0005D61E7 /* FlightsListViewController.swift in Sources */,
 				3961ED5F27DA35B5002224A0 /* TimeTableAssembly.swift in Sources */,
 				3961ED8227DDB510002224A0 /* PlaneOnMapViewAssembly.swift in Sources */,
 				395EB7AE280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift in Sources */,
