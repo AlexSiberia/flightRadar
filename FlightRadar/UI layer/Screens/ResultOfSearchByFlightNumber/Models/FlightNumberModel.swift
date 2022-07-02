@@ -1,12 +1,14 @@
 //
-//  FlightNumberModel.swift
+//  FlightModel.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 20.04.2022.
+//  Created by Alexander Kurbatov on 02.07.2022.
 //
 
-import Foundation
+import UIKit
 
 struct FlightNumberModel {
-    var flightNumber: String
+    var flightNumber:   String
+    var flightDescription: String
+    var aviacompanyLogo: UIImage
 }

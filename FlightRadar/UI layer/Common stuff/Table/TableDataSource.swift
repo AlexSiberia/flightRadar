@@ -7,23 +7,14 @@
 
 import UIKit
 
-class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITableViewDataSource {
-    
-    // MARK: - Properties
-    
-    typealias CellConfigurator = (Model, Cell) -> Void
+class TableViewDataSource<Model, Cell: ConfigurableCell<Model>>: NSObject, UITableViewDataSource {
     
     private let models: [Model]
-    private let cellConfigurator: CellConfigurator
-    
-    // MARK: - Initialization
     
     init(
-        models: [Model],
-        cellConfigurator: @escaping CellConfigurator = { model, cell in }
+        models: [Model]
     ) {
         self.models = models
-        self.cellConfigurator = cellConfigurator
     }
     
     // MARK: - UITableViewDataSource
@@ -32,7 +23,7 @@ class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITableViewDa
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return models.count
+        models.count
     }
     
     func tableView(
@@ -41,7 +32,18 @@ class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITableViewDa
     ) -> UITableViewCell {
         let model = models[indexPath.row]
         let cell: Cell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        cellConfigurator(model, cell)
+        cell.configure(model)
         return cell
+    }
+}
+
+extension TableViewDataSource where Model == DividerModel, Cell == DividerTableViewCell {
+    
+    static func make(
+        for dividers: [DividerModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: dividers
+        )
     }
 }

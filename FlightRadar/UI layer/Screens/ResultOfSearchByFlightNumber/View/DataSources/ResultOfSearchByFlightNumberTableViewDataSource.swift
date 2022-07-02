@@ -7,15 +7,24 @@
 
 import UIKit
 
-extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOrSearchByFlightNumberTableViewCell {
+extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOrSearchByFlightNumberFlightTableViewCell {
     
     static func make(
-        for flightNumbers: [FlightNumberModel]
+        for flights: [FlightNumberModel]
     ) -> TableViewDataSource {
         TableViewDataSource(
-            models: flightNumbers
-        ) { flightNumber, cell in
-            cell.updateDataSource(with: flightNumber)
-        }
+            models: flights
+        )
+    }
+}
+
+extension TableViewDataSource where Model == AirlineModel, Cell == ResultOrSearchByFlightNumberAirlinesTableViewCell {
+    
+    static func make(
+        for airlines: [AirlineModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: airlines
+        )
     }
 }
