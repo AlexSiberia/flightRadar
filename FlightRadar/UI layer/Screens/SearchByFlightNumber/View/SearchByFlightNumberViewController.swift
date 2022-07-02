@@ -122,7 +122,8 @@ class SearchByFlightNumberViewController: BaseViewController {
     
     @objc func flightInformationButtonAction(sender: UIButton) {
         navigationController?.pushViewController(
-            FlightInformationAssembly().create(),
+//            FlightInformationAssembly().create(),
+            ResultOfSearchByFlightNumberAssembly().create(),
             animated: true)
     }
     

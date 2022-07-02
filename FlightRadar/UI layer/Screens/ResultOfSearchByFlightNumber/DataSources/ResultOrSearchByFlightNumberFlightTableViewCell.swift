@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultOrSearchByFlightNumberTableViewCell: UITableViewCell {
+class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNumberModel> {
     
     //MARK: - Properties
     

@@ -24,7 +24,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     private lazy var tableView: UITableView = {
        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ResultOrSearchByFlightNumberTableViewCell.self)
+        tableView.register(ResultOrSearchByFlightNumberFlightTableViewCell.self)
         
         return tableView
     }()
@@ -34,9 +34,10 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var a: Int?
-        
-        // link https://stackoverflow.com/questions/24003291/ifdef-replacement-in-the-swift-language
+//  Не помню что это за код
+//        var a: Int?
+//
+//        // link https://stackoverflow.com/questions/24003291/ifdef-replacement-in-the-swift-language
     }
     
 
