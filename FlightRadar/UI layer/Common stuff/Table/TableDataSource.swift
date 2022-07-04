@@ -1,12 +1,9 @@
 //
-//  ResultOfSearchByFlightNumberTableViewDataSource.swift
+//  TableDataSource.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 20.04.2022.
+//  Created by Alexander Kurbatov on 02.05.2022.
 //
-
-
-import UIKit
 
 import UIKit
 
@@ -40,17 +37,6 @@ class TableViewDataSource<Model, Cell: ConfigurableCell<Model>>: NSObject, UITab
     }
 }
 
-extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOrSearchByFlightNumberFlightTableViewCell {
-    
-    static func make(
-        for flights: [FlightNumberModel]
-    ) -> TableViewDataSource {
-        TableViewDataSource(
-            models: flights
-        )
-    }
-}
-
 extension TableViewDataSource where Model == DividerModel, Cell == DividerTableViewCell {
     
     static func make(
@@ -61,4 +47,3 @@ extension TableViewDataSource where Model == DividerModel, Cell == DividerTableV
         )
     }
 }
-

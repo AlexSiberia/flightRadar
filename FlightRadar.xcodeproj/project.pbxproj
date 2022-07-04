@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3923857F2870374300E4780F /* Configutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3923857E2870374300E4780F /* Configutable.swift */; };
+		3923857F2870374300E4780F /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3923857E2870374300E4780F /* Configurable.swift */; };
 		392385812870B06000E4780F /* FlightNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392385802870B06000E4780F /* FlightNumberModel.swift */; };
 		392385832870B16B00E4780F /* DividerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392385822870B16B00E4780F /* DividerModel.swift */; };
 		392385852870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392385842870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift */; };
@@ -51,6 +51,9 @@
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
+		AF069BAF28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BAE28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift */; };
+		AF069BB228733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BB128733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift */; };
+		AF069BB428733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BB328733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift */; };
 		AFB6F8FC281059FE00D83F3F /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3923857E2870374300E4780F /* Configutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configutable.swift; sourceTree = "<group>"; };
+		3923857E2870374300E4780F /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		392385802870B06000E4780F /* FlightNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightNumberModel.swift; sourceTree = "<group>"; };
 		392385822870B16B00E4780F /* DividerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerModel.swift; sourceTree = "<group>"; };
 		392385842870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFightNumberDividerTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +124,9 @@
 		39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneOnMapViewController.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AF069BAE28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSeacrhByFlightNumberScreenOutput.swift; sourceTree = "<group>"; };
+		AF069BB128733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFlightNumberViewInput.swift; sourceTree = "<group>"; };
+		AF069BB328733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFlightNumberViewOutput.swift; sourceTree = "<group>"; };
 		AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,8 +159,8 @@
 		395EB79F280FEEBB00C9D628 /* ResultOfSearchByFlightNumber */ = {
 			isa = PBXGroup;
 			children = (
+				AF069BAE28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift */,
 				395EB7AB280FF42400C9D628 /* Models */,
-				395EB7AC280FF45700C9D628 /* DataSources */,
 				395EB7A4280FEF6700C9D628 /* Assembly */,
 				395EB7A3280FEF5400C9D628 /* Presenter */,
 				395EB7A2280FEF4300C9D628 /* View */,
@@ -165,7 +171,11 @@
 		395EB7A2280FEF4300C9D628 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF069BB128733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift */,
+				AF069BB328733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift */,
 				395EB7A0280FEF0C00C9D628 /* ResultOfSearchByFlightNumberViewController.swift */,
+				AF069BB028733CFF00A8131D /* Cells */,
+				395EB7AC280FF45700C9D628 /* DataSources */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,8 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				395EB7AD280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift */,
-				395EB7B1280FF55400C9D628 /* ResultOrSearchByFlightNumberFlightTableViewCell.swift */,
-				392385842870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -586,14 +594,31 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
+		AF069BAD28733A5E00A8131D /* Table */ = {
 			isa = PBXGroup;
 			children = (
 				395EB7AF280FF4C300C9D628 /* Reusable.swift */,
+				3923857E2870374300E4780F /* Configurable.swift */,
 				AFB6F8FB281059FE00D83F3F /* TableDataSource.swift */,
-				3923857E2870374300E4780F /* Configutable.swift */,
-				392385882870BC8900E4780F /* TableViewDelegate.swift */,
 				3923858A2870BCD500E4780F /* SectionedTableViewDataSource.swift */,
+				392385882870BC8900E4780F /* TableViewDelegate.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		AF069BB028733CFF00A8131D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				395EB7B1280FF55400C9D628 /* ResultOrSearchByFlightNumberFlightTableViewCell.swift */,
+				392385842870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
+			isa = PBXGroup;
+			children = (
+				AF069BAD28733A5E00A8131D /* Table */,
 			);
 			path = "Common stuff";
 			sourceTree = "<group>";
@@ -760,17 +785,20 @@
 				392385812870B06000E4780F /* FlightNumberModel.swift in Sources */,
 				39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */,
 				39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */,
-				3923857F2870374300E4780F /* Configutable.swift in Sources */,
+				3923857F2870374300E4780F /* Configurable.swift in Sources */,
 				39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */,
 				39AEADBD27CA84FA0008C2B9 /* PlaneInformationViewController.swift in Sources */,
+				AF069BB428733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift in Sources */,
 				39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */,
 				3923858B2870BCD500E4780F /* SectionedTableViewDataSource.swift in Sources */,
 				3961ED4B27D8FF1B002224A0 /* StandartButton.swift in Sources */,
 				39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */,
 				392791C327A1A99400350A30 /* KeyboardAppearListener.swift in Sources */,
+				AF069BAF28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift in Sources */,
 				395EB7A6280FEF9B00C9D628 /* ResultOfSearchByFlightNumberPresenter.swift in Sources */,
 				395EB7A8280FEFC000C9D628 /* ResultOfSearchByFlightNumberAssembly.swift in Sources */,
 				3961ED7927DDB022002224A0 /* FlightInformationAssembly.swift in Sources */,
+				AF069BB228733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift in Sources */,
 				AFB6F8FC281059FE00D83F3F /* TableDataSource.swift in Sources */,
 				3961ED7227DDA906002224A0 /* SearchByAirportTimeTablePresenter.swift in Sources */,
 			);
