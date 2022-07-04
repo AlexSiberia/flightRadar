@@ -5,17 +5,60 @@
 //  Created by Alexander Kurbatov on 20.04.2022.
 //
 
+
 import UIKit
 
-extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOrSearchByFlightNumberTableViewCell {
+import UIKit
+
+class TableViewDataSource<Model, Cell: ConfigurableCell<Model>>: NSObject, UITableViewDataSource {
     
-    static func make(
-        for flightNumbers: [FlightNumberModel]
-    ) -> TableViewDataSource {
-        TableViewDataSource(
-            models: flightNumbers
-        ) { flightNumber, cell in
-            cell.updateDataSource(with: flightNumber)
-        }
+    private let models: [Model]
+    
+    init(
+        models: [Model]
+    ) {
+        self.models = models
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        models.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let model = models[indexPath.row]
+        let cell: Cell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.configure(model)
+        return cell
     }
 }
+
+extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOrSearchByFlightNumberFlightTableViewCell {
+    
+    static func make(
+        for flights: [FlightNumberModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: flights
+        )
+    }
+}
+
+extension TableViewDataSource where Model == DividerModel, Cell == DividerTableViewCell {
+    
+    static func make(
+        for dividers: [DividerModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: dividers
+        )
+    }
+}
+
