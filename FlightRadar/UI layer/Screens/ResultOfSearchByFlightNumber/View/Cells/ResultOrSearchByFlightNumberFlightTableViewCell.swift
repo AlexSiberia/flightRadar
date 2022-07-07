@@ -11,19 +11,41 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
     
     // MARK: - Subviews
     
+    // вроде NameSpace
+    private enum LayoutConstants {
+        
+        // Common
+        static let defaultOffset = 16.0
+        static let smallDefaultOffset = 8.0
+        
+        // IconView
+        static let iconViewDimension = 34.0
+    }
+    
+    private let iconView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    
     private let flightNumberLabel: UILabel = {
         let flightNumberLabel = UILabel()
         flightNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        flightNumberLabel.numberOfLines = 0
+        
         return flightNumberLabel
     }()
     
-    private lazy var heightConstraint: NSLayoutConstraint = {
-        let heightConstraint = flightNumberLabel.heightAnchor.constraint(equalToConstant: 44.0)
-        heightConstraint.priority = UILayoutPriority(249.0)
-        
-        return heightConstraint
-    }()
+//    private lazy var heightConstraint: NSLayoutConstraint = {
+//        let heightConstraint = flightNumberLabel.heightAnchor.constraint(equalToConstant: 44.0)
+//        heightConstraint.priority = UILayoutPriority(249.0)
+//
+//        return heightConstraint
+//    }()
     
     // MARK: - Initialization
     
@@ -36,6 +58,9 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
             reuseIdentifier: reuseIdentifier
         )
         
+        contentView.backgroundColor = .systemYellow
+        
+        contentView.addSubview(iconView)
         contentView.addSubview(flightNumberLabel)
         
         setupCellConstraints()
@@ -50,20 +75,55 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
     override func configure(_ model: FlightNumberModel) {
         super.configure(model)
         
+        iconView.image = model.aviacompanyLogo
         flightNumberLabel.text = model.flightNumber
         
-        heightConstraint.constant = flightNumberLabel.intrinsicContentSize.height
+//        heightConstraint.constant = flightNumberLabel.intrinsicContentSize.height
     }
 
     // MARK: - Private methods
 
     private func setupCellConstraints() {
+        
+        // IconView constraints
         NSLayoutConstraint.activate([
-            flightNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            flightNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            flightNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            heightConstraint,
-            flightNumberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            iconView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: LayoutConstants.defaultOffset
+            ),
+            iconView.widthAnchor.constraint(
+                equalToConstant: LayoutConstants.iconViewDimension
+            ),
+            iconView.heightAnchor.constraint(
+                equalToConstant: LayoutConstants.iconViewDimension
+            ),
+            iconView.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: LayoutConstants.smallDefaultOffset
+            ),
+            iconView.bottomAnchor.constraint(
+                lessThanOrEqualTo: contentView.bottomAnchor,
+                constant: -LayoutConstants.smallDefaultOffset
+            ),
+        ])
+        
+        // Label constraints
+        NSLayoutConstraint.activate([
+            flightNumberLabel.leadingAnchor.constraint(
+                equalTo: iconView.trailingAnchor,
+                constant: LayoutConstants.smallDefaultOffset
+            ),
+            flightNumberLabel.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: -LayoutConstants.defaultOffset
+            ),
+            flightNumberLabel.topAnchor.constraint(
+                equalTo: iconView.topAnchor
+            ),
+            flightNumberLabel.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -LayoutConstants.smallDefaultOffset
+            ),
         ])
     }
 }
