@@ -58,7 +58,7 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
             reuseIdentifier: reuseIdentifier
         )
         
-        contentView.backgroundColor = .systemYellow
+        contentView.backgroundColor = UIColor.appColor(.backgroundColor)
         
         contentView.addSubview(iconView)
         contentView.addSubview(flightNumberLabel)
@@ -77,6 +77,7 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
         
         iconView.image = model.aviacompanyLogo
         flightNumberLabel.text = model.flightNumber
+        flightNumberLabel.font = UIFont.systemFont(ofSize: 18).bold()
         
 //        heightConstraint.constant = flightNumberLabel.intrinsicContentSize.height
     }

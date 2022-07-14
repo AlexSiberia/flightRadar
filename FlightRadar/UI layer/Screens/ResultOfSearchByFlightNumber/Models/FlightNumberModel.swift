@@ -8,7 +8,7 @@
 import UIKit
 
 struct FlightNumberModel {
-    var flightNumber: String
+    var flightNumber:   String
     var flightDescription: String
     var aviacompanyLogo: UIImage
 }
