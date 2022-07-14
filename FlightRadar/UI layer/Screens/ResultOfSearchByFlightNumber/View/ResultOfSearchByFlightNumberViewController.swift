@@ -7,7 +7,14 @@
 
 import UIKit
 
+struct ResultOfSearchByFlightNumberViewData {
+    let airlines: [AirlineModel]
+    let flights: [FlightNumberModel]
+}
+
 class ResultOfSearchByFlightNumberViewController: UIViewController {
+    
+    fileprivate var viewData: ResultOfSearchByFlightNumberViewData = ResultOfSearchByFlightNumberViewData(airlines: [], flights: [])
     
     var presenter: ResultOfSearchByFlightNumberViewOutput?
 
@@ -23,7 +30,16 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     
     // MARK: - Subviews
     
-    fileprivate lazy var tableView: UITableView = {
+    fileprivate lazy var loadingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.text = "Загрузка..."
+        
+        return label
+    }()
+    
+    fileprivate lazy var tableView: UITableView = { [unowned self] in
         let tableView = UITableView(
             frame: .zero,
             style: .plain
@@ -34,6 +50,8 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.delegate = self
         
         return tableView
     }()
@@ -67,7 +85,12 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     }
     
     private func setupSubviews() {
+        setupLoadingView()
         setupTableView()
+    }
+    
+    private func setupLoadingView() {
+        view.addSubview(loadingLabel)
     }
     
     private func setupTableView() {
@@ -94,16 +117,47 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
 
 extension ResultOfSearchByFlightNumberViewController: ResultOfSearchByFlightNumberViewInput {
     
-    func update(with data: [FlightNumberModel]) {
-        let dataSource = SectionedTableViewDataSource(
-            dataSources: [
-                TableViewDataSource.make(for: [AirlineModel]),
-                TableViewDataSource.make(for: data),
-                TableViewDataSource.make(for: [DividerModel()])
+    func showLoadingState() {
+        tableView.isHidden = true
+        loadingLabel.isHidden = false
+    }
+    
+    func showDataState(_ data: ResultOfSearchByFlightNumberViewData) {
+        tableView.isHidden = false
+        loadingLabel.isHidden = true
+        
+        viewData = data
+        
+        let section0 = TableViewDataSource.make(for: viewData.airlines)
+        let section1 = TableViewDataSource.make(for: [ DividerModel() ])
+        let section2 = TableViewDataSource.make(for: viewData.flights)
+        let section3 = TableViewDataSource.make(for: [ DividerModel() ])
+        
+        let dataSource = SectionedTableViewDataSource(dataSources: [
+            section0,
+            section1,
+            section2,
+            section3,
         ])
         tableView.dataSource = dataSource
         tableData = dataSource
 
         tableView.reloadData()
+    }
+}
+
+extension ResultOfSearchByFlightNumberViewController: UITableViewDelegate {
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 0 {
+            let airline = viewData.airlines[indexPath.row]
+            presenter?.userDidSelect(airline: airline)
+        } else if indexPath.section == 2 {
+            let flight = viewData.flights[indexPath.row]
+            presenter?.userDidSelect(flight: flight)
+        }
     }
 }

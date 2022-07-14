@@ -7,30 +7,28 @@
 
 import UIKit
 
-class ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberViewOutput {
+class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreenInput {
+
+    weak var output: ResultOfSeacrhByFlightNumberScreenOutput?
+    var context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext()
     
     weak var view: ResultOfSearchByFlightNumberViewInput?
-    weak var output: ResultOfSeacrhByFlightNumberScreenOutput?
     
+    var airlines: [AirlineModel] = [AirlineModel]()
     var transports: [FlightNumberModel] = [FlightNumberModel]()
-    
-    // MARK: - ResultOfSearchByFlightNumberViewOutput
-    
-    func didLoadView() {
-        createFlightNumberArray()
-        view?.update(with: transports)
-    }
+
     
     // MARK: - Private
     
-//    private func createAirlinesArray() {
-//        
-//        transports.append(
-//        AirlineModel(
-//            airlineBrand: "AmericanA irlines",
-//            aviacompanyLogo: UIImage(named: "AmericanAirlines-100")!
-//        )
-//    }
+    private func createAirlinesArray() {
+        
+        airlines.append(
+            AirlineModel(
+                airlineBrand: "AmericanA irlines",
+                aviacompanyLogo: UIImage(named: "AmericanAirlines-100") ?? UIImage()
+            )
+        )
+    }
     
     private func createFlightNumberArray() {
         
@@ -115,5 +113,29 @@ class ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberViewOut
                               aviacompanyLogo: UIImage(named: "VirginAtlanticAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
+    }
+}
+
+extension ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberViewOutput {
+    
+    func didLoadView() {
+        view?.showLoadingState()
+        
+        createAirlinesArray()
+        createFlightNumberArray()
+        
+        let viewData = ResultOfSearchByFlightNumberViewData(
+            airlines: airlines,
+            flights: transports
+        )
+        view?.showDataState(viewData)
+    }
+    
+    func userDidSelect(flight: FlightNumberModel) {
+        output?.didSelect(flight: flight)
+    }
+    
+    func userDidSelect(airline: AirlineModel) {
+        output?.didSelect(airline: airline)
     }
 }

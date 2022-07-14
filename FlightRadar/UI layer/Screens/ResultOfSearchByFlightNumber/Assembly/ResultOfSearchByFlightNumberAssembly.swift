@@ -7,13 +7,22 @@
 
 import Foundation
 
+struct ResultOfSearchByFlightNumberScreenContext {
+    
+}
+
 class ResultOfSearchByFlightNumberAssembly {
     
     func create(
-        _ output: ResultOfSeacrhByFlightNumberScreenOutput? = nil
-    ) -> ResultOfSearchByFlightNumberViewController {
+        context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext(),
+        output: ResultOfSeacrhByFlightNumberScreenOutput? = nil
+    ) -> (
+        ResultsOfSearchByFlightNumberScreenInput,
+        ResultOfSearchByFlightNumberViewController
+    ) {
         
         let presenter = ResultOfSearchByFlightNumberPresenter()
+        presenter.context = context
         presenter.output = output
         
         let view = ResultOfSearchByFlightNumberViewController()
@@ -21,6 +30,6 @@ class ResultOfSearchByFlightNumberAssembly {
         view.presenter = presenter
         presenter.view = view
         
-        return view
+        return (presenter, view)
     }
 }

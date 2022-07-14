@@ -2,5 +2,6 @@ import Foundation
 
 protocol ResultOfSearchByFlightNumberViewInput: AnyObject {
     
-    func update(with data: [FlightNumberModel])
+    func showLoadingState()
+    func showDataState(_ data: ResultOfSearchByFlightNumberViewData)
 }
