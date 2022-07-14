@@ -23,6 +23,15 @@ class ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberViewOut
     
     // MARK: - Private
     
+//    private func createAirlinesArray() {
+//        
+//        transports.append(
+//        AirlineModel(
+//            airlineBrand: "AmericanA irlines",
+//            aviacompanyLogo: UIImage(named: "AmericanAirlines-100")!
+//        )
+//    }
+    
     private func createFlightNumberArray() {
         
 //        let symbolConfig = UIImage.SymbolConfiguration(

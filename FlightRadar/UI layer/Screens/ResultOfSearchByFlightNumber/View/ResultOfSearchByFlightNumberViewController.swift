@@ -73,6 +73,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         
+        tableView.register(ResultOrSearchByFlightNumberAirlinesTableViewCell.self)
         tableView.register(ResultOrSearchByFlightNumberFlightTableViewCell.self)
         tableView.register(DividerTableViewCell.self)
     }
@@ -96,6 +97,7 @@ extension ResultOfSearchByFlightNumberViewController: ResultOfSearchByFlightNumb
     func update(with data: [FlightNumberModel]) {
         let dataSource = SectionedTableViewDataSource(
             dataSources: [
+                TableViewDataSource.make(for: [AirlineModel]),
                 TableViewDataSource.make(for: data),
                 TableViewDataSource.make(for: [DividerModel()])
         ])

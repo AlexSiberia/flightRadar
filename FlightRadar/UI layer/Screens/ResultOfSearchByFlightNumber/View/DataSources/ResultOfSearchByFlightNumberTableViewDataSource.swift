@@ -17,3 +17,14 @@ extension TableViewDataSource where Model == FlightNumberModel, Cell == ResultOr
         )
     }
 }
+
+extension TableViewDataSource where Model == AirlineModel, Cell == ResultOrSearchByFlightNumberAirlinesTableViewCell {
+    
+    static func make(
+        for airlines: [AirlineModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: airlines
+        )
+    }
+}
