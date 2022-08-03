@@ -9,6 +9,8 @@ import UIKit
 
 class FirstViewController: BaseViewController {
     
+    var presenter: FirstScreenPresenter?
+    
     // MARK: - Subviews
     
     lazy var label: UILabel = {
@@ -132,15 +134,19 @@ class FirstViewController: BaseViewController {
     }
     
     @objc func searchByFlightNumberButtonAction(sender: UIButton!) {
-        navigationController?.pushViewController(
-            SearchByFlightNumberAssembly().create(),
-            animated: true)
+//        navigationController?.pushViewController(
+//            SearchByFlightNumberAssembly().create(),
+//            animated: true)
+        presenter?.output?.didSelectSearchByFightNumber()
+//        onSelectSearchByFlightNumber?()
+        
     }
     
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
-        navigationController?.pushViewController(
-            SearchByAirportTimeTablePresenterAssembly().create(),
-            animated: true)
+//        navigationController?.pushViewController(
+//            SearchByAirportTimeTablePresenterAssembly().create(),
+//            animated: true)
+        presenter?.output?.didSelectSearchByAirportTimetable()
     }
     
     

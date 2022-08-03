@@ -10,21 +10,22 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var rootCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
        
         guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
         
-        let firstViewController = FirstViewController()
-        let navigationController = UINavigationController(rootViewController: firstViewController)
+        let window = UIWindow(windowScene: scene)
+        let navigationController = UINavigationController()
+        let coordinator = RootCoordinator(transitionHandler: navigationController)
         
-        window?.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
+        self.window = window
+        self.rootCoordinator = coordinator
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.window?.rootViewController = navigationController
-        }
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        coordinator.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

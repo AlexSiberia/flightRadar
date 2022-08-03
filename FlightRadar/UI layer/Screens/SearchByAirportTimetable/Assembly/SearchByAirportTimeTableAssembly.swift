@@ -7,14 +7,15 @@
 
 import Foundation
 
-class SearchByAirportTimeTablePresenterAssembly {
+class SearchByAirportTimeTableAssembly {
     
-    func create() -> SearchByAirportTimeTableViewController {
+    func create(output: SearchByAirportTimeTablelOutput) -> SearchByAirportTimeTableViewController {
         let presenter = SearchByAirportTimeTablePresenter()
         let view = SearchByAirportTimeTableViewController()
         
         view.presenter = presenter
         presenter.view = view
+        presenter.output = output
         
         return view
     }

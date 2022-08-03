@@ -7,7 +7,10 @@
 
 import Foundation
 
-class SearchByFlightNumberPresenter {
+class SearchByFlightNumberPresenter: SearchByFlightNumberInput {
+    
+    // MARK: - Output
+    weak var output: SearchByFlihgtNumberOutput?
     
     weak var view: SearchByFlightNumberViewController?
     

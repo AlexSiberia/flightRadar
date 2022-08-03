@@ -7,7 +7,10 @@
 
 import Foundation
 
-class SearchByAirportTimeTablePresenter {
+class SearchByAirportTimeTablePresenter: SearchByAirportTimeTableInput {
+    
+    // MARK: - Output
+    weak var output: SearchByAirportTimeTablelOutput?
     
     weak var view: SearchByAirportTimeTableViewController?
     
