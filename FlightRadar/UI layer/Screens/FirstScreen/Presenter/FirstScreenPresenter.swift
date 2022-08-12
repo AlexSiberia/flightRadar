@@ -1,18 +1,18 @@
 //
-//  File.swift
+//  FirstScreenPresenter.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 13.03.2022.
+//  Created by Alexander Kurbatov on 04.08.2022.
 //
 
 import Foundation
 
-class FlightInformationPresenter: FlightInformationInput {
+class FirstScreenPresenter: FirstScreenInput {
     
-    //MARK: Output
-    weak var output: FlightInformationOutput?
+    // MARK: - Output
+    weak var output: FirstScreenOutput?
     
-    weak var view: FlightInformationViewController?
+    weak var view: FirstViewController?
     
     func didLoadView() {
         

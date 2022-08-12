@@ -92,15 +92,17 @@ class FlightInformationViewController: BaseViewController {
     }
     
     @objc func planeInformationButtonAction(sender: UIButton) {
-        navigationController?.pushViewController(
-            PlaneInformationAssembly().create(),
-            animated: true)
+//        navigationController?.pushViewController(
+//            PlaneInformationAssembly().create(),
+//            animated: true)
+        presenter?.output?.didSelectPlaneInfo()
     }
     
     @objc func planeOnMapButtonAction(sender: UIButton) {
-        navigationController?.pushViewController(
-            PlaneOnMapViewAssembly().create(),
-            animated: true)
+//        navigationController?.pushViewController(
+//            PlaneOnMapViewAssembly().create(),
+//            animated: true)
+        presenter?.output?.didSelectPlaneOnMap()
     }
     
 }

@@ -9,12 +9,13 @@ import Foundation
 
 class PlaneInformationAssembly {
     
-    func create() -> PlaneInformationViewController {
+    func create(output: PlaneInformationOutput) -> PlaneInformationViewController {
         let presenter = PlaneInformationPresenter()
         let view = PlaneInformationViewController()
         
         view.presenter = presenter
         presenter.view = view
+        presenter.output = output
         
         return view
     }

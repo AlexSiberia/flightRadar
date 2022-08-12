@@ -121,13 +121,14 @@ class SearchByFlightNumberViewController: BaseViewController {
     }
     
     @objc func flightInformationButtonAction(sender: UIButton) {
-        let searchScreen = ResultOfSearchByFlightNumberAssembly().create()
-        let _ = searchScreen.0
-        
-        navigationController?.pushViewController(
-            searchScreen.1,
-            animated: true
-        )
+//        let searchScreen = ResultOfSearchByFlightNumberAssembly().create()
+//        let _ = searchScreen.0
+//        
+//        navigationController?.pushViewController(
+//            searchScreen.1,
+//            animated: true
+//        )
+        presenter?.output?.didSelectSearchByFlight()
     }
     
 }

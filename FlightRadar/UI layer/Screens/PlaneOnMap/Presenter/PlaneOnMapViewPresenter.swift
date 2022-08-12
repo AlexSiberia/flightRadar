@@ -7,7 +7,10 @@
 
 import Foundation
 
-class PlaneOnMapViewPresenter {
+class PlaneOnMapViewPresenter: PlaneOnMapInput {
+    
+    //MARK: Output
+    weak var output: PlaneOnMapOutput?
     
     weak var view: PlaneOnMapViewController?
     

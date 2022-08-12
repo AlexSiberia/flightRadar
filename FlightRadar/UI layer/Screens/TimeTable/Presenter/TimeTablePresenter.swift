@@ -7,7 +7,10 @@
 
 import Foundation
 
-class TimeTablePresenter {
+class TimeTablePresenter: TimeTableInput {
+    
+    // MARK: - Output
+    weak var output: TimeTableOutput?
     
     weak var view: AirportTimeTableViewController?
     

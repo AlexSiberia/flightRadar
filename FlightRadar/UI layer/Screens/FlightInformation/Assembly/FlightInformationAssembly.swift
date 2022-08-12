@@ -9,12 +9,14 @@ import Foundation
 
 class FlightInformationAssembly {
     
-    func create() -> FlightInformationViewController {
+    func create(output: FlightInformationOutput) -> FlightInformationViewController {
         let presenter = FlightInformationPresenter()
         let view = FlightInformationViewController()
         
         view.presenter = presenter
         presenter.view = view
+        
+        presenter.output = output
         
         return view
     }

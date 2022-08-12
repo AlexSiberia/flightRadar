@@ -9,13 +9,14 @@ import Foundation
 
 class PlaneOnMapViewAssembly {
     
-    func create() -> PlaneOnMapViewController {
+    func create(output: PlaneOnMapOutput) -> PlaneOnMapViewController {
         
         let presenter = PlaneOnMapViewPresenter()
         let view = PlaneOnMapViewController()
         
         view.presenter = presenter
         presenter.view = view
+        presenter.output = output
         
         return view
     }

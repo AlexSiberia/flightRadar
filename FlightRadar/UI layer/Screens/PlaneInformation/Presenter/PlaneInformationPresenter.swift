@@ -7,7 +7,10 @@
 
 import Foundation
 
-class PlaneInformationPresenter {
+class PlaneInformationPresenter: PlaneInformationInput {
+    
+    //MARK: Output
+    weak var output: PlaneInformationOutput?
     
     weak var view: PlaneInformationViewController?
     

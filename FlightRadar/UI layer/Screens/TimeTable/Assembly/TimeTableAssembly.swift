@@ -9,12 +9,13 @@ import Foundation
 
 class TimeTableAssembly {
     
-    func create() -> AirportTimeTableViewController {
+    func create(output: TimeTableOutput) -> AirportTimeTableViewController {
         let presenter = TimeTablePresenter()
         let view = AirportTimeTableViewController()
         
         view.presenter = presenter
         presenter.view = view
+        presenter.output = output
         
         return view
     }

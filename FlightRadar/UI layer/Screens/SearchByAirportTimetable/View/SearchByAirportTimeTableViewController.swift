@@ -120,9 +120,10 @@ class SearchByAirportTimeTableViewController: BaseViewController {
     }
     
     @objc func airportTimeTableButtonAction(sender: UIButton) {
-        navigationController?.pushViewController(
-            TimeTableAssembly().create(),
-            animated: true)
+//        navigationController?.pushViewController(
+//            TimeTableAssembly().create(),
+//            animated: true)
+        presenter?.output?.didSelectSearchByAirport()
     }
     
 }
