@@ -7,15 +7,17 @@
 
 import Foundation
 
-class SearchByFlightNumberAssembly {
+class SearchByFlightNumberAssembly: Assembly {
     
-    func create(output: SearchByFlihgtNumberOutput) -> SearchByFlightNumberViewController {
+    func create(output: OutputScreenContainer<SearchByFlihgtNumberOutput>,
+                serviceLocator: ServiceLocator
+    ) -> AssemblyResult<SearchByFlightNumberViewController, SearchByFlightNumberInput> {
         let presenter = SearchByFlightNumberPresenter()
         let view = SearchByFlightNumberViewController()
         
         view.presenter = presenter
         presenter.view = view
-        presenter.output = output
-        return view
+        presenter.output = output.outputScreen
+        return AssemblyResult(view: view, input: presenter)
     }
 }

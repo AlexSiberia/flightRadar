@@ -71,6 +71,8 @@
 		39AEADBD27CA84FA0008C2B9 /* PlaneInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */; };
 		39AEADBF27CA85150008C2B9 /* PlaneOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */; };
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
+		39D5B81128AA8503001C393C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81028AA8503001C393C /* Assembly.swift */; };
+		39D5B81428AA8983001C393C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81328AA8983001C393C /* ServiceLocator.swift */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 		39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */; };
@@ -169,6 +171,8 @@
 		39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneOnMapViewController.swift; sourceTree = "<group>"; };
+		39D5B81028AA8503001C393C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		39D5B81328AA8983001C393C /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AirlinesLogos.xcassets; sourceTree = "<group>"; };
@@ -665,6 +669,7 @@
 		39AEADB327CA38AA0008C2B9 /* Service layer */ = {
 			isa = PBXGroup;
 			children = (
+				39D5B81228AA8954001C393C /* ServiceLocator */,
 				39AEADB527CA38DE0008C2B9 /* Feed service */,
 				39AEADB427CA38C30008C2B9 /* Push service */,
 			);
@@ -697,6 +702,22 @@
 			children = (
 			);
 			path = "Core layer";
+			sourceTree = "<group>";
+		};
+		39D5B80F28AA84CE001C393C /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				39D5B81028AA8503001C393C /* Assembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		39D5B81228AA8954001C393C /* ServiceLocator */ = {
+			isa = PBXGroup;
+			children = (
+				39D5B81328AA8983001C393C /* ServiceLocator.swift */,
+			);
+			path = ServiceLocator;
 			sourceTree = "<group>";
 		};
 		39E9B7AE27B2C035009D7EE1 /* Utilities */ = {
@@ -732,6 +753,7 @@
 		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
 			isa = PBXGroup;
 			children = (
+				39D5B80F28AA84CE001C393C /* Assembly */,
 				39697FA02896CC5300BAF38C /* Coordinators */,
 				AF069BAD28733A5E00A8131D /* Table */,
 			);
@@ -898,6 +920,7 @@
 				3961ED5B27DA345F002224A0 /* TimeTablePresenter.swift in Sources */,
 				39697FB828A1564300BAF38C /* SearchByFlightNumberInput.swift in Sources */,
 				39697FAC289C267500BAF38C /* FirstScreenAssembly.swift in Sources */,
+				39D5B81128AA8503001C393C /* Assembly.swift in Sources */,
 				39697FB4289FFD9200BAF38C /* SearchByFlightNumberOutput.swift in Sources */,
 				3961ED6D27DA4D54002224A0 /* SearchByFlightNumberAssembly.swift in Sources */,
 				3961ED8027DDB501002224A0 /* PlaneOnMapViewPresenter.swift in Sources */,
@@ -912,6 +935,7 @@
 				3961ED8227DDB510002224A0 /* PlaneOnMapViewAssembly.swift in Sources */,
 				39697FBE28A15B1100BAF38C /* SearchByAirportTimeTableIOutput.swift in Sources */,
 				395EB7AE280FF4AB00C9D628 /* ResultOfSearchByFlightNumberTableViewDataSource.swift in Sources */,
+				39D5B81428AA8983001C393C /* ServiceLocator.swift in Sources */,
 				3957FEEA279712F5002A3E07 /* SearchByAirportTimeTableViewController.swift in Sources */,
 				39AEADBB27CA7BEC0008C2B9 /* FlightInformationViewController.swift in Sources */,
 				39697FC228A2A3BE00BAF38C /* TimeTableOutput.swift in Sources */,
