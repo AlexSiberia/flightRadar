@@ -7,9 +7,11 @@
 
 import Foundation
 
-class FirstScreenAssembly {
+class FirstScreenAssembly: Assembly {
     
-    func create(output: FirstScreenOutput) -> FirstViewController {
+    func create(output: OutputScreenContainer<FirstScreenOutput>,
+                serviceLocator: ServiceLocator
+    ) -> AssemblyResult<FirstViewController, FirstScreenInput> {
         
         let presenter = FirstScreenPresenter()
         let view = FirstViewController()
@@ -17,8 +19,8 @@ class FirstScreenAssembly {
         view.presenter = presenter
         presenter.view = view
         
-        presenter.output = output
+        presenter.output = output.outputScreen
         
-        return view
+        return AssemblyResult(view: view, input: presenter)
     }
 }

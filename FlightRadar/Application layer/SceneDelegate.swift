@@ -18,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         let navigationController = UINavigationController()
-        let coordinator = RootCoordinator(transitionHandler: navigationController)
+        let coordinator = RootCoordinator(
+            transitionHandler: navigationController,
+            serviceLocator: ServiceLocator.shared
+        )
         
         self.window = window
         self.rootCoordinator = coordinator

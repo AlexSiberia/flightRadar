@@ -79,10 +79,9 @@ class AirportTimeTableViewController: BaseViewController {
 //    }
     
     @objc func flightInformationButtonAction(sender: UIButton) {
-        navigationController?.pushViewController(
-            FlightInformationViewController(),
-            animated: true)
+        
+        presenter?.output?.didSelectFlight()
     }
    
-
+     
 }

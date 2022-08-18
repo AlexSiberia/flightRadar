@@ -4,11 +4,16 @@ final class RootCoordinator: AppCoordinator {
     
     private weak var transitionHandler: UINavigationController?
     var child: AppCoordinator?
+    var serviceLocator: ServiceLocator
     
     // MARK: - Initialization
     
-    init(transitionHandler: UINavigationController) {
+    init(
+        transitionHandler: UINavigationController,
+        serviceLocator: ServiceLocator
+    ) {
         self.transitionHandler = transitionHandler
+        self.serviceLocator = serviceLocator
     }
     
     // MARK: - Public
@@ -27,16 +32,19 @@ final class RootCoordinator: AppCoordinator {
     }
     
     fileprivate func showFirstScreeen() {
-        let firstController = FirstScreenAssembly().create(output: self)
-
-        transitionHandler?.setViewControllers([firstController], animated: false)
+        let assemblyResult = FirstScreenAssembly().create(
+            output: OutputScreenContainer<FirstScreenOutput>(outputScreen: self),
+            serviceLocator: serviceLocator)
+        
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
-        let searchByFlightNumberViewController = SearchByFlightNumberAssembly().create(output: self)
-
-        searchByFlightNumberViewController.presenter?.output = self
-        transitionHandler?.pushViewController(searchByFlightNumberViewController, animated: false)
+        let assemblyResult = SearchByFlightNumberAssembly().create(
+            output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
+            serviceLocator: serviceLocator)
+        
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showSearchByAirportTimetable() {
@@ -53,10 +61,11 @@ final class RootCoordinator: AppCoordinator {
     }
     
     fileprivate func showTimeTable() {
-        let timeTable = TimeTableAssembly().create(output: self)
-        
-        timeTable.presenter?.output = self
-        transitionHandler?.pushViewController(timeTable, animated: false)
+        let assemblyResult = TimeTableAssembly().create(
+            output: OutputScreenContainer<TimeTableOutput>(outputScreen: self),
+            serviceLocator: serviceLocator)
+    
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showFlightInfo() {
@@ -67,7 +76,7 @@ final class RootCoordinator: AppCoordinator {
     }
     
     fileprivate func showPlaneInfo() {
-        let planeInfo = FirstScreenAssembly().create(output: self)
+        let planeInfo = PlaneInformationAssembly().create(output: self)
         
         planeInfo.presenter?.output = self
         transitionHandler?.pushViewController(planeInfo, animated: false)
