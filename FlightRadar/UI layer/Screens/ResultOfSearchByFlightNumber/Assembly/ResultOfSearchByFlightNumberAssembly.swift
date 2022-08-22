@@ -11,25 +11,28 @@ struct ResultOfSearchByFlightNumberScreenContext {
     
 }
 
-class ResultOfSearchByFlightNumberAssembly {
-    
+class ResultOfSearchByFlightNumberAssembly: Assembly {
     func create(
-        context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext(),
-        output: ResultOfSeacrhByFlightNumberScreenOutput? = nil
-    ) -> (
-        ResultsOfSearchByFlightNumberScreenInput,
-        ResultOfSearchByFlightNumberViewController
-    ) {
-        
+//        context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext(),
+        output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>,
+        serviceLocator: ServiceLocator
+    ) -> AssemblyResult<ResultOfSearchByFlightNumberViewController, ResultsOfSearchByFlightNumberScreenInput> {
         let presenter = ResultOfSearchByFlightNumberPresenter()
-        presenter.context = context
-        presenter.output = output
+//        presenter.context = context
+        presenter.output = output.outputScreen
         
         let view = ResultOfSearchByFlightNumberViewController()
     
         view.presenter = presenter
         presenter.view = view
         
-        return (presenter, view)
+        return AssemblyResult(view: view, input: presenter)
     }
+    
+//    typealias View = ResultOfSearchByFlightNumberViewController
+//    
+//    typealias InputScreen = ResultsOfSearchByFlightNumberScreenInput
+//    
+//    typealias OutputScreen = ResultOfSeacrhByFlightNumberScreenOutput
+    
 }

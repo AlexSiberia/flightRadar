@@ -7,17 +7,19 @@
 
 import Foundation
 
-class PlaneOnMapViewAssembly {
+class PlaneOnMapViewAssembly: Assembly {
     
-    func create(output: PlaneOnMapOutput) -> PlaneOnMapViewController {
-        
+    func create(
+        output: OutputScreenContainer<PlaneOnMapOutput>,
+        serviceLocator: ServiceLocator
+    ) -> AssemblyResult<PlaneOnMapViewController, PlaneOnMapInput> {
         let presenter = PlaneOnMapViewPresenter()
         let view = PlaneOnMapViewController()
         
         view.presenter = presenter
         presenter.view = view
-        presenter.output = output
+        presenter.output = output.outputScreen
         
-        return view
+        return AssemblyResult(view: view, input: presenter)
     }
 }
