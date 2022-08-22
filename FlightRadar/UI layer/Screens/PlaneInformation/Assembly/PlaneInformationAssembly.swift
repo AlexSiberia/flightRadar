@@ -7,16 +7,19 @@
 
 import Foundation
 
-class PlaneInformationAssembly {
+class PlaneInformationAssembly: Assembly {
     
-    func create(output: PlaneInformationOutput) -> PlaneInformationViewController {
+    func create(
+        output: OutputScreenContainer<PlaneInformationOutput>,
+        serviceLocator: ServiceLocator
+    ) -> AssemblyResult<PlaneInformationViewController, PlaneInformationInput> {
         let presenter = PlaneInformationPresenter()
-        let view = PlaneInformationViewController()
+        let view = PlaneInformationViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view
-        presenter.output = output
+        presenter.output = output.outputScreen
         
-        return view
+        return AssemblyResult(view: view, input: presenter)
     }
 }

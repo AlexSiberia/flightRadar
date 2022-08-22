@@ -41,11 +41,11 @@
 		39697FA42896CD6E00BAF38C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FA22896CD6E00BAF38C /* AppCoordinator.swift */; };
 		39697FA72896CED500BAF38C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FA62896CED400BAF38C /* StartViewController.swift */; };
 		39697FA9289AB0A500BAF38C /* Download.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39697FA8289AB0A500BAF38C /* Download.xcassets */; };
-		39697FAC289C267500BAF38C /* FirstScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FAB289C267500BAF38C /* FirstScreenAssembly.swift */; };
-		39697FAF289C271A00BAF38C /* FirstScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FAE289C271A00BAF38C /* FirstScreenPresenter.swift */; };
-		39697FB2289FF09900BAF38C /* FirstScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB1289FF09900BAF38C /* FirstScreenOutput.swift */; };
+		39697FAC289C267500BAF38C /* SearchScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FAB289C267500BAF38C /* SearchScreenAssembly.swift */; };
+		39697FAF289C271A00BAF38C /* SearchScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FAE289C271A00BAF38C /* SearchScreenPresenter.swift */; };
+		39697FB2289FF09900BAF38C /* SearchScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB1289FF09900BAF38C /* SearchScreenOutput.swift */; };
 		39697FB4289FFD9200BAF38C /* SearchByFlightNumberOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB3289FFD9200BAF38C /* SearchByFlightNumberOutput.swift */; };
-		39697FB628A1529B00BAF38C /* FirstScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB528A1529B00BAF38C /* FirstScreenInput.swift */; };
+		39697FB628A1529B00BAF38C /* SearchScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB528A1529B00BAF38C /* SearchScreenInput.swift */; };
 		39697FB828A1564300BAF38C /* SearchByFlightNumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB728A1564300BAF38C /* SearchByFlightNumberInput.swift */; };
 		39697FBA28A156C900BAF38C /* StartScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FB928A156C900BAF38C /* StartScreenOutput.swift */; };
 		39697FBC28A15ACD00BAF38C /* SearchByAirportTimeTableInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39697FBB28A15ACD00BAF38C /* SearchByAirportTimeTableInput.swift */; };
@@ -61,7 +61,7 @@
 		3982F9E727933AAA0050C27C /* SearchByFlightNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F9E627933AAA0050C27C /* SearchByFlightNumberViewController.swift */; };
 		39AEA0E7268CA94F00108EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */; };
 		39AEA0E9268CA94F00108EF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */; };
-		39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */; };
+		39AEA0EB268CA94F00108EF1 /* SearchRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0EA268CA94F00108EF1 /* SearchRootViewController.swift */; };
 		39AEA0F0268CA95100108EF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0EF268CA95100108EF1 /* Assets.xcassets */; };
 		39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AEA0F1268CA95100108EF1 /* LaunchScreen.storyboard */; };
 		39AEA0FE268CA95100108EF1 /* FlightRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA0FD268CA95100108EF1 /* FlightRadarTests.swift */; };
@@ -70,9 +70,17 @@
 		39AEADBB27CA7BEC0008C2B9 /* FlightInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */; };
 		39AEADBD27CA84FA0008C2B9 /* PlaneInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */; };
 		39AEADBF27CA85150008C2B9 /* PlaneOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */; };
+		39B2FF2B28EF2C1C0025B57A /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B2FF2A28EF2C1B0025B57A /* SearchCoordinator.swift */; };
+		39B2FF2D28F476760025B57A /* StandartSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B2FF2C28F476760025B57A /* StandartSearchController.swift */; };
+		39B8ECF628BE54C8006166BD /* Plane_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8ECF428BE54C8006166BD /* Plane_light.json */; };
+		39B8ECF728BE54C8006166BD /* Plane_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8ECF528BE54C8006166BD /* Plane_dark.json */; };
+		39B8ECF928BEF5FC006166BD /* SearchViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECF828BEF5FC006166BD /* SearchViewInput.swift */; };
+		39B8ECFB28BF00F2006166BD /* SearchViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECFA28BF00F2006166BD /* SearchViewOutput.swift */; };
+		39B8ECFD28D0184E006166BD /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECFC28D0184E006166BD /* LottieAnimation.swift */; };
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39D5B81128AA8503001C393C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81028AA8503001C393C /* Assembly.swift */; };
 		39D5B81428AA8983001C393C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81328AA8983001C393C /* ServiceLocator.swift */; };
+		39D5B81728BC5219001C393C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39D5B81628BC5219001C393C /* Lottie */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 		39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */; };
@@ -136,11 +144,11 @@
 		39697FA22896CD6E00BAF38C /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		39697FA62896CED400BAF38C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		39697FA8289AB0A500BAF38C /* Download.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Download.xcassets; sourceTree = "<group>"; };
-		39697FAB289C267500BAF38C /* FirstScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenAssembly.swift; sourceTree = "<group>"; };
-		39697FAE289C271A00BAF38C /* FirstScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenPresenter.swift; sourceTree = "<group>"; };
-		39697FB1289FF09900BAF38C /* FirstScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenOutput.swift; sourceTree = "<group>"; };
+		39697FAB289C267500BAF38C /* SearchScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenAssembly.swift; sourceTree = "<group>"; };
+		39697FAE289C271A00BAF38C /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
+		39697FB1289FF09900BAF38C /* SearchScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenOutput.swift; sourceTree = "<group>"; };
 		39697FB3289FFD9200BAF38C /* SearchByFlightNumberOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByFlightNumberOutput.swift; sourceTree = "<group>"; };
-		39697FB528A1529B00BAF38C /* FirstScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenInput.swift; sourceTree = "<group>"; };
+		39697FB528A1529B00BAF38C /* SearchScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenInput.swift; sourceTree = "<group>"; };
 		39697FB728A1564300BAF38C /* SearchByFlightNumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByFlightNumberInput.swift; sourceTree = "<group>"; };
 		39697FB928A156C900BAF38C /* StartScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenOutput.swift; sourceTree = "<group>"; };
 		39697FBB28A15ACD00BAF38C /* SearchByAirportTimeTableInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchByAirportTimeTableInput.swift; path = "FlightRadar/UI layer/Screens/SearchByAirportTimeTable/Presenter/SearchByAirportTimeTableInput.swift"; sourceTree = SOURCE_ROOT; };
@@ -157,7 +165,7 @@
 		39AEA0E3268CA94F00108EF1 /* FlightRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AEA0E6268CA94F00108EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39AEA0E8268CA94F00108EF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		39AEA0EA268CA94F00108EF1 /* SearchRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRootViewController.swift; sourceTree = "<group>"; };
 		39AEA0EF268CA95100108EF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39AEA0F2268CA95100108EF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39AEA0F4268CA95100108EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,6 +179,13 @@
 		39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneOnMapViewController.swift; sourceTree = "<group>"; };
+		39B2FF2A28EF2C1B0025B57A /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		39B2FF2C28F476760025B57A /* StandartSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartSearchController.swift; sourceTree = "<group>"; };
+		39B8ECF428BE54C8006166BD /* Plane_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane_light.json; sourceTree = "<group>"; };
+		39B8ECF528BE54C8006166BD /* Plane_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane_dark.json; sourceTree = "<group>"; };
+		39B8ECF828BEF5FC006166BD /* SearchViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInput.swift; sourceTree = "<group>"; };
+		39B8ECFA28BF00F2006166BD /* SearchViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewOutput.swift; sourceTree = "<group>"; };
+		39B8ECFC28D0184E006166BD /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		39D5B81028AA8503001C393C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		39D5B81328AA8983001C393C /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D4BC9628424083002EEBB8 /* Fakery in Frameworks */,
+				39D5B81728BC5219001C393C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				3961ED4A27D8FF1B002224A0 /* StandartButton.swift */,
+				39B2FF2C28F476760025B57A /* StandartSearchController.swift */,
 			);
 			path = "Common UI controls";
 			sourceTree = "<group>";
@@ -281,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				39697FA52896CE7300BAF38C /* StartScreen */,
-				3961ED5927D90F66002224A0 /* FirstScreen */,
+				3961ED5927D90F66002224A0 /* SearchScreen */,
 				3961ED4D27D8FF41002224A0 /* SearchByFlightNumber */,
 				395EB79F280FEEBB00C9D628 /* ResultOfSearchByFlightNumber */,
 				3961ED5427D90BE9002224A0 /* SearchByAirportTimetable */,
@@ -361,14 +378,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3961ED5927D90F66002224A0 /* FirstScreen */ = {
+		3961ED5927D90F66002224A0 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				39697FAA289C264100BAF38C /* Assembly */,
 				39697FAD289C26F900BAF38C /* Presenter */,
 				39697FB0289C274200BAF38C /* View */,
 			);
-			path = FirstScreen;
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 		3961ED5C27DA3516002224A0 /* Presenter */ = {
@@ -524,6 +541,7 @@
 			children = (
 				39697FA22896CD6E00BAF38C /* AppCoordinator.swift */,
 				39697FA12896CD6E00BAF38C /* RootCoordinator.swift */,
+				39B2FF2A28EF2C1B0025B57A /* SearchCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -540,7 +558,7 @@
 		39697FAA289C264100BAF38C /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				39697FAB289C267500BAF38C /* FirstScreenAssembly.swift */,
+				39697FAB289C267500BAF38C /* SearchScreenAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -548,9 +566,9 @@
 		39697FAD289C26F900BAF38C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				39697FB528A1529B00BAF38C /* FirstScreenInput.swift */,
-				39697FB1289FF09900BAF38C /* FirstScreenOutput.swift */,
-				39697FAE289C271A00BAF38C /* FirstScreenPresenter.swift */,
+				39697FB528A1529B00BAF38C /* SearchScreenInput.swift */,
+				39697FB1289FF09900BAF38C /* SearchScreenOutput.swift */,
+				39697FAE289C271A00BAF38C /* SearchScreenPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -558,7 +576,9 @@
 		39697FB0289C274200BAF38C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				39AEA0EA268CA94F00108EF1 /* FirstViewController.swift */,
+				39B8ECF828BEF5FC006166BD /* SearchViewInput.swift */,
+				39B8ECFA28BF00F2006166BD /* SearchViewOutput.swift */,
+				39AEA0EA268CA94F00108EF1 /* SearchRootViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,7 +611,6 @@
 				39AEADB627CA38F20008C2B9 /* Model layer */,
 				39AEADB727CA38FF0008C2B9 /* Core layer */,
 				39AEADAB27CA1D500008C2B9 /* Application layer */,
-				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				392791C227A1A99400350A30 /* KeyboardAppearListener.swift */,
 				39AEADAA27CA1CF10008C2B9 /* Resources */,
 				39AEADA927CA1CB00008C2B9 /* Staff */,
@@ -629,6 +648,7 @@
 		39AEADAA27CA1CF10008C2B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39B8ECF328BE54C8006166BD /* Animation */,
 				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
 				39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */,
 				39317D9D278C7F6E009B9C95 /* Logos.xcassets */,
@@ -704,6 +724,15 @@
 			path = "Core layer";
 			sourceTree = "<group>";
 		};
+		39B8ECF328BE54C8006166BD /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				39B8ECF428BE54C8006166BD /* Plane_light.json */,
+				39B8ECF528BE54C8006166BD /* Plane_dark.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		39D5B80F28AA84CE001C393C /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */,
+				39B8ECFC28D0184E006166BD /* LottieAnimation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -753,6 +783,7 @@
 		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
 			isa = PBXGroup;
 			children = (
+				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				39D5B80F28AA84CE001C393C /* Assembly */,
 				39697FA02896CC5300BAF38C /* Coordinators */,
 				AF069BAD28733A5E00A8131D /* Table */,
@@ -778,6 +809,7 @@
 			name = FlightRadar;
 			packageProductDependencies = (
 				39D4BC9528424083002EEBB8 /* Fakery */,
+				39D5B81628BC5219001C393C /* Lottie */,
 			);
 			productName = FlightRadar;
 			productReference = 39AEA0E3268CA94F00108EF1 /* FlightRadar.app */;
@@ -852,6 +884,7 @@
 			mainGroup = 39AEA0DA268CA94F00108EF1;
 			packageReferences = (
 				39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */,
+				39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 39AEA0E4268CA94F00108EF1 /* Products */;
 			projectDirPath = "";
@@ -869,8 +902,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B8ECF728BE54C8006166BD /* Plane_dark.json in Resources */,
 				39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */,
 				39AEA0F0268CA95100108EF1 /* Assets.xcassets in Resources */,
+				39B8ECF628BE54C8006166BD /* Plane_light.json in Resources */,
 				39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */,
 				39697FA9289AB0A500BAF38C /* Download.xcassets in Resources */,
 				39317D9C278AFECF009B9C95 /* ColorPallete.xcassets in Resources */,
@@ -905,24 +940,29 @@
 				392385892870BC8900E4780F /* TableViewDelegate.swift in Sources */,
 				392385852870B24100E4780F /* ResultOfSearchByFightNumberDividerTableViewCell.swift in Sources */,
 				395EB7B0280FF4C300C9D628 /* Reusable.swift in Sources */,
+				39B2FF2B28EF2C1C0025B57A /* SearchCoordinator.swift in Sources */,
 				395EB7A1280FEF0C00C9D628 /* ResultOfSearchByFlightNumberViewController.swift in Sources */,
 				39697FCC28A3E10800BAF38C /* PlaneOnMapInput.swift in Sources */,
+				39B2FF2D28F476760025B57A /* StandartSearchController.swift in Sources */,
 				39697FBA28A156C900BAF38C /* StartScreenOutput.swift in Sources */,
 				3961ED7B27DDB02C002224A0 /* FlightInformationPresenter.swift in Sources */,
 				39697FA42896CD6E00BAF38C /* AppCoordinator.swift in Sources */,
 				39697FC428A2ABE200BAF38C /* FlightInformationInput.swift in Sources */,
-				39697FB2289FF09900BAF38C /* FirstScreenOutput.swift in Sources */,
+				39697FB2289FF09900BAF38C /* SearchScreenOutput.swift in Sources */,
 				39697FCE28A3E19100BAF38C /* PlaneOnMapOutput.swift in Sources */,
 				39AEADB927CA6A600008C2B9 /* AirportTimeTableViewController.swift in Sources */,
+				39B8ECF928BEF5FC006166BD /* SearchViewInput.swift in Sources */,
 				39697FA32896CD6E00BAF38C /* RootCoordinator.swift in Sources */,
 				395EB7B2280FF55400C9D628 /* ResultOrSearchByFlightNumberFlightTableViewCell.swift in Sources */,
 				39AEADBF27CA85150008C2B9 /* PlaneOnMapViewController.swift in Sources */,
 				3961ED5B27DA345F002224A0 /* TimeTablePresenter.swift in Sources */,
 				39697FB828A1564300BAF38C /* SearchByFlightNumberInput.swift in Sources */,
-				39697FAC289C267500BAF38C /* FirstScreenAssembly.swift in Sources */,
+				39697FAC289C267500BAF38C /* SearchScreenAssembly.swift in Sources */,
 				39D5B81128AA8503001C393C /* Assembly.swift in Sources */,
+				39B8ECFB28BF00F2006166BD /* SearchViewOutput.swift in Sources */,
 				39697FB4289FFD9200BAF38C /* SearchByFlightNumberOutput.swift in Sources */,
 				3961ED6D27DA4D54002224A0 /* SearchByFlightNumberAssembly.swift in Sources */,
+				39B8ECFD28D0184E006166BD /* LottieAnimation.swift in Sources */,
 				3961ED8027DDB501002224A0 /* PlaneOnMapViewPresenter.swift in Sources */,
 				39697FA72896CED500BAF38C /* StartViewController.swift in Sources */,
 				AF8681D9288429C500961883 /* ResultsOfSearchByFlightNumberScreenInput.swift in Sources */,
@@ -930,7 +970,7 @@
 				3961ED6327DA4466002224A0 /* PlaneInformationPresenter.swift in Sources */,
 				3961ED6627DA4491002224A0 /* PlaneInformationAssembly.swift in Sources */,
 				39697FC828A3DF5200BAF38C /* PlaneInformationInput.swift in Sources */,
-				39697FB628A1529B00BAF38C /* FirstScreenInput.swift in Sources */,
+				39697FB628A1529B00BAF38C /* SearchScreenInput.swift in Sources */,
 				3961ED5F27DA35B5002224A0 /* TimeTableAssembly.swift in Sources */,
 				3961ED8227DDB510002224A0 /* PlaneOnMapViewAssembly.swift in Sources */,
 				39697FBE28A15B1100BAF38C /* SearchByAirportTimeTableIOutput.swift in Sources */,
@@ -943,7 +983,7 @@
 				3982F9E727933AAA0050C27C /* SearchByFlightNumberViewController.swift in Sources */,
 				3961ED6A27DA4D1A002224A0 /* SearchByFlightNumberPresenter.swift in Sources */,
 				392385812870B06000E4780F /* FlightNumberModel.swift in Sources */,
-				39AEA0EB268CA94F00108EF1 /* FirstViewController.swift in Sources */,
+				39AEA0EB268CA94F00108EF1 /* SearchRootViewController.swift in Sources */,
 				39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */,
 				3923857F2870374300E4780F /* Configurable.swift in Sources */,
 				39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */,
@@ -959,7 +999,7 @@
 				AF069BAF28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift in Sources */,
 				395EB7A6280FEF9B00C9D628 /* ResultOfSearchByFlightNumberPresenter.swift in Sources */,
 				39EA0B8128789E9A00450C90 /* AirlinesModel.swift in Sources */,
-				39697FAF289C271A00BAF38C /* FirstScreenPresenter.swift in Sources */,
+				39697FAF289C271A00BAF38C /* SearchScreenPresenter.swift in Sources */,
 				395EB7A8280FEFC000C9D628 /* ResultOfSearchByFlightNumberAssembly.swift in Sources */,
 				3961ED7927DDB022002224A0 /* FlightInformationAssembly.swift in Sources */,
 				AF069BB228733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift in Sources */,
@@ -1301,6 +1341,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1308,6 +1356,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */;
 			productName = Fakery;
+		};
+		39D5B81628BC5219001C393C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

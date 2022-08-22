@@ -7,17 +7,19 @@
 
 import Foundation
 
-class SearchByAirportTimeTableAssembly {
+class SearchByAirportTimeTableAssembly: Assembly {
     
-    func create(output: SearchByAirportTimeTablelOutput) -> SearchByAirportTimeTableViewController {
+    func create(
+        output: OutputScreenContainer<SearchByAirportTimeTablelOutput>,
+        serviceLocator: ServiceLocator
+    ) -> AssemblyResult<SearchByAirportTimeTableViewController, SearchByAirportTimeTableInput> {
         let presenter = SearchByAirportTimeTablePresenter()
-        let view = SearchByAirportTimeTableViewController()
+        let view = SearchByAirportTimeTableViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view
-        presenter.output = output
+        presenter.output = output.outputScreen
         
-        return view
+        return AssemblyResult(view: view, input: presenter)
     }
-    
 }

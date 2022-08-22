@@ -13,7 +13,7 @@ class SearchByFlightNumberAssembly: Assembly {
                 serviceLocator: ServiceLocator
     ) -> AssemblyResult<SearchByFlightNumberViewController, SearchByFlightNumberInput> {
         let presenter = SearchByFlightNumberPresenter()
-        let view = SearchByFlightNumberViewController()
+        let view = SearchByFlightNumberViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view

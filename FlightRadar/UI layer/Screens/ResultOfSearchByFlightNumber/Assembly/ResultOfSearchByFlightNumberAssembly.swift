@@ -8,28 +8,25 @@
 import Foundation
 
 struct ResultOfSearchByFlightNumberScreenContext {
+    let searchString: String
+    var sortParams: [String: Any]?
     
+    var results: [FlightNumberModel]?
 }
 
-class ResultOfSearchByFlightNumberAssembly {
-    
+class ResultOfSearchByFlightNumberAssembly: Assembly {
     func create(
-        context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext(),
-        output: ResultOfSeacrhByFlightNumberScreenOutput? = nil
-    ) -> (
-        ResultsOfSearchByFlightNumberScreenInput,
-        ResultOfSearchByFlightNumberViewController
-    ) {
-        
+        output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>,
+        serviceLocator: ServiceLocator
+    ) -> AssemblyResult<ResultOfSearchByFlightNumberViewController, ResultsOfSearchByFlightNumberScreenInput> {
         let presenter = ResultOfSearchByFlightNumberPresenter()
-        presenter.context = context
-        presenter.output = output
+        presenter.output = output.outputScreen
         
-        let view = ResultOfSearchByFlightNumberViewController()
+        let view = ResultOfSearchByFlightNumberViewController(presenter: presenter)
     
         view.presenter = presenter
         presenter.view = view
         
-        return (presenter, view)
+        return AssemblyResult(view: view, input: presenter)
     }
 }
