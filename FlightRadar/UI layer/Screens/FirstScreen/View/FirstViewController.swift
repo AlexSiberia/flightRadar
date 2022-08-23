@@ -9,7 +9,7 @@ import UIKit
 
 class FirstViewController: BaseViewController {
     
-    var presenter: FirstScreenPresenter?
+    var presenter: FirstScreenPresenter
     
     // MARK: - Subviews
     
@@ -91,6 +91,14 @@ class FirstViewController: BaseViewController {
         return searchByAirportTimeTableButton
     }()
     
+    init(presenter: FirstScreenPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -137,7 +145,7 @@ class FirstViewController: BaseViewController {
 //        navigationController?.pushViewController(
 //            SearchByFlightNumberAssembly().create(),
 //            animated: true)
-        presenter?.output?.didSelectSearchByFightNumber()
+        presenter.output?.didSelectSearchByFightNumber()
 //        onSelectSearchByFlightNumber?()
         
     }
@@ -146,7 +154,7 @@ class FirstViewController: BaseViewController {
 //        navigationController?.pushViewController(
 //            SearchByAirportTimeTablePresenterAssembly().create(),
 //            animated: true)
-        presenter?.output?.didSelectSearchByAirportTimetable()
+        presenter.output?.didSelectSearchByAirportTimetable()
     }
     
     

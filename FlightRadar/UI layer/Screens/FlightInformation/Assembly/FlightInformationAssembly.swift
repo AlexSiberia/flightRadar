@@ -14,7 +14,7 @@ class FlightInformationAssembly: Assembly {
         serviceLocator: ServiceLocator
     ) -> AssemblyResult<FlightInformationViewController, FlightInformationInput> {
         let presenter = FlightInformationPresenter()
-        let view = FlightInformationViewController()
+        let view = FlightInformationViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view

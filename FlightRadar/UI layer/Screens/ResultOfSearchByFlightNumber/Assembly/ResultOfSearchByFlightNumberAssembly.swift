@@ -21,7 +21,7 @@ class ResultOfSearchByFlightNumberAssembly: Assembly {
 //        presenter.context = context
         presenter.output = output.outputScreen
         
-        let view = ResultOfSearchByFlightNumberViewController()
+        let view = ResultOfSearchByFlightNumberViewController(presenter: presenter)
     
         view.presenter = presenter
         presenter.view = view

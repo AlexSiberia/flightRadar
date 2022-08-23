@@ -9,7 +9,7 @@ import UIKit
 
 class FlightInformationViewController: BaseViewController {
     
-    var presenter: FlightInformationPresenter?
+    var presenter: FlightInformationPresenter
     
     lazy var label: UILabel = {
         
@@ -58,6 +58,15 @@ class FlightInformationViewController: BaseViewController {
         return showPlaneOnMap
     }()
     
+    init(presenter: FlightInformationPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -95,14 +104,14 @@ class FlightInformationViewController: BaseViewController {
 //        navigationController?.pushViewController(
 //            PlaneInformationAssembly().create(),
 //            animated: true)
-        presenter?.output?.didSelectPlaneInfo()
+        presenter.output?.didSelectPlaneInfo()
     }
     
     @objc func planeOnMapButtonAction(sender: UIButton) {
 //        navigationController?.pushViewController(
 //            PlaneOnMapViewAssembly().create(),
 //            animated: true)
-        presenter?.output?.didSelectPlaneOnMap()
+        presenter.output?.didSelectPlaneOnMap()
     }
     
 }

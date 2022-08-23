@@ -14,7 +14,7 @@ class FirstScreenAssembly: Assembly {
     ) -> AssemblyResult<FirstViewController, FirstScreenInput> {
         
         let presenter = FirstScreenPresenter()
-        let view = FirstViewController()
+        let view = FirstViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view

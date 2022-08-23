@@ -14,7 +14,7 @@ class SearchByAirportTimeTableAssembly: Assembly {
         serviceLocator: ServiceLocator
     ) -> AssemblyResult<SearchByAirportTimeTableViewController, SearchByAirportTimeTableInput> {
         let presenter = SearchByAirportTimeTablePresenter()
-        let view = SearchByAirportTimeTableViewController()
+        let view = SearchByAirportTimeTableViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view

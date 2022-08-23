@@ -9,7 +9,7 @@ import UIKit
 
 class SearchByAirportTimeTableViewController: BaseViewController {
     
-    var presenter: SearchByAirportTimeTablePresenter?
+    var presenter: SearchByAirportTimeTablePresenter
     
     lazy var label: UILabel = {
         
@@ -77,6 +77,15 @@ class SearchByAirportTimeTableViewController: BaseViewController {
         return searchButton
     }()
     
+    init(presenter: SearchByAirportTimeTablePresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -123,7 +132,7 @@ class SearchByAirportTimeTableViewController: BaseViewController {
 //        navigationController?.pushViewController(
 //            TimeTableAssembly().create(),
 //            animated: true)
-        presenter?.output?.didSelectSearchByAirport()
+        presenter.output?.didSelectSearchByAirport()
     }
     
 }

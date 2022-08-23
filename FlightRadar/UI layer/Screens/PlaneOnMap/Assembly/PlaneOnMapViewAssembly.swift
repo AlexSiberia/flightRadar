@@ -14,7 +14,7 @@ class PlaneOnMapViewAssembly: Assembly {
         serviceLocator: ServiceLocator
     ) -> AssemblyResult<PlaneOnMapViewController, PlaneOnMapInput> {
         let presenter = PlaneOnMapViewPresenter()
-        let view = PlaneOnMapViewController()
+        let view = PlaneOnMapViewController(presenter: presenter)
         
         view.presenter = presenter
         presenter.view = view
