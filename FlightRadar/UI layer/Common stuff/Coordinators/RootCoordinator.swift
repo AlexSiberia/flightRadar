@@ -14,6 +14,7 @@ final class RootCoordinator: AppCoordinator {
     ) {
         self.transitionHandler = transitionHandler
         self.serviceLocator = serviceLocator
+        print("Create coordinator")
     }
     
     // MARK: - Public
@@ -28,23 +29,26 @@ final class RootCoordinator: AppCoordinator {
         let startController = StartViewController()
         startController.output = self
         
+        print("Will show StartViewController")
         transitionHandler?.pushViewController(startController, animated: false)
     }
     
     fileprivate func showFirstScreeen() {
         let assemblyResult = FirstScreenAssembly().create(
             output: OutputScreenContainer<FirstScreenOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+            serviceLocator: serviceLocator
+        )
         
+        print("Will show FirstScreen")
         transitionHandler?.viewControllers = [assemblyResult.view]
-        
-//        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
+
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
         let assemblyResult = SearchByFlightNumberAssembly().create(
             output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+            serviceLocator: serviceLocator
+        )
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
@@ -52,7 +56,8 @@ final class RootCoordinator: AppCoordinator {
     fileprivate func showSearchByAirportTimetable() {
         let assemblyResult = SearchByAirportTimeTableAssembly().create(
             output: OutputScreenContainer<SearchByAirportTimeTablelOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+            serviceLocator: serviceLocator
+        )
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
@@ -62,6 +67,13 @@ final class RootCoordinator: AppCoordinator {
             output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
             serviceLocator: serviceLocator
         )
+        
+        let context = ResultOfSearchByFlightNumberScreenContext(
+            searchString: "Стамбул",
+            sortParams: nil,
+            results: nil
+        )
+        assemblyResult.input.update(context)
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
