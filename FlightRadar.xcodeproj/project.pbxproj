@@ -70,9 +70,12 @@
 		39AEADBB27CA7BEC0008C2B9 /* FlightInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */; };
 		39AEADBD27CA84FA0008C2B9 /* PlaneInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */; };
 		39AEADBF27CA85150008C2B9 /* PlaneOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */; };
+		39B8ECF628BE54C8006166BD /* Plane_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8ECF428BE54C8006166BD /* Plane_light.json */; };
+		39B8ECF728BE54C8006166BD /* Plane_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8ECF528BE54C8006166BD /* Plane_dark.json */; };
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39D5B81128AA8503001C393C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81028AA8503001C393C /* Assembly.swift */; };
 		39D5B81428AA8983001C393C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81328AA8983001C393C /* ServiceLocator.swift */; };
+		39D5B81728BC5219001C393C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39D5B81628BC5219001C393C /* Lottie */; };
 		39E9B7A927B2B7EE009D7EE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */; };
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 		39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */; };
@@ -171,6 +174,8 @@
 		39AEADBA27CA7BEC0008C2B9 /* FlightInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBC27CA84FA0008C2B9 /* PlaneInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneInformationViewController.swift; sourceTree = "<group>"; };
 		39AEADBE27CA85150008C2B9 /* PlaneOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneOnMapViewController.swift; sourceTree = "<group>"; };
+		39B8ECF428BE54C8006166BD /* Plane_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane_light.json; sourceTree = "<group>"; };
+		39B8ECF528BE54C8006166BD /* Plane_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane_dark.json; sourceTree = "<group>"; };
 		39D5B81028AA8503001C393C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		39D5B81328AA8983001C393C /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D4BC9628424083002EEBB8 /* Fakery in Frameworks */,
+				39D5B81728BC5219001C393C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +635,7 @@
 		39AEADAA27CA1CF10008C2B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39B8ECF328BE54C8006166BD /* Animation */,
 				39AEA0EF268CA95100108EF1 /* Assets.xcassets */,
 				39317D9B278AFECF009B9C95 /* ColorPallete.xcassets */,
 				39317D9D278C7F6E009B9C95 /* Logos.xcassets */,
@@ -702,6 +709,15 @@
 			children = (
 			);
 			path = "Core layer";
+			sourceTree = "<group>";
+		};
+		39B8ECF328BE54C8006166BD /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				39B8ECF428BE54C8006166BD /* Plane_light.json */,
+				39B8ECF528BE54C8006166BD /* Plane_dark.json */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		39D5B80F28AA84CE001C393C /* Assembly */ = {
@@ -778,6 +794,7 @@
 			name = FlightRadar;
 			packageProductDependencies = (
 				39D4BC9528424083002EEBB8 /* Fakery */,
+				39D5B81628BC5219001C393C /* Lottie */,
 			);
 			productName = FlightRadar;
 			productReference = 39AEA0E3268CA94F00108EF1 /* FlightRadar.app */;
@@ -852,6 +869,7 @@
 			mainGroup = 39AEA0DA268CA94F00108EF1;
 			packageReferences = (
 				39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */,
+				39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 39AEA0E4268CA94F00108EF1 /* Products */;
 			projectDirPath = "";
@@ -869,8 +887,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B8ECF728BE54C8006166BD /* Plane_dark.json in Resources */,
 				39AEA0F3268CA95100108EF1 /* LaunchScreen.storyboard in Resources */,
 				39AEA0F0268CA95100108EF1 /* Assets.xcassets in Resources */,
+				39B8ECF628BE54C8006166BD /* Plane_light.json in Resources */,
 				39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */,
 				39697FA9289AB0A500BAF38C /* Download.xcassets in Resources */,
 				39317D9C278AFECF009B9C95 /* ColorPallete.xcassets in Resources */,
@@ -1301,6 +1321,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1308,6 +1336,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39D4BC9428424083002EEBB8 /* XCRemoteSwiftPackageReference "Fakery" */;
 			productName = Fakery;
+		};
+		39D5B81628BC5219001C393C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39D5B81528BC5219001C393C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
