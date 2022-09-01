@@ -33,9 +33,9 @@ final class RootCoordinator: AppCoordinator {
         transitionHandler?.pushViewController(startController, animated: false)
     }
     
-    fileprivate func showFirstScreeen() {
-        let assemblyResult = FirstScreenAssembly().create(
-            output: OutputScreenContainer<FirstScreenOutput>(outputScreen: self),
+    fileprivate func showSearchScreeen() {
+        let assemblyResult = SearchScreenAssembly().create(
+            output: OutputScreenContainer<SearchScreenOutput>(outputScreen: self),
             serviceLocator: serviceLocator
         )
         
@@ -130,11 +130,11 @@ final class RootCoordinator: AppCoordinator {
 
 extension RootCoordinator: StartScreenOutput {
     func onFinish() {
-        showFirstScreeen()
+        showSearchScreeen()
     }
 }
 
-extension RootCoordinator: FirstScreenOutput {
+extension RootCoordinator: SearchScreenOutput {
     func didSelectSearchByAirportTimetable() {
         showSearchByAirportTimetable()
     }

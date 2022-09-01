@@ -61,7 +61,7 @@ class StartViewController: UIViewController {
         
         // Ходим в сеть
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.output?.onFinish()
         }
     }

@@ -1,5 +1,5 @@
 //
-//  FirstScreenPresenter.swift
+//  SearchScreenPresenter.swift
 //  FlightRadar
 //
 //  Created by Alexander Kurbatov on 04.08.2022.
@@ -7,16 +7,20 @@
 
 import Foundation
 
-class FirstScreenPresenter: FirstScreenInput {
+class SearchScreenPresenter: SearchScreenInput {
     
     // MARK: - Output
-    weak var output: FirstScreenOutput?
+    weak var output: SearchScreenOutput?
     
-    weak var view: FirstViewController?
+    weak var view: SearchViewInput?
+    
+}
+
+extension SearchScreenPresenter: SearchViewOutput {
     
     func didLoadView() {
         
-        // идем в сеть за данными
+        // идем в сеть за результами поиска
         // обрабатываем (например сортируем)
         // отдаем на отображение
         
