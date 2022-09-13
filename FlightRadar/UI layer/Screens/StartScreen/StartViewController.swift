@@ -16,25 +16,13 @@ class StartViewController: UIViewController {
     // MARK: Subviews
     
     private lazy var animationView: AnimationView = {
-        
-        var animationView = AnimationView(name: "Plane")
-        if traitCollection.userInterfaceStyle == .light {
-            animationView = AnimationView(name: "Plane_light")
-        } else if traitCollection.userInterfaceStyle == .dark {
-            animationView = AnimationView(name: "Plane_dark")
-        }
-        
-//        switch traitCollection.userInterfaceStyle {
-//        case .light:
-//            animationView = AnimationView(name: "Plane")
-//        case .dark:
-//            // dark mode detected
-//            animationView = AnimationView(name: "Plane_dark")
-//        case .unspecified:
-//            animationView = AnimationView(name: "Plane")
-//        @unknown default:
-//            animationView = AnimationView(name: "Plane")
-//        }
+
+        let animation = LottieAnimation.start
+        var animationView = AnimationView(
+            name: animation.name(
+                userInterfaceStyle: traitCollection.userInterfaceStyle
+            )
+        )
     
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop

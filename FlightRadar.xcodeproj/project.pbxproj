@@ -74,6 +74,7 @@
 		39B8ECF728BE54C8006166BD /* Plane_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 39B8ECF528BE54C8006166BD /* Plane_dark.json */; };
 		39B8ECF928BEF5FC006166BD /* SearchViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECF828BEF5FC006166BD /* SearchViewInput.swift */; };
 		39B8ECFB28BF00F2006166BD /* SearchViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECFA28BF00F2006166BD /* SearchViewOutput.swift */; };
+		39B8ECFD28D0184E006166BD /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B8ECFC28D0184E006166BD /* LottieAnimation.swift */; };
 		39D4BC9628424083002EEBB8 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 39D4BC9528424083002EEBB8 /* Fakery */; };
 		39D5B81128AA8503001C393C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81028AA8503001C393C /* Assembly.swift */; };
 		39D5B81428AA8983001C393C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D5B81328AA8983001C393C /* ServiceLocator.swift */; };
@@ -180,6 +181,7 @@
 		39B8ECF528BE54C8006166BD /* Plane_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Plane_dark.json; sourceTree = "<group>"; };
 		39B8ECF828BEF5FC006166BD /* SearchViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInput.swift; sourceTree = "<group>"; };
 		39B8ECFA28BF00F2006166BD /* SearchViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewOutput.swift; sourceTree = "<group>"; };
+		39B8ECFC28D0184E006166BD /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		39D5B81028AA8503001C393C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		39D5B81328AA8983001C393C /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		39E9B7A827B2B7EE009D7EE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -603,7 +605,6 @@
 				39AEADB627CA38F20008C2B9 /* Model layer */,
 				39AEADB727CA38FF0008C2B9 /* Core layer */,
 				39AEADAB27CA1D500008C2B9 /* Application layer */,
-				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				392791C227A1A99400350A30 /* KeyboardAppearListener.swift */,
 				39AEADAA27CA1CF10008C2B9 /* Resources */,
 				39AEADA927CA1CB00008C2B9 /* Staff */,
@@ -746,6 +747,7 @@
 			isa = PBXGroup;
 			children = (
 				39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */,
+				39B8ECFC28D0184E006166BD /* LottieAnimation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -775,6 +777,7 @@
 		AFB6F8FA281059B500D83F3F /* Common stuff */ = {
 			isa = PBXGroup;
 			children = (
+				39E9B7AE27B2C035009D7EE1 /* Utilities */,
 				39D5B80F28AA84CE001C393C /* Assembly */,
 				39697FA02896CC5300BAF38C /* Coordinators */,
 				AF069BAD28733A5E00A8131D /* Table */,
@@ -951,6 +954,7 @@
 				39B8ECFB28BF00F2006166BD /* SearchViewOutput.swift in Sources */,
 				39697FB4289FFD9200BAF38C /* SearchByFlightNumberOutput.swift in Sources */,
 				3961ED6D27DA4D54002224A0 /* SearchByFlightNumberAssembly.swift in Sources */,
+				39B8ECFD28D0184E006166BD /* LottieAnimation.swift in Sources */,
 				3961ED8027DDB501002224A0 /* PlaneOnMapViewPresenter.swift in Sources */,
 				39697FA72896CED500BAF38C /* StartViewController.swift in Sources */,
 				AF8681D9288429C500961883 /* ResultsOfSearchByFlightNumberScreenInput.swift in Sources */,
