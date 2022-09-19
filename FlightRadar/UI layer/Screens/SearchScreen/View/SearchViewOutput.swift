@@ -10,5 +10,5 @@ import Foundation
 protocol SearchViewOutput: AnyObject {
     
     func didLoadView()
-//    func didSelectSearchByFightNumber()
+    func didReceive(searchString: String)
 }

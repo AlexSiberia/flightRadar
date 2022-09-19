@@ -9,7 +9,7 @@ final class RootCoordinator: AppCoordinator {
     // MARK: - Initialization
     
     init(
-        transitionHandler: UINavigationController,
+        transitionHandler: UINavigationController?,
         serviceLocator: ServiceLocator
     ) {
         self.transitionHandler = transitionHandler
@@ -33,15 +33,17 @@ final class RootCoordinator: AppCoordinator {
         transitionHandler?.pushViewController(startController, animated: false)
     }
     
-    fileprivate func showSearchScreeen() {
-        let assemblyResult = SearchScreenAssembly().create(
-            output: OutputScreenContainer<SearchScreenOutput>(outputScreen: self),
+    fileprivate func showSearchFlow() {
+        let searchCoordinator = SearchCoordinator(
+            transitionHandler: transitionHandler,
             serviceLocator: serviceLocator
         )
         
-        print("Will show FirstScreen")
-        transitionHandler?.viewControllers = [assemblyResult.view]
+        child = searchCoordinator
 
+        searchCoordinator.output = self
+        
+        searchCoordinator.start()
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
@@ -63,19 +65,19 @@ final class RootCoordinator: AppCoordinator {
     }
     
     fileprivate func showResultOfSearchByFightNumber() {
-        let assemblyResult = ResultOfSearchByFlightNumberAssembly().create(
-            output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
-            serviceLocator: serviceLocator
-        )
-        
-        let context = ResultOfSearchByFlightNumberScreenContext(
-            searchString: "Стамбул",
-            sortParams: nil,
-            results: nil
-        )
-        assemblyResult.input.update(context)
-        
-        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
+//        let assemblyResult = ResultOfSearchByFlightNumberAssembly().create(
+//            output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
+//            serviceLocator: serviceLocator
+//        )
+//
+//        let context = ResultOfSearchByFlightNumberScreenContext(
+//            searchString: "Стамбул",
+//            sortParams: nil,
+//            results: nil
+//        )
+//        assemblyResult.input.update(context)
+//
+//        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showTimeTable() {
@@ -130,15 +132,16 @@ final class RootCoordinator: AppCoordinator {
 
 extension RootCoordinator: StartScreenOutput {
     func onFinish() {
-        showSearchScreeen()
+        showSearchFlow()
     }
 }
 
-extension RootCoordinator: SearchScreenOutput {
+extension RootCoordinator: SearchCoordinatorOutput {
+    
     func didSelectSearchByAirportTimetable() {
         showSearchByAirportTimetable()
     }
-    
+
     func didSelectSearchByFightNumber() {
         showSearchByFlightNumberViewController()
     }

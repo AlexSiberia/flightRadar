@@ -11,15 +11,15 @@ class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreen
 
     weak var output: ResultOfSeacrhByFlightNumberScreenOutput?
     
-    var context: ResultOfSearchByFlightNumberScreenContext?
+    var searchString: String?
     
     weak var view: ResultOfSearchByFlightNumberViewInput?
     
     var airlines: [AirlineModel] = [AirlineModel]()
     var transports: [FlightNumberModel] = [FlightNumberModel]()
     
-    func update(_ context: ResultOfSearchByFlightNumberScreenContext) {
-        self.context = context
+    func update(_ searchString: String) {
+        self.searchString = searchString
         // обновляем скрин соглансо нового состояния
     }
 

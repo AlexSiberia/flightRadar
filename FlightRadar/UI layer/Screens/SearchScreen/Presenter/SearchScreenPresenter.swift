@@ -25,4 +25,9 @@ extension SearchScreenPresenter: SearchViewOutput {
         // отдаем на отображение
         
     }
+    
+    func didReceive(searchString: String) {
+//        searchString.trimPrefix(<#T##prefix: Sequence##Sequence#>)
+        output?.didReceive(searchString: searchString)
+    }
 }

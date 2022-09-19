@@ -8,35 +8,24 @@
 import UIKit
 import MapKit
 
-class SearchViewController: BaseViewController {
+class SearchRootViewController: BaseViewController {
     
-    var presenter: SearchScreenPresenter
+    let presenter: SearchScreenPresenter
     var output: SearchViewOutput?
-    lazy var resultOfsearchViewController: ResultOfSearchByFlightNumberViewController = {
-        let resultOfsearchViewController = ResultOfSearchByFlightNumberViewController(presenter: ResultOfSearchByFlightNumberPresenter())
-        
-        
-        return resultOfsearchViewController
-    }()
+    let searchController: UISearchController
     
     // MARK: - Subviews
     
-    lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: resultOfsearchViewController)
-        
-        return searchController
-    }()
-    
-    lazy var searchTextfield: UITextField = { [unowned self] in
-        let searchTextfield = UITextField()
-        
-        searchTextfield.backgroundColor = .white
-        searchTextfield.delegate = self
-        
-        searchTextfield.translatesAutoresizingMaskIntoConstraints = false
-        
-        return searchTextfield
-    }()
+//    lazy var searchTextfield: UITextField = { [unowned self] in
+//        let searchTextfield = UITextField()
+//
+//        searchTextfield.backgroundColor = .white
+//        searchTextfield.delegate = self
+//
+//        searchTextfield.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return searchTextfield
+//    }()
     
     private lazy var mapView: MKMapView = {
         let mapView = MKMapView()
@@ -46,10 +35,16 @@ class SearchViewController: BaseViewController {
         return mapView
     }()
     
-    
-    init(presenter: SearchScreenPresenter) {
+    init(
+        presenter: SearchScreenPresenter,
+        searchController: UISearchController
+    ) {
         self.presenter = presenter
+        self.searchController = searchController
+        
         super.init(nibName: nil, bundle: nil)
+        
+        searchController.searchResultsUpdater = self
     }
     
     required init?(coder: NSCoder) {
@@ -64,8 +59,6 @@ class SearchViewController: BaseViewController {
         setupView()
         setupSubviews()
         setupConstraints()
-        
-        searchController.searchResultsUpdater = self
 
 //        presenter.output?.didSelectSearchByFightNumber()
     }
@@ -80,24 +73,21 @@ class SearchViewController: BaseViewController {
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
         ]
-        
-        // Create searchController and tune it
-        navigationItem.searchController = searchController
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Find a plane"
-        searchController.searchBar.searchTextField.textColor = UIColor.appColor(.textColor)
-    
+       
         // Change background color
         navigationController?.navigationBar.backgroundColor = .darkGray
+        
+        // Setup search
+        navigationItem.searchController = searchController
     }
     
     private func setupSubviews() {
-        setupSearchField()
+//        setupSearchField()
         setupMap()
     }
     
     private func setupSearchField() {
-        view.addSubviews(searchTextfield)
+//        view.addSubviews(searchTextfield)
     }
     
     private func setupMap() {
@@ -110,19 +100,19 @@ class SearchViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            searchTextfield.topAnchor.constraint(
-                equalTo: safeAreaGuide.topAnchor,
-                constant: 20
-            ),
-            searchTextfield.leadingAnchor.constraint(
-                equalTo: safeAreaGuide.leadingAnchor,
-                constant: 20
-            ),
-            searchTextfield.trailingAnchor.constraint(
-                equalTo: safeAreaGuide.trailingAnchor,
-                constant: -20
-            ),
-            mapView.topAnchor.constraint(equalTo: searchTextfield.bottomAnchor),
+//            searchTextfield.topAnchor.constraint(
+//                equalTo: safeAreaGuide.topAnchor,
+//                constant: 20
+//            ),
+//            searchTextfield.leadingAnchor.constraint(
+//                equalTo: safeAreaGuide.leadingAnchor,
+//                constant: 20
+//            ),
+//            searchTextfield.trailingAnchor.constraint(
+//                equalTo: safeAreaGuide.trailingAnchor,
+//                constant: -20
+//            ),
+//            mapView.topAnchor.constraint(equalTo: searchTextfield.bottomAnchor),
             mapView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -136,22 +126,41 @@ class SearchViewController: BaseViewController {
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
 //        output?.didSelectSearchByAirportTimetable()
     }
+}
+
+extension SearchRootViewController {
+    func searchFor(_ searchText: String) {
+        presenter.didReceive(searchString: searchText)
+    }
     
+    func stopSearch() {
+//        resultOfsearchViewController.stop()
+        searchController.showsSearchResultsController = false
+        searchController.searchBar.searchTextField.backgroundColor = nil
+    }
+}
+
+extension SearchRootViewController: SearchViewInput {
     
 }
 
-extension SearchViewController: SearchViewInput {
+extension SearchRootViewController: UISearchBarDelegate {
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+      searchFor(searchText)
+    }
     
+    func searchBarCancelButtonClicked(
+        _ searchBar: UISearchBar
+    ) {
+      stopSearch()
+    }
 }
 
-extension SearchViewController: UITextFieldDelegate {
-    
-}
-
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchRootViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.showsSearchResultsController = true
     }
-    
-    
 }

@@ -8,6 +8,5 @@
 import Foundation
 
 protocol SearchScreenOutput: AnyObject {
-    func didSelectSearchByFightNumber()
-    func didSelectSearchByAirportTimetable()
+    func didReceive(searchString: String)
 }
