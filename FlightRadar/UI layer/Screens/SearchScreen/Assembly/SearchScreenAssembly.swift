@@ -14,7 +14,7 @@ class SearchScreenAssembly: Assembly {
     ) -> AssemblyResult<SearchViewController, SearchScreenInput> {
         
         let presenter = SearchScreenPresenter()
-        let view = SearchViewController()
+        let view = SearchViewController(presenter: presenter)
         
         view.output = presenter
         presenter.view = view

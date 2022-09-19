@@ -40,7 +40,6 @@ class StartViewController: UIViewController {
         
         setupViews()
         setupConstraints()
-        
         animationView.play()
     }
     
