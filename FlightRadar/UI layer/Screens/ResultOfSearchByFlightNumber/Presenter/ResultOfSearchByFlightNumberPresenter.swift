@@ -10,12 +10,18 @@ import UIKit
 class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreenInput {
 
     weak var output: ResultOfSeacrhByFlightNumberScreenOutput?
-    var context: ResultOfSearchByFlightNumberScreenContext = ResultOfSearchByFlightNumberScreenContext()
+    
+    var searchString: String?
     
     weak var view: ResultOfSearchByFlightNumberViewInput?
     
     var airlines: [AirlineModel] = [AirlineModel]()
     var transports: [FlightNumberModel] = [FlightNumberModel]()
+    
+    func update(_ searchString: String) {
+        self.searchString = searchString
+        // обновляем скрин соглансо нового состояния
+    }
 
     
     // MARK: - Private

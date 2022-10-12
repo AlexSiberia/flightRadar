@@ -1,7 +1,7 @@
 import UIKit
 
 final class RootCoordinator: AppCoordinator {
-    
+  
     private weak var transitionHandler: UINavigationController?
     var child: AppCoordinator?
     var serviceLocator: ServiceLocator
@@ -9,11 +9,12 @@ final class RootCoordinator: AppCoordinator {
     // MARK: - Initialization
     
     init(
-        transitionHandler: UINavigationController,
+        transitionHandler: UINavigationController?,
         serviceLocator: ServiceLocator
     ) {
         self.transitionHandler = transitionHandler
         self.serviceLocator = serviceLocator
+        print("Create coordinator")
     }
     
     // MARK: - Public
@@ -28,66 +29,91 @@ final class RootCoordinator: AppCoordinator {
         let startController = StartViewController()
         startController.output = self
         
+        print("Will show StartViewController")
         transitionHandler?.pushViewController(startController, animated: false)
     }
     
-    fileprivate func showFirstScreeen() {
-        let assemblyResult = FirstScreenAssembly().create(
-            output: OutputScreenContainer<FirstScreenOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+    fileprivate func showSearchFlow() {
+        let searchCoordinator = SearchCoordinator(
+            transitionHandler: transitionHandler,
+            serviceLocator: serviceLocator
+        )
+
+        child = searchCoordinator
         
-        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
+        searchCoordinator.output = self
+        
+        searchCoordinator.start()
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
         let assemblyResult = SearchByFlightNumberAssembly().create(
             output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+            serviceLocator: serviceLocator
+        )
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showSearchByAirportTimetable() {
-        let searchByAirportTimetable = SearchByAirportTimeTableAssembly().create(output: self)
+        let assemblyResult = SearchByAirportTimeTableAssembly().create(
+            output: OutputScreenContainer<SearchByAirportTimeTablelOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
         
-        searchByAirportTimetable.presenter?.output = self
-        transitionHandler?.pushViewController(searchByAirportTimetable, animated: false)
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showResultOfSearchByFightNumber() {
-        let resultOfSearchByFlightNumber = ResultOfSearchByFlightNumberAssembly().create()
-        
-        transitionHandler?.pushViewController(resultOfSearchByFlightNumber.1, animated: false)
+//        let assemblyResult = ResultOfSearchByFlightNumberAssembly().create(
+//            output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
+//            serviceLocator: serviceLocator
+//        )
+//        
+//        let context = ResultOfSearchByFlightNumberScreenContext(
+//            searchString: "Стамбул",
+//            sortParams: nil,
+//            results: nil
+//        )
+//        assemblyResult.input.update(context)
+//        
+//        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showTimeTable() {
         let assemblyResult = TimeTableAssembly().create(
             output: OutputScreenContainer<TimeTableOutput>(outputScreen: self),
-            serviceLocator: serviceLocator)
+            serviceLocator: serviceLocator
+        )
     
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showFlightInfo() {
-        let flightInfo = FlightInformationAssembly().create(output: self)
+        let assemblyResult = FlightInformationAssembly().create(
+            output: OutputScreenContainer<FlightInformationOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
         
-        flightInfo.presenter?.output = self
-        transitionHandler?.pushViewController(flightInfo, animated: false)
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showPlaneInfo() {
-        let planeInfo = PlaneInformationAssembly().create(output: self)
+        let assemblyResult = PlaneInformationAssembly().create(
+            output: OutputScreenContainer<PlaneInformationOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
         
-        planeInfo.presenter?.output = self
-        transitionHandler?.pushViewController(planeInfo, animated: false)
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
     fileprivate func showPlaneOnMap() {
-//        let planeOnMap = PlaneOnMapViewAssembly().create(output: self)
-//
-//        planeOnMap.presenter?.output = self
-        let planeOnMap = PlaneOnMapViewController()
-        transitionHandler?.pushViewController(planeOnMap, animated: false)
+        let assemblyResult = PlaneOnMapViewAssembly().create(
+            output: OutputScreenContainer<PlaneOnMapOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
+        
+        transitionHandler?.pushViewController(assemblyResult.view, animated: false)
     }
     
 //    fileprivate func showSomething() {
@@ -106,15 +132,15 @@ final class RootCoordinator: AppCoordinator {
 
 extension RootCoordinator: StartScreenOutput {
     func onFinish() {
-        showFirstScreeen()
+        showSearchFlow()
     }
 }
 
-extension RootCoordinator: FirstScreenOutput {
+extension RootCoordinator: SearchCoordinatorOutput {
     func didSelectSearchByAirportTimetable() {
         showSearchByAirportTimetable()
     }
-    
+
     func didSelectSearchByFightNumber() {
         showSearchByFlightNumberViewController()
     }
@@ -155,4 +181,16 @@ extension RootCoordinator: PlaneInformationOutput {
 extension RootCoordinator: PlaneOnMapOutput {
     func didSelect() {
     }
+}
+
+extension RootCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
+    func didSelect(flight: FlightNumberModel) {
+        
+    }
+    
+    func didSelect(airline: AirlineModel) {
+        
+    }
+    
+ 
 }

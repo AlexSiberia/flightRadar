@@ -1,5 +1,6 @@
 import Foundation
 
-protocol ResultsOfSearchByFlightNumberScreenInput {
+protocol ResultsOfSearchByFlightNumberScreenInput: AnyObject {
     
+    func update(_ searchString: String)
 }

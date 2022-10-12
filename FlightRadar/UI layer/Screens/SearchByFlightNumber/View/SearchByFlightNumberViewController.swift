@@ -9,7 +9,7 @@ import UIKit
 
 class SearchByFlightNumberViewController: BaseViewController {
     
-    var presenter: SearchByFlightNumberPresenter?
+    var presenter: SearchByFlightNumberPresenter
     
     lazy var label: UILabel = {
         
@@ -77,6 +77,15 @@ class SearchByFlightNumberViewController: BaseViewController {
         return searchButton
     }()
     
+    init(presenter: SearchByFlightNumberPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -128,7 +137,7 @@ class SearchByFlightNumberViewController: BaseViewController {
 //            searchScreen.1,
 //            animated: true
 //        )
-        presenter?.output?.didSelectSearchByFlight()
+        presenter.output?.didSelectSearchByFlight()
     }
     
 }

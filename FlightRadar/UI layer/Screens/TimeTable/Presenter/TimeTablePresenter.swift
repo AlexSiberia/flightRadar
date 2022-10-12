@@ -14,8 +14,6 @@ class TimeTablePresenter: TimeTableInput {
     
     weak var view: AirportTimeTableViewController?
     
-    // var timeTableService: TimeTableService
-    
     func didLoadView() {
 
         // идем в сеть за данными

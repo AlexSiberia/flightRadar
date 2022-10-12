@@ -16,7 +16,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     
     fileprivate var viewData: ResultOfSearchByFlightNumberViewData = ResultOfSearchByFlightNumberViewData(airlines: [], flights: [])
     
-    var presenter: ResultOfSearchByFlightNumberViewOutput?
+    var presenter: ResultOfSearchByFlightNumberViewOutput
 
     fileprivate var tableData: SectionedTableViewDataSource?
     
@@ -57,8 +57,16 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     }()
 
     
-    // MARK: - Lifecycle
+    init(presenter: ResultOfSearchByFlightNumberPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +74,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         
-        presenter?.didLoadView()
+        presenter.didLoadView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,10 +162,10 @@ extension ResultOfSearchByFlightNumberViewController: UITableViewDelegate {
     ) {
         if indexPath.section == 0 {
             let airline = viewData.airlines[indexPath.row]
-            presenter?.userDidSelect(airline: airline)
+            presenter.userDidSelect(airline: airline)
         } else if indexPath.section == 2 {
             let flight = viewData.flights[indexPath.row]
-            presenter?.userDidSelect(flight: flight)
+            presenter.userDidSelect(flight: flight)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class StartViewController: UIViewController {
     
@@ -14,30 +15,40 @@ class StartViewController: UIViewController {
     
     // MARK: Subviews
     
-    private lazy var logoImageView: UIImageView = {
-        let logoImage: UIImage? = UIImage(named: "SomeLogo")
-        let logoImageView: UIImageView = UIImageView(image: logoImage)
+    private lazy var animationView: AnimationView = {
+
+        let animation = LottieAnimation.start
+        var animationView = AnimationView(
+            name: animation.name(
+                userInterfaceStyle: traitCollection.userInterfaceStyle
+            )
+        )
+    
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
         
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.contentMode = .scaleAspectFit
+        animationView.translatesAutoresizingMaskIntoConstraints = false
         
-        return logoImageView
+        return animationView
     }()
 
     //MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.appColor(.backgroundColor)
         
         setupViews()
         setupConstraints()
+        animationView.play()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        // Ходим в сеть
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.output?.onFinish()
         }
     }
@@ -46,15 +57,17 @@ class StartViewController: UIViewController {
     // MARK: Private methods
     
     private func setupViews() {
-        view.addSubviews(logoImageView)
+        view.addSubviews(animationView)
     }
 
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
