@@ -31,7 +31,9 @@ class SearchRootViewController: BaseViewController {
     ) {
         self.presenter = presenter
         self.searchController = searchController
+        
         super.init(nibName: nil, bundle: nil)
+        
         searchController.searchResultsUpdater = self
     }
     
