@@ -82,6 +82,11 @@ class SearchRootViewController: BaseViewController {
     
     private func setupMap() {
         view.addSubviews(mapView)
+        
+        // Set initial location in Moscow
+        let initialLocation = CLLocation(latitude: 55.751244, longitude: 37.618423)
+        mapView.centerToLocation(initialLocation)
+
     }
     
     private func setupConstraints() {
@@ -143,4 +148,17 @@ extension SearchRootViewController: UISearchResultsUpdating {
     }
     
     
+}
+
+private extension MKMapView {
+  func centerToLocation(
+    _ location: CLLocation,
+    regionRadius: CLLocationDistance = 100000
+  ) {
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius,
+      longitudinalMeters: regionRadius)
+    setRegion(coordinateRegion, animated: true)
+  }
 }
