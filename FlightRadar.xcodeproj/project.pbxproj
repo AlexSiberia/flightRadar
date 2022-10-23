@@ -85,6 +85,8 @@
 		39E9B7AB27B2BB0B009D7EE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */; };
 		39EA0B7F2878674A00450C90 /* AirlinesLogos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */; };
 		39EA0B8128789E9A00450C90 /* AirlinesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EA0B8028789E9A00450C90 /* AirlinesModel.swift */; };
+		39F83D502920F5F900894B69 /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F83D4F2920F5F900894B69 /* LocationServiceProtocol.swift */; };
+		39F83D522920F75B00894B69 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F83D512920F75B00894B69 /* LocationService.swift */; };
 		AF069BAF28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BAE28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift */; };
 		AF069BB228733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BB128733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift */; };
 		AF069BB428733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF069BB328733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift */; };
@@ -192,6 +194,8 @@
 		39E9B7AA27B2BB0B009D7EE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39EA0B7E2878674900450C90 /* AirlinesLogos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AirlinesLogos.xcassets; sourceTree = "<group>"; };
 		39EA0B8028789E9A00450C90 /* AirlinesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesModel.swift; sourceTree = "<group>"; };
+		39F83D4F2920F5F900894B69 /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		39F83D512920F75B00894B69 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		AF069BAE28733BCC00A8131D /* ResultOfSeacrhByFlightNumberScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSeacrhByFlightNumberScreenOutput.swift; sourceTree = "<group>"; };
 		AF069BB128733D9B00A8131D /* ResultOfSearchByFlightNumberViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFlightNumberViewInput.swift; sourceTree = "<group>"; };
 		AF069BB328733FDB00A8131D /* ResultOfSearchByFlightNumberViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfSearchByFlightNumberViewOutput.swift; sourceTree = "<group>"; };
@@ -689,6 +693,7 @@
 		39AEADB327CA38AA0008C2B9 /* Service layer */ = {
 			isa = PBXGroup;
 			children = (
+				39F83D4E2920F5BE00894B69 /* LocationService */,
 				39D5B81228AA8954001C393C /* ServiceLocator */,
 				39AEADB527CA38DE0008C2B9 /* Feed service */,
 				39AEADB427CA38C30008C2B9 /* Push service */,
@@ -756,6 +761,15 @@
 				39B8ECFC28D0184E006166BD /* LottieAnimation.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		39F83D4E2920F5BE00894B69 /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				39F83D4F2920F5F900894B69 /* LocationServiceProtocol.swift */,
+				39F83D512920F75B00894B69 /* LocationService.swift */,
+			);
+			path = LocationService;
 			sourceTree = "<group>";
 		};
 		AF069BAD28733A5E00A8131D /* Table */ = {
@@ -943,6 +957,7 @@
 				39B2FF2B28EF2C1C0025B57A /* SearchCoordinator.swift in Sources */,
 				395EB7A1280FEF0C00C9D628 /* ResultOfSearchByFlightNumberViewController.swift in Sources */,
 				39697FCC28A3E10800BAF38C /* PlaneOnMapInput.swift in Sources */,
+				39F83D522920F75B00894B69 /* LocationService.swift in Sources */,
 				39B2FF2D28F476760025B57A /* StandartSearchController.swift in Sources */,
 				39697FBA28A156C900BAF38C /* StartScreenOutput.swift in Sources */,
 				3961ED7B27DDB02C002224A0 /* FlightInformationPresenter.swift in Sources */,
@@ -962,6 +977,7 @@
 				39B8ECFB28BF00F2006166BD /* SearchViewOutput.swift in Sources */,
 				39697FB4289FFD9200BAF38C /* SearchByFlightNumberOutput.swift in Sources */,
 				3961ED6D27DA4D54002224A0 /* SearchByFlightNumberAssembly.swift in Sources */,
+				39F83D502920F5F900894B69 /* LocationServiceProtocol.swift in Sources */,
 				39B8ECFD28D0184E006166BD /* LottieAnimation.swift in Sources */,
 				3961ED8027DDB501002224A0 /* PlaneOnMapViewPresenter.swift in Sources */,
 				39697FA72896CED500BAF38C /* StartViewController.swift in Sources */,

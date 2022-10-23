@@ -38,7 +38,8 @@ final class SearchCoordinator: AppCoordinator {
         )
         
         let searchController = StandartSearchController(
-            searchResultsController: resultOfSearchScreen.view
+            searchResultController: resultOfSearchScreen.view,
+            placeholder: "Find a plane"
         )
         
         let searchScreen = SearchScreenAssembly().create(
