@@ -84,7 +84,7 @@ class SearchRootViewController: BaseViewController {
         view.addSubviews(mapView)
         
         // Set initial location in Moscow
-        let initialLocation = CLLocation(latitude: 55.751244, longitude: 37.618423)
+        let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
 
     }
