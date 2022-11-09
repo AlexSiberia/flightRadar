@@ -6,24 +6,16 @@
 //
 
 import UIKit
-import CoreLocation
 import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
-
-    let locationManager = CLLocationManager()
-//    locationManager.delegate = self
-    
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        locationManager.requestAlwaysAuthorization()
         center.requestAuthorization(options: [.alert, .sound]) { granted, error in }
-        locationManager.delegate = self
-        locationManager.requestLocation()
 
         return true
     }
@@ -41,25 +33,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-    func locationManager(
-        _ manager: CLLocationManager,
-        didUpdateLocations locations: [CLLocation]
-    ) {
-        if let location = locations.first {
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
-            // Handle location update
-        }
-    }
-    
-    func locationManager(
-        _ manager: CLLocationManager,
-        didFailWithError error: Error
-    ) {
-        // Handle failure to get a user’s location
-    }
-
-
 }
 

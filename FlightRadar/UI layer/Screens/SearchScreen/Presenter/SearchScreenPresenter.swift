@@ -24,10 +24,16 @@ extension SearchScreenPresenter: SearchViewOutput {
         // обрабатываем (например сортируем)
         // отдаем на отображение
         
+//        locationService.request
+        
     }
     
     func didReceive(searchString: String) {
 //        searchString.trimPrefix(<#T##prefix: Sequence##Sequence#>)
         output?.didReceive(searchString: searchString)
     }
+}
+
+extension SearchScreenPresenter: LocationServiceDelegate {
+    
 }

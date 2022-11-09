@@ -13,6 +13,9 @@ class ServiceLocator {
     static let shared = ServiceLocator()
     
     private init() {
+        container.register(LocationServiceProtocol.self) {
+            LocationService()
+        }
     }
     
     func resolve<Service>(_ service: Service.Type) -> Service {

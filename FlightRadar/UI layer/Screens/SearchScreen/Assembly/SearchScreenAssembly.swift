@@ -20,7 +20,6 @@ class SearchScreenAssembly: Assembly {
         
     }
     
-    
     func create(output: OutputScreenContainer<SearchScreenOutput>,
                 serviceLocator: ServiceLocator,
                 searchController: StandartSearchController? = nil
@@ -31,6 +30,12 @@ class SearchScreenAssembly: Assembly {
         }
         
         let presenter = SearchScreenPresenter()
+        
+        let locationService = serviceLocator.resolve(LocationServiceProtocol.self)
+        presenter.locationService = locationService
+        locationService.delegate = presenter
+        
+        
         let view = SearchRootViewController(
             presenter: presenter,
             searchController: searchController
