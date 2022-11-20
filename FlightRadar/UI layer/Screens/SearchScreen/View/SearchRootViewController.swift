@@ -86,7 +86,14 @@ class SearchRootViewController: BaseViewController {
         // Set initial location in Tashkent
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
-
+        
+        presenter.locationService?.requestCurrentLocation()
+        guard let currentLocation = presenter.recievedLocation else { return
+            
+        }
+        mapView.centerToLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
+        
+        
     }
     
     private func setupConstraints() {

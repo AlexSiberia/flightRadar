@@ -31,6 +31,12 @@ class SearchScreenAssembly: Assembly {
         }
         
         let presenter = SearchScreenPresenter()
+        
+        var locationService = serviceLocator.resolve(LocationServiceProtocol.self)
+        presenter.locationService = locationService
+        locationService.delegate = presenter
+            
+        
         let view = SearchRootViewController(
             presenter: presenter,
             searchController: searchController
