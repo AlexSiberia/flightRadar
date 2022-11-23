@@ -40,10 +40,9 @@ extension SearchScreenPresenter: SearchViewOutput {
 extension SearchScreenPresenter: LocationServiceDelegate {
     func didRecieveLocation(_ service: LocationServiceProtocol, location: Location) {
         
-//        locationService?
-//        locationService = service
-////        let location = Location(longitude: location.longitude, latitude: location.latitude)
-//        recievedLocation = location
+        locationService?.delegate = self
+        let location = Location(longitude: location.longitude, latitude: location.latitude)
+        recievedLocation = location
     }
     
     

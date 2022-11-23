@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocationUI
 
 class SearchRootViewController: BaseViewController {
     
@@ -22,6 +23,14 @@ class SearchRootViewController: BaseViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         return mapView
+    }()
+    
+    private lazy var locationButton: CLLocationButton = {
+        let button = CLLocationButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        return button
     }()
     
     
@@ -74,6 +83,7 @@ class SearchRootViewController: BaseViewController {
     
     private func setupSubviews() {
         setupMap()
+        setupButton()
     }
     
     private func setupSearchField() {
@@ -96,6 +106,15 @@ class SearchRootViewController: BaseViewController {
         
     }
     
+    private func setupButton() {
+        mapView.addSubview(locationButton)
+        locationButton.label = .currentLocation
+        locationButton.icon = .arrowOutline
+        locationButton.cornerRadius = 12
+        locationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+    }
+    
     private func setupConstraints() {
         
         let safeAreaGuide = view.safeAreaLayoutGuide
@@ -106,6 +125,12 @@ class SearchRootViewController: BaseViewController {
             mapView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            locationButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
+            locationButton.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+//            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor),
+//            locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
+            
         ])
     }
     
@@ -115,6 +140,10 @@ class SearchRootViewController: BaseViewController {
     
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
 //        output?.didSelectSearchByAirportTimetable()
+    }
+    
+    @objc func didTapButton() {
+//        presenter.didRecieveLocation(<#T##service: LocationServiceProtocol##LocationServiceProtocol#>, location: <#T##Location#>)
     }
 }
 
