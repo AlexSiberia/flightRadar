@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchScreenPresenter: SearchScreenInput {
-    
+ 
     // MARK: - Output
     weak var output: SearchScreenOutput?
     
@@ -22,9 +22,13 @@ class SearchScreenPresenter: SearchScreenInput {
 
 extension SearchScreenPresenter: SearchViewOutput {
     
+    func didAskToObtainCurrentLocation() {
+        
+    }
+    
+    
     func didLoadView() {
-
-        locationService?.requestCurrentLocation()
+        
         // идем в сеть за результами поиска
         // обрабатываем (например сортируем)
         // отдаем на отображение

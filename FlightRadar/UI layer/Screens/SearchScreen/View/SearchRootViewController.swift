@@ -11,7 +11,6 @@ import CoreLocationUI
 
 class SearchRootViewController: BaseViewController {
     
-    let presenter: SearchScreenPresenter
     var output: SearchViewOutput?
     let searchController: StandartSearchController
     
@@ -26,7 +25,18 @@ class SearchRootViewController: BaseViewController {
     }()
     
     private lazy var locationButton: CLLocationButton = {
-        let button = CLLocationButton()
+        
+        let action = UIAction { [unowned self] _ in
+            self.didTapButton()
+        }
+        
+        let button = CLLocationButton(frame: .zero, primaryAction: action)
+        
+        locationButton.label = .currentLocation
+        locationButton.icon = .arrowOutline
+        locationButton.cornerRadius = 12
+        
+      
         
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -35,10 +45,10 @@ class SearchRootViewController: BaseViewController {
     
     
     init(
-        presenter: SearchScreenPresenter,
+        output: SearchViewOutput,
         searchController: StandartSearchController
     ) {
-        self.presenter = presenter
+        self.output = output
         self.searchController = searchController
         super.init(nibName: nil, bundle: nil)
         searchController.searchResultsUpdater = self
@@ -97,22 +107,16 @@ class SearchRootViewController: BaseViewController {
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
         
-        presenter.locationService?.requestCurrentLocation()
-        guard let currentLocation = presenter.recievedLocation else { return
-            
-        }
-        mapView.centerToLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
+       
         
         
     }
     
     private func setupButton() {
         mapView.addSubview(locationButton)
-        locationButton.label = .currentLocation
-        locationButton.icon = .arrowOutline
-        locationButton.cornerRadius = 12
-        locationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
+//        locationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+
     }
     
     private func setupConstraints() {
@@ -143,7 +147,8 @@ class SearchRootViewController: BaseViewController {
     }
     
     @objc func didTapButton() {
-//        presenter.didRecieveLocation(<#T##service: LocationServiceProtocol##LocationServiceProtocol#>, location: <#T##Location#>)
+        locationButton.isEnabled = false
+        output?.didAskToObtainCurrentLocation()
     }
 }
 
@@ -160,7 +165,11 @@ extension SearchRootViewController {
 }
 
 extension SearchRootViewController: SearchViewInput {
-    
+    func didObtain(currentLocation: Location) {
+        
+        mapView.centerToLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
+        
+    }
 }
 
 extension SearchRootViewController: UISearchBarDelegate {

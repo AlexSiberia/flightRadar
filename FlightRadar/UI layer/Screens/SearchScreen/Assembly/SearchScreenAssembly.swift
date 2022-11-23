@@ -38,7 +38,7 @@ class SearchScreenAssembly: Assembly {
             
         
         let view = SearchRootViewController(
-            presenter: presenter,
+            output: presenter,
             searchController: searchController
         )
         
