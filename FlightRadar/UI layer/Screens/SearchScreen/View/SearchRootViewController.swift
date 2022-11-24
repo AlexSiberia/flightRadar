@@ -32,11 +32,9 @@ class SearchRootViewController: BaseViewController {
         
         let button = CLLocationButton(frame: .zero, primaryAction: action)
         
-        locationButton.label = .currentLocation
-        locationButton.icon = .arrowOutline
-        locationButton.cornerRadius = 12
-        
-      
+        button.label = .currentLocation
+        button.icon = .arrowOutline
+        button.cornerRadius = 12
         
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -50,7 +48,9 @@ class SearchRootViewController: BaseViewController {
     ) {
         self.output = output
         self.searchController = searchController
+        
         super.init(nibName: nil, bundle: nil)
+        
         searchController.searchResultsUpdater = self
     }
     
@@ -106,17 +106,10 @@ class SearchRootViewController: BaseViewController {
         // Set initial location in Tashkent
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
-        
-       
-        
-        
     }
     
     private func setupButton() {
         mapView.addSubview(locationButton)
-        
-//        locationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-
     }
     
     private func setupConstraints() {
@@ -127,8 +120,8 @@ class SearchRootViewController: BaseViewController {
             
             mapView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mapView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
             
             locationButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
             locationButton.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
@@ -166,9 +159,8 @@ extension SearchRootViewController {
 
 extension SearchRootViewController: SearchViewInput {
     func didObtain(currentLocation: Location) {
-        
         mapView.centerToLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
-        
+        locationButton.isEnabled = true
     }
 }
 

@@ -22,11 +22,6 @@ class SearchScreenPresenter: SearchScreenInput {
 
 extension SearchScreenPresenter: SearchViewOutput {
     
-    func didAskToObtainCurrentLocation() {
-        
-    }
-    
-    
     func didLoadView() {
         
         // идем в сеть за результами поиска
@@ -39,15 +34,18 @@ extension SearchScreenPresenter: SearchViewOutput {
 //        searchString.trimPrefix(<#T##prefix: Sequence##Sequence#>)
         output?.didReceive(searchString: searchString)
     }
+    
+    func didAskToObtainCurrentLocation() {
+        locationService?.requestCurrentLocation()
+    }
 }
 
 extension SearchScreenPresenter: LocationServiceDelegate {
-    func didRecieveLocation(_ service: LocationServiceProtocol, location: Location) {
-        
-        locationService?.delegate = self
-        let location = Location(longitude: location.longitude, latitude: location.latitude)
+    func didRecieveLocation(
+        _ service: LocationServiceProtocol,
+        location: Location
+    ) {
         recievedLocation = location
+        view?.didObtain(currentLocation: location)
     }
-    
-    
 }
