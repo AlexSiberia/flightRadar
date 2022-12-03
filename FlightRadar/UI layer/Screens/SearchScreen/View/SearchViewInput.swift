@@ -9,4 +9,6 @@ import Foundation
 
 protocol SearchViewInput: AnyObject {
     
+    func didObtain(currentLocation: Location)
+    
 }

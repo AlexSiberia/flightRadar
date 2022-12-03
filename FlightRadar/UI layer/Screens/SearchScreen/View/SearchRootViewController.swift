@@ -7,10 +7,10 @@
 
 import UIKit
 import MapKit
+import CoreLocationUI
 
 class SearchRootViewController: BaseViewController {
     
-    let presenter: SearchScreenPresenter
     var output: SearchViewOutput?
     let searchController: StandartSearchController
     
@@ -24,14 +24,41 @@ class SearchRootViewController: BaseViewController {
         return mapView
     }()
     
+    private lazy var locationButton: UIButton = {
+        
+        let action = UIAction{ [unowned self] _ in
+            self.didTapButton()
+        }
+        
+//        let largeFont = UIFont.systemFont(ofSize: 20)
+//        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
+        
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.image = UIImage(systemName: "location.fill")
+//                                            , withConfiguration: imageConfiguration)
+        buttonConfiguration.buttonSize = .mini
+        buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
+        buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
+        buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        buttonConfiguration.cornerStyle = .small
+       
+        
+        let button = UIButton(configuration: buttonConfiguration, primaryAction: action)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
     
     init(
-        presenter: SearchScreenPresenter,
+        output: SearchViewOutput,
         searchController: StandartSearchController
     ) {
-        self.presenter = presenter
+        self.output = output
         self.searchController = searchController
+        
         super.init(nibName: nil, bundle: nil)
+        
         searchController.searchResultsUpdater = self
     }
     
@@ -47,8 +74,7 @@ class SearchRootViewController: BaseViewController {
         setupView()
         setupSubviews()
         setupConstraints()
- 
-//        presenter.output?.didSelectSearchByFightNumber()
+
     }
     
     private func setupView() {
@@ -64,9 +90,6 @@ class SearchRootViewController: BaseViewController {
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
         ]
-
-        // Change background color
-//        navigationController?.navigationBar.backgroundColor = .darkGray
         
         // Setup search
         navigationItem.searchController = searchController
@@ -74,14 +97,23 @@ class SearchRootViewController: BaseViewController {
     
     private func setupSubviews() {
         setupMap()
+        setupButton()
     }
     
     private func setupSearchField() {
-//        view.addSubviews(searchTextfield)
+
     }
     
     private func setupMap() {
         view.addSubviews(mapView)
+        
+        // Set initial location in Tashkent
+        let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
+        mapView.centerToLocation(initialLocation)
+    }
+    
+    private func setupButton() {
+        mapView.addSubview(locationButton)
     }
     
     private func setupConstraints() {
@@ -92,8 +124,16 @@ class SearchRootViewController: BaseViewController {
             
             mapView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mapView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            
+            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 5),
+            locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+//            locationButton.heightAnchor.constraint(equalTo: locationButton.widthAnchor),
+//            locationButton.widthAnchor.constraint(equalToConstant: 44.0),
+
+            
+        
         ])
     }
     
@@ -104,6 +144,11 @@ class SearchRootViewController: BaseViewController {
     @objc func searchByAirportTimeTableButtonAction(sender: UIButton!) {
 //        output?.didSelectSearchByAirportTimetable()
     }
+    
+    @objc func didTapButton() {
+        locationButton.isEnabled = false
+        output?.didAskToObtainCurrentLocation()
+    }
 }
 
 extension SearchRootViewController {
@@ -112,14 +157,19 @@ extension SearchRootViewController {
     }
     
     func stopSearch() {
-//        resultOfsearchViewController.stop()
         searchController.showsSearchResultsController = false
         searchController.searchBar.searchTextField.backgroundColor = nil
     }
 }
 
 extension SearchRootViewController: SearchViewInput {
-    
+    func didObtain(currentLocation: Location) {
+        mapView.centerToLocation(CLLocation(
+            latitude: currentLocation.latitude,
+            longitude: currentLocation.longitude
+        ))
+        locationButton.isEnabled = true
+    }
 }
 
 extension SearchRootViewController: UISearchBarDelegate {
@@ -143,4 +193,17 @@ extension SearchRootViewController: UISearchResultsUpdating {
     }
     
     
+}
+
+private extension MKMapView {
+  func centerToLocation(
+    _ location: CLLocation,
+    regionRadius: CLLocationDistance = 100000
+  ) {
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius,
+      longitudinalMeters: regionRadius)
+    setRegion(coordinateRegion, animated: true)
+  }
 }

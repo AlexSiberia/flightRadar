@@ -8,5 +8,7 @@
 import Foundation
 
 protocol SearchScreenOutput: AnyObject {
-    func didReceive(searchString: String) 
+    
+    func didReceive(searchString: String)
+    
 }

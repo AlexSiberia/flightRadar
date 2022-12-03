@@ -6,23 +6,18 @@
 //
 
 import UIKit
+import CoreLocation
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        let familyNames = UIFont.familyNames
-//
-//        for family in familyNames {
-//            print("Family name " + family)
-//            let fontNames = UIFont.fontNames(forFamilyName: family)
-//            
-//            for font in fontNames {
-//                print("    Font name: " + font)
-//            }
-//        }
+        
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in }
+
         return true
     }
 
@@ -39,7 +34,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
