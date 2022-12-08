@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocationUI
+import CoreLocation
 
 class SearchRootViewController: BaseViewController {
     
@@ -30,13 +31,16 @@ class SearchRootViewController: BaseViewController {
             self.didTapButton()
         }
         
-//        let largeFont = UIFont.systemFont(ofSize: 20)
-//        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
+        let largeFont = UIFont.systemFont(ofSize: 20)
+        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
         
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(systemName: "location.fill")
-//                                            , withConfiguration: imageConfiguration)
-        buttonConfiguration.buttonSize = .mini
+        buttonConfiguration.image = UIImage(
+            systemName: "location.fill",
+            withConfiguration: imageConfiguration
+        )
+//        buttonConfiguration.title = "Location"
+//        buttonConfiguration.buttonSize = .large
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
         buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
@@ -110,6 +114,7 @@ class SearchRootViewController: BaseViewController {
         // Set initial location in Tashkent
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
+        mapView.showsUserLocation = true
     }
     
     private func setupButton() {
@@ -127,13 +132,9 @@ class SearchRootViewController: BaseViewController {
             mapView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
             
-            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 5),
+            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
             locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
-//            locationButton.heightAnchor.constraint(equalTo: locationButton.widthAnchor),
-//            locationButton.widthAnchor.constraint(equalToConstant: 44.0),
-
-            
-        
+ 
         ])
     }
     
@@ -168,6 +169,13 @@ extension SearchRootViewController: SearchViewInput {
             latitude: currentLocation.latitude,
             longitude: currentLocation.longitude
         ))
+    
+        //pun un marker
+//                   let marker1 = MKPointAnnotation()
+//                   marker1.coordinate = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
+//                   marker1.title = "My Position"
+//                   mapView.addAnnotation(marker1)
+        
         locationButton.isEnabled = true
     }
 }
