@@ -10,7 +10,13 @@ import MapKit
 import CoreLocationUI
 import CoreLocation
 
+struct MapViewData {
+    let airports: [AirportModel]
+}
+
 class SearchRootViewController: BaseViewController {
+    
+    fileprivate var mapViewData: MapViewData = MapViewData(airports: [])
     
     var output: SearchViewOutput?
     let searchController: StandartSearchController
@@ -39,8 +45,7 @@ class SearchRootViewController: BaseViewController {
             systemName: "location.fill",
             withConfiguration: imageConfiguration
         )
-//        buttonConfiguration.title = "Location"
-//        buttonConfiguration.buttonSize = .large
+ 
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
         buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
@@ -114,7 +119,10 @@ class SearchRootViewController: BaseViewController {
         // Set initial location in Tashkent
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
+        // allow to show location point
         mapView.showsUserLocation = true
+        // Added airports pins
+        mapView.addAnnotations(mapViewData.airports)
     }
     
     private func setupButton() {

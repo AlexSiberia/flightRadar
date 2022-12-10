@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class SearchScreenPresenter: SearchScreenInput {
  
@@ -14,9 +15,24 @@ class SearchScreenPresenter: SearchScreenInput {
     
     weak var view: SearchViewInput?
     
+    var airports: [AirportModel] = [AirportModel]()
+    
     var locationService: LocationServiceProtocol?
     
     var recievedLocation: Location?
+    
+    // MARK: - Private
+    
+    private func createAirportsArray() {
+        
+        airports.append(
+            AirportModel(
+                title: "Yuzhnyy Airport",
+                coordinate: CLLocationCoordinate2D(latitude: 41.152830, longitude: 69.165227),
+                info: "Uzbekistan"
+            )
+        )
+    }
     
 }
 
