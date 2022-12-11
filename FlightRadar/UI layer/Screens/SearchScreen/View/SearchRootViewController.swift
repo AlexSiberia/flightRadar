@@ -80,10 +80,11 @@ class SearchRootViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        output?.didLoadView()
+        
         setupView()
         setupSubviews()
         setupConstraints()
-
     }
     
     private func setupView() {
@@ -172,6 +173,11 @@ extension SearchRootViewController {
 }
 
 extension SearchRootViewController: SearchViewInput {
+    
+    func showAirportsPin(_ pins: MapViewData) {
+        mapViewData = pins
+    }
+    
     func didObtain(currentLocation: Location) {
         mapView.centerToLocation(CLLocation(
             latitude: currentLocation.latitude,

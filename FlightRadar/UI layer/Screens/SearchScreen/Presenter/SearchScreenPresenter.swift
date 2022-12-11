@@ -32,6 +32,13 @@ class SearchScreenPresenter: SearchScreenInput {
                 info: "Uzbekistan"
             )
         )
+        airports.append(
+            AirportModel(
+                title: "Sheremetyevo",
+                coordinate: CLLocationCoordinate2D(latitude: 55.582151, longitude: 37.245252),
+                info: "Russia"
+            )
+        )
     }
     
 }
@@ -39,9 +46,10 @@ class SearchScreenPresenter: SearchScreenInput {
 extension SearchScreenPresenter: SearchViewOutput {
     
     func didLoadView() {
-        // идем в сеть за результами поиска
-        // обрабатываем (например сортируем)
-        // отдаем на отображение
+        createAirportsArray()
+        
+        let viewData = MapViewData(airports: airports)
+        view?.showAirportsPin(viewData)
     }
     
     func didReceive(searchString: String) {
