@@ -11,4 +11,5 @@ protocol SearchViewInput: AnyObject {
     
     func didObtain(currentLocation: Location)
     
+    func showAirportsPin(_ pins: MapViewData)
 }

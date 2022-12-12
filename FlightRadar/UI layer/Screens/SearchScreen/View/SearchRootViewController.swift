@@ -10,7 +10,13 @@ import MapKit
 import CoreLocationUI
 import CoreLocation
 
+struct MapViewData {
+    let airports: [AirportModel]
+}
+
 class SearchRootViewController: BaseViewController {
+    
+    fileprivate var mapViewData: MapViewData = MapViewData(airports: [])
     
     var output: SearchViewOutput?
     let searchController: StandartSearchController
@@ -27,8 +33,8 @@ class SearchRootViewController: BaseViewController {
     
     private lazy var locationButton: UIButton = {
         
-        let action = UIAction{ [unowned self] _ in
-            self.didTapButton()
+        let action = UIAction { [unowned self] _ in
+            self.didTapLocationButton()
         }
         
         let largeFont = UIFont.systemFont(ofSize: 20)
@@ -39,8 +45,7 @@ class SearchRootViewController: BaseViewController {
             systemName: "location.fill",
             withConfiguration: imageConfiguration
         )
-//        buttonConfiguration.title = "Location"
-//        buttonConfiguration.buttonSize = .large
+ 
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
         buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
@@ -52,6 +57,59 @@ class SearchRootViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
+    }()
+    
+    private lazy var zoomPlusButton: UIButton = {
+        
+        let action = UIAction { [unowned self] _ in
+            self.didTapLocationButton()
+        }
+        
+        let largeFont = UIFont.systemFont(ofSize: 20)
+        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
+        
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.image = UIImage(
+            systemName: "plus",
+            withConfiguration: imageConfiguration
+        )
+        
+        buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
+        buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
+        buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        buttonConfiguration.cornerStyle = .small
+        
+        let button = UIButton(configuration: buttonConfiguration, primaryAction: action)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
+    private lazy var zoomMimusButton: UIButton = {
+        
+        let action = UIAction { [unowned self] _ in
+            self.didTapZoomMinusButton()
+        }
+        
+        let largeFont = UIFont.systemFont(ofSize: 20)
+        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
+        
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.image = UIImage(
+            systemName: "minus",
+            withConfiguration: imageConfiguration
+        )
+        
+        buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
+        buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
+        buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        buttonConfiguration.cornerStyle = .small
+        
+        let button = UIButton(configuration: buttonConfiguration, primaryAction: action)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+        
     }()
     
     init(
@@ -75,10 +133,11 @@ class SearchRootViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        output?.didLoadView()
+        
         setupView()
         setupSubviews()
         setupConstraints()
-
     }
     
     private func setupView() {
@@ -101,7 +160,7 @@ class SearchRootViewController: BaseViewController {
     
     private func setupSubviews() {
         setupMap()
-        setupButton()
+        setupButtons()
     }
     
     private func setupSearchField() {
@@ -114,11 +173,16 @@ class SearchRootViewController: BaseViewController {
         // Set initial location in Tashkent
         let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
         mapView.centerToLocation(initialLocation)
+        // allow to show location point
         mapView.showsUserLocation = true
+        // Added airports pins
+        mapView.addAnnotations(mapViewData.airports)
     }
     
-    private func setupButton() {
+    private func setupButtons() {
         mapView.addSubview(locationButton)
+        mapView.addSubview(zoomPlusButton)
+        mapView.addSubview(zoomMimusButton)
     }
     
     private func setupConstraints() {
@@ -134,6 +198,12 @@ class SearchRootViewController: BaseViewController {
             
             locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
             locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            
+            zoomPlusButton.topAnchor.constraint(equalTo: locationButton.bottomAnchor, constant: 10),
+            zoomPlusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            
+            zoomMimusButton.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 2),
+            zoomMimusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
  
         ])
     }
@@ -146,11 +216,21 @@ class SearchRootViewController: BaseViewController {
 //        output?.didSelectSearchByAirportTimetable()
     }
     
-    @objc func didTapButton() {
+    @objc func didTapLocationButton() {
         locationButton.isEnabled = false
         output?.didAskToObtainCurrentLocation()
     }
+    
+    @objc func didTapZoomPlusButton() {
+     
+    }
+    
+    @objc func didTapZoomMinusButton() {
+        
+    }
 }
+
+
 
 extension SearchRootViewController {
     func searchFor(_ searchText: String) {
@@ -164,6 +244,11 @@ extension SearchRootViewController {
 }
 
 extension SearchRootViewController: SearchViewInput {
+    
+    func showAirportsPin(_ pins: MapViewData) {
+        mapViewData = pins
+    }
+    
     func didObtain(currentLocation: Location) {
         mapView.centerToLocation(CLLocation(
             latitude: currentLocation.latitude,

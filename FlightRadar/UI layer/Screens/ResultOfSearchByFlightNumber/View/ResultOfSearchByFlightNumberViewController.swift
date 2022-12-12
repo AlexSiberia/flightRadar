@@ -20,14 +20,6 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
 
     fileprivate var tableData: SectionedTableViewDataSource?
     
-//    private lazy var tableActions: TableViewDelegate = { [unowned self] in
-//        TableViewDelegate(
-//            models: transports,
-//            cellActionDelegate: TableViewDelegate(viewController: self)
-//        )
-//    }()
-    
-    
     // MARK: - Subviews
     
     fileprivate lazy var loadingLabel: UILabel = {
