@@ -17,6 +17,7 @@ struct MapViewData {
 class SearchRootViewController: BaseViewController {
     
     fileprivate var mapViewData: MapViewData = MapViewData(airports: [])
+    fileprivate var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
     
     var output: SearchViewOutput?
     let searchController: StandartSearchController
@@ -29,6 +30,14 @@ class SearchRootViewController: BaseViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         return mapView
+    }()
+    
+    private lazy var zoomControl: MKScaleView = {
+        let zoomControl = MKScaleView()
+        
+        zoomControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        return zoomControl
     }()
     
     private lazy var locationButton: UIButton = {
@@ -62,7 +71,7 @@ class SearchRootViewController: BaseViewController {
     private lazy var zoomPlusButton: UIButton = {
         
         let action = UIAction { [unowned self] _ in
-            self.didTapLocationButton()
+            self.didTapZoomPlusButton()
         }
         
         let largeFont = UIFont.systemFont(ofSize: 20)
@@ -145,10 +154,8 @@ class SearchRootViewController: BaseViewController {
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
-        
         // Hide back button
         navigationItem.hidesBackButton = true
-
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
@@ -171,9 +178,10 @@ class SearchRootViewController: BaseViewController {
         view.addSubviews(mapView)
         
         // Set initial location in Tashkent
-        let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
-        mapView.centerToLocation(initialLocation)
-        // allow to show location point
+        let initialLocation = CLLocationCoordinate2D(latitude: 41.311081, longitude: 69.240562)
+        let span = span
+        let region = MKCoordinateRegion(center: initialLocation, span: span)
+        mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
         // Added airports pins
         mapView.addAnnotations(mapViewData.airports)
@@ -183,6 +191,7 @@ class SearchRootViewController: BaseViewController {
         mapView.addSubview(locationButton)
         mapView.addSubview(zoomPlusButton)
         mapView.addSubview(zoomMimusButton)
+        mapView.addSubview(zoomControl)
     }
     
     private func setupConstraints() {
@@ -204,6 +213,9 @@ class SearchRootViewController: BaseViewController {
             
             zoomMimusButton.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 2),
             zoomMimusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            
+            zoomControl.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 5),
+            zoomControl.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
  
         ])
     }
@@ -222,15 +234,15 @@ class SearchRootViewController: BaseViewController {
     }
     
     @objc func didTapZoomPlusButton() {
-     
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta / 1.5, longitudeDelta: span.longitudeDelta / 1.5)
+        mapView.region.span = span
     }
     
     @objc func didTapZoomMinusButton() {
-        
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta * 1.5, longitudeDelta: span.longitudeDelta * 1.5)
+        mapView.region.span = span
     }
 }
-
-
 
 extension SearchRootViewController {
     func searchFor(_ searchText: String) {
@@ -249,18 +261,11 @@ extension SearchRootViewController: SearchViewInput {
         mapViewData = pins
     }
     
-    func didObtain(currentLocation: Location) {
-        mapView.centerToLocation(CLLocation(
-            latitude: currentLocation.latitude,
-            longitude: currentLocation.longitude
-        ))
-    
-        //pun un marker
-//                   let marker1 = MKPointAnnotation()
-//                   marker1.coordinate = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
-//                   marker1.title = "My Position"
-//                   mapView.addAnnotation(marker1)
-        
+    func didObtain(currentLocation: CLLocationCoordinate2D) {
+        span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: currentLocation, span: span)
+        mapView.setRegion(region, animated: true)
+
         locationButton.isEnabled = true
     }
 }
@@ -284,19 +289,4 @@ extension SearchRootViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.showsSearchResultsController = true
     }
-    
-    
-}
-
-private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 100000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
 }
