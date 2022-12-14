@@ -32,28 +32,14 @@ class SearchRootViewController: BaseViewController {
         return mapView
     }()
     
-    private lazy var zoomControl: MKScaleView = {
-        let zoomControl = MKScaleView()
-        
-        zoomControl.translatesAutoresizingMaskIntoConstraints = false
-        
-        return zoomControl
-    }()
-    
     private lazy var locationButton: UIButton = {
         
         let action = UIAction { [unowned self] _ in
             self.didTapLocationButton()
         }
         
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "location.fill",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "location.fill")
  
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -74,14 +60,8 @@ class SearchRootViewController: BaseViewController {
             self.didTapZoomPlusButton()
         }
         
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "plus",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "plus")
         
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -99,15 +79,9 @@ class SearchRootViewController: BaseViewController {
         let action = UIAction { [unowned self] _ in
             self.didTapZoomMinusButton()
         }
-        
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
+    
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "minus",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "minus")
         
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -191,7 +165,6 @@ class SearchRootViewController: BaseViewController {
         mapView.addSubview(locationButton)
         mapView.addSubview(zoomPlusButton)
         mapView.addSubview(zoomMimusButton)
-        mapView.addSubview(zoomControl)
     }
     
     private func setupConstraints() {
@@ -207,15 +180,18 @@ class SearchRootViewController: BaseViewController {
             
             locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
             locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            locationButton.widthAnchor.constraint(equalToConstant: 45),
+            locationButton.heightAnchor.constraint(equalToConstant: 45),
             
             zoomPlusButton.topAnchor.constraint(equalTo: locationButton.bottomAnchor, constant: 10),
             zoomPlusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            zoomPlusButton.widthAnchor.constraint(equalToConstant: 45),
+            zoomPlusButton.heightAnchor.constraint(equalToConstant: 45),
             
             zoomMimusButton.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 2),
             zoomMimusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
-            
-            zoomControl.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 5),
-            zoomControl.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            zoomMimusButton.widthAnchor.constraint(equalToConstant: 45),
+            zoomMimusButton.heightAnchor.constraint(equalToConstant: 45),
  
         ])
     }
