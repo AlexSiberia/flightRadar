@@ -17,7 +17,6 @@ struct MapViewData {
 class SearchRootViewController: BaseViewController {
     
     fileprivate var mapViewData: MapViewData = MapViewData(airports: [])
-    fileprivate var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
     
     var output: SearchViewOutput?
     let searchController: StandartSearchController
@@ -153,7 +152,7 @@ class SearchRootViewController: BaseViewController {
         
         // Set initial location in Tashkent
         let initialLocation = CLLocationCoordinate2D(latitude: 41.311081, longitude: 69.240562)
-        let span = span
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
         let region = MKCoordinateRegion(center: initialLocation, span: span)
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
@@ -210,13 +209,15 @@ class SearchRootViewController: BaseViewController {
     }
     
     @objc func didTapZoomPlusButton() {
+        var span = mapView.region.span
         span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta / 1.5, longitudeDelta: span.longitudeDelta / 1.5)
-        mapView.region.span = span
+        mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
     }
     
     @objc func didTapZoomMinusButton() {
+        var span = mapView.region.span
         span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta * 1.5, longitudeDelta: span.longitudeDelta * 1.5)
-        mapView.region.span = span
+        mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
     }
 }
 
@@ -238,7 +239,7 @@ extension SearchRootViewController: SearchViewInput {
     }
     
     func didObtain(currentLocation: CLLocationCoordinate2D) {
-        span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
         let region = MKCoordinateRegion(center: currentLocation, span: span)
         mapView.setRegion(region, animated: true)
 
