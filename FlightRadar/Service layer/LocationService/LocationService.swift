@@ -11,22 +11,12 @@ final class LocationService: NSObject, LocationServiceProtocol {
         return locationManager
     }()
     
-//    init(locationManager: CLLocationManager = CLLocationManager()) {
-//        self.locationManager = locationManager
-//        super.init()
-//        self.locationManager.delegate = self
-//    }
-    
     private func retrieveLocation() {
         let status = locationManager.authorizationStatus
         
         if status == .denied || status == .restricted {
             return
         }
-        
-//        if !CLLocationManager.locationServicesEnabled() {
-//            return
-//        }
         
         if status == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
@@ -73,9 +63,8 @@ extension LocationService: CLLocationManagerDelegate {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
         
-            let userLocation = Location(
-                longitude: longitude,
-                latitude: latitude)
+            let userLocation = CLLocationCoordinate2D(
+                latitude: latitude, longitude: longitude)
             
             delegate?.didRecieveLocation(self, location: userLocation)
         }

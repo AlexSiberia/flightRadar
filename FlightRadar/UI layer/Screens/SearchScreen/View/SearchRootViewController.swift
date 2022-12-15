@@ -37,14 +37,8 @@ class SearchRootViewController: BaseViewController {
             self.didTapLocationButton()
         }
         
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "location.fill",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "location.fill")
  
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -62,17 +56,11 @@ class SearchRootViewController: BaseViewController {
     private lazy var zoomPlusButton: UIButton = {
         
         let action = UIAction { [unowned self] _ in
-            self.didTapLocationButton()
+            self.didTapZoomPlusButton()
         }
         
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "plus",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "plus")
         
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -90,15 +78,9 @@ class SearchRootViewController: BaseViewController {
         let action = UIAction { [unowned self] _ in
             self.didTapZoomMinusButton()
         }
-        
-        let largeFont = UIFont.systemFont(ofSize: 20)
-        let imageConfiguration = UIImage.SymbolConfiguration(font: largeFont)
-        
+    
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.image = UIImage(
-            systemName: "minus",
-            withConfiguration: imageConfiguration
-        )
+        buttonConfiguration.image = UIImage(systemName: "minus")
         
         buttonConfiguration.baseBackgroundColor = UIColor.appColor(.backgroundColor)
         buttonConfiguration.baseForegroundColor = UIColor.appColor(.textColor)
@@ -145,10 +127,8 @@ class SearchRootViewController: BaseViewController {
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
-        
         // Hide back button
         navigationItem.hidesBackButton = true
-
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
@@ -171,9 +151,10 @@ class SearchRootViewController: BaseViewController {
         view.addSubviews(mapView)
         
         // Set initial location in Tashkent
-        let initialLocation = CLLocation(latitude: 41.311081, longitude: 69.240562)
-        mapView.centerToLocation(initialLocation)
-        // allow to show location point
+        let initialLocation = CLLocationCoordinate2D(latitude: 41.311081, longitude: 69.240562)
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: initialLocation, span: span)
+        mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
         // Added airports pins
         mapView.addAnnotations(mapViewData.airports)
@@ -198,12 +179,18 @@ class SearchRootViewController: BaseViewController {
             
             locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
             locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            locationButton.widthAnchor.constraint(equalToConstant: 45),
+            locationButton.heightAnchor.constraint(equalToConstant: 45),
             
             zoomPlusButton.topAnchor.constraint(equalTo: locationButton.bottomAnchor, constant: 10),
             zoomPlusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            zoomPlusButton.widthAnchor.constraint(equalToConstant: 45),
+            zoomPlusButton.heightAnchor.constraint(equalToConstant: 45),
             
             zoomMimusButton.topAnchor.constraint(equalTo: zoomPlusButton.bottomAnchor, constant: 2),
             zoomMimusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            zoomMimusButton.widthAnchor.constraint(equalToConstant: 45),
+            zoomMimusButton.heightAnchor.constraint(equalToConstant: 45),
  
         ])
     }
@@ -222,15 +209,17 @@ class SearchRootViewController: BaseViewController {
     }
     
     @objc func didTapZoomPlusButton() {
-     
+        var span = mapView.region.span
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta / 1.5, longitudeDelta: span.longitudeDelta / 1.5)
+        mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
     }
     
     @objc func didTapZoomMinusButton() {
-        
+        var span = mapView.region.span
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta * 1.5, longitudeDelta: span.longitudeDelta * 1.5)
+        mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
     }
 }
-
-
 
 extension SearchRootViewController {
     func searchFor(_ searchText: String) {
@@ -249,18 +238,11 @@ extension SearchRootViewController: SearchViewInput {
         mapViewData = pins
     }
     
-    func didObtain(currentLocation: Location) {
-        mapView.centerToLocation(CLLocation(
-            latitude: currentLocation.latitude,
-            longitude: currentLocation.longitude
-        ))
-    
-        //pun un marker
-//                   let marker1 = MKPointAnnotation()
-//                   marker1.coordinate = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
-//                   marker1.title = "My Position"
-//                   mapView.addAnnotation(marker1)
-        
+    func didObtain(currentLocation: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: currentLocation, span: span)
+        mapView.setRegion(region, animated: true)
+
         locationButton.isEnabled = true
     }
 }
@@ -284,19 +266,4 @@ extension SearchRootViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.showsSearchResultsController = true
     }
-    
-    
-}
-
-private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 100000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
 }

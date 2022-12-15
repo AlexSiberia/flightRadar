@@ -1,9 +1,10 @@
 import Foundation
+import CoreLocation
 
-struct Location {
-    let longitude: Double
-    let latitude: Double
-}
+//struct Location {
+//    let longitude: CLLocationDegrees
+//    let latitude: CLLocationDegrees
+//}
 
 protocol LocationServiceProtocol {
     
@@ -15,6 +16,6 @@ protocol LocationServiceProtocol {
 protocol LocationServiceDelegate: AnyObject {
     func didRecieveLocation(
         _ service: LocationServiceProtocol,
-        location: Location
+        location: CLLocationCoordinate2D
     )
 }

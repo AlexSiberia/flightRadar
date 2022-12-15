@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol SearchViewInput: AnyObject {
     
-    func didObtain(currentLocation: Location)
+    func didObtain(currentLocation: CLLocationCoordinate2D)
     
     func showAirportsPin(_ pins: MapViewData)
 }

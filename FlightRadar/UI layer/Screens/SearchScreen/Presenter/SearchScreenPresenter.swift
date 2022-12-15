@@ -19,7 +19,7 @@ class SearchScreenPresenter: SearchScreenInput {
     
     var locationService: LocationServiceProtocol?
     
-    var recievedLocation: Location?
+    var recievedLocation: CLLocationCoordinate2D?
     
     // MARK: - Private
     
@@ -64,7 +64,7 @@ extension SearchScreenPresenter: SearchViewOutput {
 extension SearchScreenPresenter: LocationServiceDelegate {
     func didRecieveLocation(
         _ service: LocationServiceProtocol,
-        location: Location
+        location: CLLocationCoordinate2D
     ) {
         recievedLocation = location
         view?.didObtain(currentLocation: location)
