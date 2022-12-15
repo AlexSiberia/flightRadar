@@ -91,7 +91,14 @@ class SearchRootViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
+    }()
+    
+    private lazy var compass: MKCompassButton = {
+       let compas = MKCompassButton(mapView: mapView)
+        compas.compassVisibility = .adaptive
+        compas.translatesAutoresizingMaskIntoConstraints = false
         
+        return compas
     }()
     
     init(
@@ -158,12 +165,15 @@ class SearchRootViewController: BaseViewController {
         mapView.showsUserLocation = true
         // Added airports pins
         mapView.addAnnotations(mapViewData.airports)
+        
+        mapView.showsCompass = false
     }
     
     private func setupButtons() {
         mapView.addSubview(locationButton)
         mapView.addSubview(zoomPlusButton)
         mapView.addSubview(zoomMimusButton)
+        mapView.addSubview(compass)
     }
     
     private func setupConstraints() {
@@ -177,12 +187,12 @@ class SearchRootViewController: BaseViewController {
             mapView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
             
-            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
+            locationButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 10),
             locationButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
             locationButton.widthAnchor.constraint(equalToConstant: 45),
             locationButton.heightAnchor.constraint(equalToConstant: 45),
             
-            zoomPlusButton.topAnchor.constraint(equalTo: locationButton.bottomAnchor, constant: 10),
+            zoomPlusButton.bottomAnchor.constraint(equalTo: mapView.centerYAnchor),
             zoomPlusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
             zoomPlusButton.widthAnchor.constraint(equalToConstant: 45),
             zoomPlusButton.heightAnchor.constraint(equalToConstant: 45),
@@ -191,6 +201,11 @@ class SearchRootViewController: BaseViewController {
             zoomMimusButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
             zoomMimusButton.widthAnchor.constraint(equalToConstant: 45),
             zoomMimusButton.heightAnchor.constraint(equalToConstant: 45),
+            
+            compass.topAnchor.constraint(equalTo: locationButton.bottomAnchor, constant: 10),
+            compass.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -5),
+            compass.widthAnchor.constraint(equalToConstant: 45),
+            compass.heightAnchor.constraint(equalToConstant: 45),
  
         ])
     }
@@ -210,13 +225,22 @@ class SearchRootViewController: BaseViewController {
     
     @objc func didTapZoomPlusButton() {
         var span = mapView.region.span
-        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta / 1.5, longitudeDelta: span.longitudeDelta / 1.5)
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta / 2.5, longitudeDelta: span.longitudeDelta / 2.5)
+        if span.latitudeDelta < 0.0001 {
+            span.latitudeDelta = 0.0001
+            span.longitudeDelta = 0.0001
+        }
         mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
+        print(span)
     }
     
     @objc func didTapZoomMinusButton() {
         var span = mapView.region.span
-        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta * 1.5, longitudeDelta: span.longitudeDelta * 1.5)
+        span = MKCoordinateSpan(latitudeDelta: span.latitudeDelta * 2.5, longitudeDelta: span.longitudeDelta * 2.5)
+        if span.latitudeDelta > 180.0 {
+            span.latitudeDelta = 180.0
+            span.longitudeDelta = 180.0
+        }
         mapView.setRegion(MKCoordinateRegion(center: mapView.region.center, span: span), animated: true)
     }
 }
