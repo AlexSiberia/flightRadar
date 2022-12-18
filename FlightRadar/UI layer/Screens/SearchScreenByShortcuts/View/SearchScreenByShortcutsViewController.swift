@@ -1,35 +1,30 @@
 //
-//  ResultOfSearchByFlightNumberViewController.swift
+//  SearchScreenByShortcutsController.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 20.04.2022.
+//  Created by Alexander Kurbatov on 26.12.2022.
 //
 
 import UIKit
 
-struct ResultOfSearchByFlightNumberViewData {
-    let airlines: [AirlineModel]
-    let flights: [FlightNumberModel]
+struct SearchScreenByShortcutsViewSection {
+    let header: HeaderModel
+    let shortcuts: [ShortCutModel]
 }
 
-class ResultOfSearchByFlightNumberViewController: UIViewController {
-    
-    fileprivate var viewData: ResultOfSearchByFlightNumberViewData = ResultOfSearchByFlightNumberViewData(airlines: [], flights: [])
-    
-    var presenter: ResultOfSearchByFlightNumberViewOutput
+struct SearchScreenByShortcutsViewData {
+    let sections: [SearchScreenByShortcutsViewSection]
+}
 
+class SearchScreenByShortcutsViewController: UIViewController {
+    
+    fileprivate var viewData: SearchScreenByShortcutsViewData = SearchScreenByShortcutsViewData(
+      sections: []
+        )
+    
     fileprivate var tableData: SectionedTableViewDataSource?
     
-    // MARK: - Subviews
-    
-    fileprivate lazy var loadingLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        label.text = "Загрузка..."
-        
-        return label
-    }()
+    var presenter: SearchScreenByShortcutsPresenter?
     
     fileprivate lazy var tableView: UITableView = { [unowned self] in
         let tableView = UITableView(
@@ -39,6 +34,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.appColor(.backgroundColor)
+        tableView.tintColor = UIColor.appColor(.textColor)
         
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -47,9 +43,8 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
         
         return tableView
     }()
-
     
-    init(presenter: ResultOfSearchByFlightNumberPresenter) {
+    init(presenter: SearchScreenByShortcutsPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,7 +54,6 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +61,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         
-        presenter.didLoadView()
+        presenter?.didLoadView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +71,7 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
             tableView.deselectRow(at: indexPath, animated: animated)
         }
     }
-
+    
     // MARK: - Tune subviews
     
     private func setupView() {
@@ -86,22 +80,16 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        setupLoadingView()
         setupTableView()
-    }
-    
-    private func setupLoadingView() {
-        view.addSubview(loadingLabel)
     }
     
     private func setupTableView() {
         view.addSubview(tableView)
         
-        tableView.register(ResultOrSearchByFlightNumberAirlinesTableViewCell.self)
-        tableView.register(ResultOrSearchByFlightNumberFlightTableViewCell.self)
-        tableView.register(DividerTableViewCell.self)
+        tableView.register(SearchScreenByShortcutsShortcutTableViewCell.self)
+        tableView.register(SearchScreenByShortcutsHeaderTableViewCell.self)
     }
-
+    
     // MARK: - Layout
     
     private func setupConstraints() {
@@ -116,49 +104,49 @@ class ResultOfSearchByFlightNumberViewController: UIViewController {
     }
 }
 
-extension ResultOfSearchByFlightNumberViewController: ResultOfSearchByFlightNumberViewInput {
+extension SearchScreenByShortcutsViewController: SearchScreenByShortcutsViewInput {
     
     func showLoadingState() {
         tableView.isHidden = true
-        loadingLabel.isHidden = false
+        //        loadingLabel.isHidden = false
     }
     
-    func showDataState(_ data: ResultOfSearchByFlightNumberViewData) {
+    func showDataState(_ data: SearchScreenByShortcutsViewData) {
         tableView.isHidden = false
-        loadingLabel.isHidden = true
+        //        loadingLabel.isHidden = true
         
         viewData = data
         
-        let section0 = TableViewDataSource.make(for: viewData.airlines)
-        let section1 = TableViewDataSource.make(for: [ DividerModel() ])
-        let section2 = TableViewDataSource.make(for: viewData.flights)
-        let section3 = TableViewDataSource.make(for: [ DividerModel() ])
+        var dataSources: [UITableViewDataSource] = []
         
-        let dataSource = SectionedTableViewDataSource(dataSources: [
-            section0,
-            section1,
-            section2,
-            section3,
-        ])
+        for section in viewData.sections {
+            let header = TableViewDataSource.make(for: [section.header])
+            let shortcuts = TableViewDataSource.make(for: section.shortcuts)
+            
+            dataSources.append(header)
+            dataSources.append(shortcuts)
+        }
+        
+        let dataSource = SectionedTableViewDataSource(dataSources: dataSources)
         tableView.dataSource = dataSource
         tableData = dataSource
-
+        
         tableView.reloadData()
     }
 }
 
-extension ResultOfSearchByFlightNumberViewController: UITableViewDelegate {
-    
+extension SearchScreenByShortcutsViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
-        if indexPath.section == 0 {
-            let airline = viewData.airlines[indexPath.row]
-            presenter.userDidSelect(airline: airline)
-        } else if indexPath.section == 2 {
-            let flight = viewData.flights[indexPath.row]
-            presenter.userDidSelect(flight: flight)
+        didSelectRowAt indexPath: IndexPath) {
+            if indexPath.section % 2 == 0 {
+                return
+            }
+            if indexPath.section == 3 {
+                let shortcut = viewData.sections[1]
+                    .shortcuts[indexPath.row]
+                    presenter?.userDidSelect(shortcut: shortcut)
+            }
+            
         }
-    }
 }

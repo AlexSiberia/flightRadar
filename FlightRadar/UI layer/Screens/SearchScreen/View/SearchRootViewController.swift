@@ -14,7 +14,7 @@ struct MapViewData {
     let airports: [AirportModel]
 }
 
-class SearchRootViewController: BaseViewController {
+class SearchRootViewController: BaseViewController, MKMapViewDelegate {
     
     fileprivate var mapViewData: MapViewData = MapViewData(airports: [])
     
@@ -122,6 +122,8 @@ class SearchRootViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        
         output?.didLoadView()
         
         setupView()
@@ -167,6 +169,21 @@ class SearchRootViewController: BaseViewController {
         mapView.addAnnotations(mapViewData.airports)
         
         mapView.showsCompass = false
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyMarker")
+
+        let titles = Set(mapViewData.airports.map { $0.title })
+        
+        if titles.contains(annotation.title!) {
+            annotationView.markerTintColor = UIColor.appColor(.iconColor)
+            annotationView.glyphImage = UIImage(named: "AirportPinLogo")
+        } else {
+            return nil
+        }
+        
+        return annotationView
     }
     
     private func setupButtons() {

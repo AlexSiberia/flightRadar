@@ -19,3 +19,25 @@ class AirportModel: NSObject, MKAnnotation {
         self.info = info
     }
 }
+
+//final class LocationAnnotationView: MKAnnotationView {
+//    
+//    // MARK: Initialization
+//    
+//    override init(annotation: MKAnnotation?, reuseIdentifier reuseIndetifier: String?) {
+//        super.init(annotation: annotation, reuseIdentifier: reuseIndetifier)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    // MARK: Setup
+//    
+//    private func setupUI() {
+//        backgroundColor = .clear
+//        
+//        let view = MapPinView()
+//        
+//    }
+//}
