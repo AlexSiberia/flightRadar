@@ -171,33 +171,17 @@ class SearchRootViewController: BaseViewController, MKMapViewDelegate {
         mapView.showsCompass = false
     }
     
-    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyMarker")
 
-        let titles = Set(mapView.annotations.map { $0.title })
-        print(titles)
+        let titles = Set(mapViewData.airports.map { $0.title })
         
-        if titles.contains(annotation.title) {
+        if titles.contains(annotation.title!) {
             annotationView.markerTintColor = UIColor.appColor(.iconColor)
             annotationView.glyphImage = UIImage(named: "AirportPinLogo")
         } else {
             return nil
         }
-        
-        if annotation.title == "My Location" {
-            return nil
-        }
-        
-//        switch annotation.title {
-//        case "Yuzhnyy Airport":
-//            annotationView.markerTintColor = UIColor.appColor(.iconColor)
-//            annotationView.glyphImage = UIImage(named: "AirportPinLogo")
-//        case "Sheremetyevo":
-//            annotationView.markerTintColor = UIColor.appColor(.iconColor)
-//            annotationView.glyphImage = UIImage(named: "AirportPinLogo")
-//
-//        default: return nil
-//        }
         
         return annotationView
     }

@@ -9,6 +9,5 @@ import UIKit
 
 struct AirlineModel {
     var airlineBrand:   String
-//    var flightDescription: String
     var aviacompanyLogo: UIImage
 }
