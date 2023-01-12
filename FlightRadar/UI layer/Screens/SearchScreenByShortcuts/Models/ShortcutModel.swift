@@ -10,4 +10,6 @@ import UIKit
 struct ShortCutModel {
     var title: String
     var logo: UIImage
+    
+    var didSelect: () -> ()
 }

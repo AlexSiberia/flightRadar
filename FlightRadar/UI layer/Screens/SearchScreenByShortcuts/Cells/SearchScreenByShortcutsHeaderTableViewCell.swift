@@ -68,7 +68,7 @@ class SearchScreenByShortcutsHeaderTableViewCell: ConfigurableCell<HeaderModel> 
         // Label constraints
         NSLayoutConstraint.activate([
             headerLabel.leadingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
+                equalTo: contentView.leadingAnchor,
                 constant: LayoutConstants.smallDefaultOffset
             ),
 //            headerLabel.trailingAnchor.constraint(

@@ -12,6 +12,15 @@ struct SearchScreenByShortcutsViewData {
     let headers: [HeaderModel]
 }
 
+//struct SearchScreenByShortcutsViewSection {
+//    let shortcuts: [ShortCutModel]
+//    let header: HeaderModel
+//}
+//
+//struct SearchScreenByShortcutsViewData {
+//    let sections: [SearchScreenByShortcutsViewSection]
+//}
+
 class SearchScreenByShortcutsViewController: UIViewController {
     
     fileprivate var viewData: SearchScreenByShortcutsViewData = SearchScreenByShortcutsViewData(
@@ -112,17 +121,24 @@ extension SearchScreenByShortcutsViewController: SearchScreenByShortcutsViewInpu
         tableView.isHidden = false
         //        loadingLabel.isHidden = true
         
+        guard data.headers.count >= 2 else {
+            fatalError()
+        }
+        
         viewData = data
         
-        let section0 = TableViewDataSource.make(for: viewData.headers)
-        let section2 = TableViewDataSource.make(for: viewData.headers)
+        // TODO: убрать
+        
+        let data_section0 = [viewData.headers.first].compactMap { $0 }
+        let data_section2 = [viewData.headers.last].compactMap { $0 }
+        let section0 = TableViewDataSource.make(for: data_section0)
+        let section2 = TableViewDataSource.make(for: data_section2)
         let section3 = TableViewDataSource.make(for: viewData.shortcuts)
         
         let dataSource = SectionedTableViewDataSource(dataSources: [
             section0,
             section2,
             section3,
-            
         ])
         tableView.dataSource = dataSource
         tableData = dataSource
@@ -134,9 +150,12 @@ extension SearchScreenByShortcutsViewController: SearchScreenByShortcutsViewInpu
 extension SearchScreenByShortcutsViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
+        didSelectRowAt indexPath: IndexPath
+    ) {
             if indexPath.section == 2 {
+                
                 let shortcut = viewData.shortcuts[indexPath.row]
+                
                 presenter?.userDidSelect(shortcut: shortcut)
             }
         }

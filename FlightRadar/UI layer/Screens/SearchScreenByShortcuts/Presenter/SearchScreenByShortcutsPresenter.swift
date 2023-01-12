@@ -27,6 +27,8 @@ class SearchScreenByShortcutsPresenter: SearchScreenByShortcutsScreenInput {
     
     private func createShortcutsArray() {
         
+        // TODO: дописать переходы на нужные экраны
+        
         shortcuts.append(
             ShortCutModel(
                 title: "Flight by route",
@@ -42,7 +44,10 @@ class SearchScreenByShortcutsPresenter: SearchScreenByShortcutsScreenInput {
         shortcuts.append(
             ShortCutModel(
                 title: "Airport by country",
-                logo: UIImage(systemName: "mappin.and.ellipse") ?? UIImage()
+                logo: UIImage(systemName: "mappin.and.ellipse") ?? UIImage(),
+                didSelect: { [weak self] in
+//                    self?.output?.didSelectAirportByCountry()
+                }
             )
         )
     }
@@ -69,6 +74,7 @@ extension SearchScreenByShortcutsPresenter: SearchScreenByShortcutsViewOutput {
     }
     
     func userDidSelect(shortcut: ShortCutModel) {
-        output?.didSelect(shortcut: shortcut)
+        shortcut.didSelect()
+//        output?.didSelect(shortcut: shortcut)
     }
 }
