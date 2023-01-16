@@ -137,6 +137,16 @@ extension RootCoordinator: StartScreenOutput {
 }
 
 extension RootCoordinator: SearchCoordinatorOutput {
+    func didSelectFlightByRoute() {
+        showSearchByAirportTimetable()
+    }
+    func didSelectLiveFlightByAirline() {
+        showPlaneOnMap()
+    }
+    func didSelectByAirportByCountry() {
+        showTimeTable()
+    }
+    
     func didSelectSearchByAirportTimetable() {
         showSearchByAirportTimetable()
     }

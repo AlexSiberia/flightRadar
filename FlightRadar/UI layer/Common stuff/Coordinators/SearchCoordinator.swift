@@ -3,6 +3,9 @@ import UIKit
 protocol SearchCoordinatorOutput: AnyObject {
         func didSelectSearchByFightNumber()
         func didSelectSearchByAirportTimetable()
+        func didSelectFlightByRoute()
+        func didSelectLiveFlightByAirline()
+        func didSelectByAirportByCountry()
 }
 
 final class SearchCoordinator: AppCoordinator {
@@ -12,7 +15,8 @@ final class SearchCoordinator: AppCoordinator {
     var serviceLocator: ServiceLocator
     weak var output: SearchCoordinatorOutput? = nil
     
-    weak var resultScreenInput: ResultsOfSearchByFlightNumberScreenInput?
+//    weak var resultScreenInput: ResultsOfSearchByFlightNumberScreenInput?
+    weak var resultScreenInput: SearchScreenByShortcutsScreenInput?
     
     // MARK: - Initialization
     
@@ -28,12 +32,38 @@ final class SearchCoordinator: AppCoordinator {
     // MARK: - Public
     
     func start() {
-        showSearchRoot()
+        showSearchRootAlternative()
     }
     
-    fileprivate func showSearchRoot() {
-        let resultOfSearchScreen = ResultOfSearchByFlightNumberAssembly().create(
-            output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
+//    fileprivate func showSearchRoot() {
+//        let resultOfSearchScreen = ResultOfSearchByFlightNumberAssembly().create(
+//            output: OutputScreenContainer<ResultOfSeacrhByFlightNumberScreenOutput>(outputScreen: self),
+//            serviceLocator: serviceLocator
+//        )
+//
+//        let searchController = StandartSearchController(
+//            searchResultController: resultOfSearchScreen.view,
+//            placeholder: "Find a plane"
+//        )
+//
+//        let searchScreen = SearchScreenAssembly().create(
+//            output: OutputScreenContainer<SearchScreenOutput>(outputScreen: self),
+//            serviceLocator: serviceLocator,
+//            searchController: searchController
+//        )
+//
+//        resultScreenInput = resultOfSearchScreen.input
+//
+//        print("Will show SearchRoot")
+//        transitionHandler?.pushViewController(
+//            searchScreen.view,
+//            animated: true
+//        )
+//    }
+    
+    fileprivate func showSearchRootAlternative() {
+        let resultOfSearchScreen = SearchScreenByShortcutsAssembly().create(
+            output: OutputScreenContainer<SearchScreenByShortcutsScreenOutput>(outputScreen: self),
             serviceLocator: serviceLocator
         )
         
@@ -69,6 +99,22 @@ extension SearchCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
         output?.didSelectSearchByFightNumber()
     }
     func didSelect(airline: AirlineModel) {
+        output?.didSelectSearchByAirportTimetable()
+    }
+    
+    
+}
+
+extension SearchCoordinator: SearchScreenByShortcutsScreenOutput {
+    func didSelectFlightByRoute() {
+        output?.didSelectFlightByRoute()
+    }
+    
+    func didSelectLiveFlightByAirline() {
+        output?.didSelectLiveFlightByAirline()
+    }
+    
+    func didSelectFlightByAirportByCountry() {
         output?.didSelectSearchByAirportTimetable()
     }
 }
