@@ -24,3 +24,4 @@ class SearchScreenByShortcutsAssembly: Assembly {
         return AssemblyResult(view: view, input: presenter)
     }
 }
+   

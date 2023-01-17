@@ -69,6 +69,4 @@ extension SearchScreenPresenter: LocationServiceDelegate {
         recievedLocation = location
         view?.didObtain(currentLocation: location)
     }
-    
-    
 }

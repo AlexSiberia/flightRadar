@@ -8,11 +8,8 @@
 import Foundation
 
 protocol SearchViewOutput: AnyObject {
-    
     func didLoadView()
-    
     func didAskToObtainCurrentLocation()
-
 }
 
 

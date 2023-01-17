@@ -1,9 +1,9 @@
 import UIKit
 
 protocol SearchCoordinatorOutput: AnyObject {
+        func didSelectFlightByRoute()
         func didSelectSearchByFightNumber()
         func didSelectSearchByAirportTimetable()
-        func didSelectFlightByRoute()
         func didSelectLiveFlightByAirline()
         func didSelectByAirportByCountry()
 }
@@ -93,6 +93,12 @@ extension SearchCoordinator: SearchScreenOutput {
         
     }
 }
+
+//extension SearchCoordinator: FlightByRouteScreenOutput {
+//    func didReceive(searchString: String) {
+//        
+//    }
+//}
 
 extension SearchCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
     func didSelect(flight: FlightNumberModel) {

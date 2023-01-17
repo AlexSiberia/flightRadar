@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SearchByFlightNumberInput {
+protocol SearchByFlightNumberInput: AnyObject {
     
 }

@@ -6,6 +6,8 @@ final class RootCoordinator: AppCoordinator {
     var child: AppCoordinator?
     var serviceLocator: ServiceLocator
     
+    weak var resultScreenInput: SearchByFlightNumberInput?
+    
     // MARK: - Initialization
     
     init(
@@ -44,6 +46,32 @@ final class RootCoordinator: AppCoordinator {
         searchCoordinator.output = self
         
         searchCoordinator.start()
+    }
+    
+    fileprivate func showFlightByRouteController() {
+        let resultOfSearchScreen = SearchByFlightNumberAssembly().create(
+            output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
+        
+        let searchController = StandartSearchController(
+            searchResultController: resultOfSearchScreen.view,
+            placeholder: "Find a plane"
+        )
+        
+        let searchScreen = FlightByRouteAssembly().create(
+            output: OutputScreenContainer<FlightByRouteScreenOutput>(outputScreen: self),
+            serviceLocator: serviceLocator,
+            searchController: searchController
+        )
+
+        resultScreenInput = resultOfSearchScreen.input
+        
+        print("Will show SearchRoot")
+        transitionHandler?.pushViewController(
+            searchScreen.view,
+            animated: true
+        )
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
@@ -137,9 +165,9 @@ extension RootCoordinator: StartScreenOutput {
 }
 
 extension RootCoordinator: SearchCoordinatorOutput {
-    func didSelectFlightByRoute() {
-        showSearchByAirportTimetable()
-    }
+//    func didSelectFlightByRoute() {
+//        showFlightByRouteController()
+//    }
     func didSelectLiveFlightByAirline() {
         showPlaneOnMap()
     }
@@ -153,6 +181,16 @@ extension RootCoordinator: SearchCoordinatorOutput {
 
     func didSelectSearchByFightNumber() {
         showSearchByFlightNumberViewController()
+    }
+}
+
+extension RootCoordinator: FlightByRouteScreenOutput {
+    func didReceive(searchString: String) {
+        
+    }
+    
+    func didSelectFlightByRoute() {
+        showFlightByRouteController()
     }
 }
 
