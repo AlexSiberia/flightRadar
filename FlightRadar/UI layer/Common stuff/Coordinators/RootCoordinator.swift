@@ -67,17 +67,24 @@ final class RootCoordinator: AppCoordinator {
 
         resultScreenInput = resultOfSearchScreen.input
         
-        print("Will show SearchRoot")
         transitionHandler?.pushViewController(
             searchScreen.view,
             animated: true
         )
     }
     
+    fileprivate func showLiveFlightByAirlineController() {
+        let assemblyResult = LiveFlightByAirlineAssembly().create(
+            output: OutputScreenContainer<LiveFlightByAirlineScreenOutput>(outputScreen: self),
+            serviceLocator: serviceLocator
+        )
+    }
+    
     fileprivate func showSearchByFlightNumberViewController() {
         let assemblyResult = SearchByFlightNumberAssembly().create(
             output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
-            serviceLocator: serviceLocator
+            serviceLocator: serviceLocator,
+            searchController: searchController
         )
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)
@@ -165,11 +172,11 @@ extension RootCoordinator: StartScreenOutput {
 }
 
 extension RootCoordinator: SearchCoordinatorOutput {
-//    func didSelectFlightByRoute() {
-//        showFlightByRouteController()
-//    }
+    func didSelectFlightByRoute() {
+        showFlightByRouteController()
+    }
     func didSelectLiveFlightByAirline() {
-        showPlaneOnMap()
+        showLiveFlightByAirlineController()
     }
     func didSelectByAirportByCountry() {
         showTimeTable()
@@ -188,10 +195,10 @@ extension RootCoordinator: FlightByRouteScreenOutput {
     func didReceive(searchString: String) {
         
     }
+}
+
+extension RootCoordinator: LiveFlightByAirlineScreenOutput {
     
-    func didSelectFlightByRoute() {
-        showFlightByRouteController()
-    }
 }
 
 extension RootCoordinator: SearchByFlihgtNumberOutput {

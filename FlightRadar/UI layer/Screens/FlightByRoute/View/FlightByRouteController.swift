@@ -110,8 +110,8 @@ class FlightByRouteController: BaseViewController {
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
-        // Hide back button
-        navigationItem.hidesBackButton = true
+//        // Hide back button
+//        navigationItem.hidesBackButton = true
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!

@@ -2,10 +2,11 @@ import UIKit
 
 protocol SearchCoordinatorOutput: AnyObject {
         func didSelectFlightByRoute()
-        func didSelectSearchByFightNumber()
-        func didSelectSearchByAirportTimetable()
         func didSelectLiveFlightByAirline()
         func didSelectByAirportByCountry()
+        func didSelectSearchByFightNumber()
+        func didSelectSearchByAirportTimetable()
+
 }
 
 final class SearchCoordinator: AppCoordinator {
