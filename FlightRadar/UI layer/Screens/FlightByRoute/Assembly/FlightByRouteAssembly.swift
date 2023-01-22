@@ -12,32 +12,13 @@ class FlightByRouteAssembly: Assembly {
     func create(output: OutputScreenContainer<FlightByRouteScreenOutput>,
                 serviceLocator: ServiceLocator
     ) -> AssemblyResult<FlightByRouteController, FlightByRouteScreenInput> {
-      return create(
-        output: output,
-        serviceLocator: serviceLocator,
-        searchController: nil
-       )
-        
-    }
-    
-    
-    func create(output: OutputScreenContainer<FlightByRouteScreenOutput>,
-                serviceLocator: ServiceLocator,
-                searchController: StandartSearchController? = nil
-    ) -> AssemblyResult<FlightByRouteController, FlightByRouteScreenInput> {
-        
-        guard let searchController = searchController else {
-            fatalError()
-        }
         
         let presenter = FlightByRoutePresenter()
             
         let view = FlightByRouteController(
-            output: presenter,
-            searchController: searchController
+            output: presenter
         )
-        
-        searchController.searchResultsUpdater = view
+
         
         view.output = presenter
         presenter.view = view
@@ -45,5 +26,6 @@ class FlightByRouteAssembly: Assembly {
         presenter.output = output.outputScreen
         
         return AssemblyResult(view: view, input: presenter)
+        
     }
 }

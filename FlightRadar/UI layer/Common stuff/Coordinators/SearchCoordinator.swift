@@ -70,7 +70,7 @@ final class SearchCoordinator: AppCoordinator {
         
         let searchController = StandartSearchController(
             searchResultController: resultOfSearchScreen.view,
-            placeholder: "Find a plane"
+            placeholder: "Find a plane!"
         )
         
         let searchScreen = SearchScreenAssembly().create(

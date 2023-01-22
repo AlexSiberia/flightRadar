@@ -49,26 +49,17 @@ final class RootCoordinator: AppCoordinator {
     }
     
     fileprivate func showFlightByRouteController() {
-        let resultOfSearchScreen = SearchByFlightNumberAssembly().create(
-            output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
+        let assemblyResult = FlightByRouteAssembly().create(
+            output: OutputScreenContainer<FlightByRouteScreenOutput>(outputScreen: self),
             serviceLocator: serviceLocator
         )
         
-        let searchController = StandartSearchController(
-            searchResultController: resultOfSearchScreen.view,
-            placeholder: "Find a plane"
-        )
-        
-        let searchScreen = FlightByRouteAssembly().create(
-            output: OutputScreenContainer<FlightByRouteScreenOutput>(outputScreen: self),
-            serviceLocator: serviceLocator,
-            searchController: searchController
-        )
+      
 
-        resultScreenInput = resultOfSearchScreen.input
+//        resultScreenInput = assemblyResult.input
         
         transitionHandler?.pushViewController(
-            searchScreen.view,
+            assemblyResult.view,
             animated: true
         )
     }
@@ -78,13 +69,17 @@ final class RootCoordinator: AppCoordinator {
             output: OutputScreenContainer<LiveFlightByAirlineScreenOutput>(outputScreen: self),
             serviceLocator: serviceLocator
         )
+        
+        transitionHandler?.pushViewController(
+            assemblyResult.view,
+            animated: false
+        )
     }
     
     fileprivate func showSearchByFlightNumberViewController() {
         let assemblyResult = SearchByFlightNumberAssembly().create(
             output: OutputScreenContainer<SearchByFlihgtNumberOutput>(outputScreen: self),
-            serviceLocator: serviceLocator,
-            searchController: searchController
+            serviceLocator: serviceLocator
         )
         
         transitionHandler?.pushViewController(assemblyResult.view, animated: false)

@@ -10,24 +10,28 @@ import UIKit
 class LiveFlightByAirlineViewController: BaseViewController {
     
     var output: LiveFlightByAirlineViewOutput?
-    let searchController: StandartSearchController
    
     // MARK: - Subviews
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Airline name or ICAO code"
+        searchController.searchBar.autocapitalizationType = .allCharacters
+        return searchController
+    }()
    
     
     // MARK: Initialization
     
     init(
-        output: LiveFlightByAirlineViewOutput,
-        searchController: StandartSearchController
+        output: LiveFlightByAirlineViewOutput
     ) {
         self.output = output
-        self.searchController = searchController
-        
         super.init(nibName: nil, bundle: nil)
         
-        searchController.searchResultsUpdater = self
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +49,7 @@ class LiveFlightByAirlineViewController: BaseViewController {
     }
     
     private func setupView() {
-        title = "Flight by route"
+        title = "LIVE flight by airline"
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
@@ -56,8 +60,7 @@ class LiveFlightByAirlineViewController: BaseViewController {
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
         ]
         
-        // Setup search
-        navigationItem.searchController = searchController
+        setupNavigationBar()
     }
     
     private func setupSubviews() {
@@ -68,6 +71,9 @@ class LiveFlightByAirlineViewController: BaseViewController {
 
     }
     
+    private func setupNavigationBar() {
+          navigationItem.searchController = searchController
+      }
     
     // MARK: Constraints
     
@@ -77,7 +83,9 @@ class LiveFlightByAirlineViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-//            label.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+//            searchBar.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+//            searchBar.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor)
+            //            label.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
 //            label.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
 //
  
@@ -93,11 +101,6 @@ extension LiveFlightByAirlineViewController {
     func searchFor(_ searchText: String) {
         
     }
-    
-    func stopSearch() {
-        searchController.showsSearchResultsController = false
-        searchController.searchBar.searchTextField.backgroundColor = nil
-    }
 }
 
 extension LiveFlightByAirlineViewController: UISearchBarDelegate {
@@ -108,15 +111,17 @@ extension LiveFlightByAirlineViewController: UISearchBarDelegate {
       searchFor(searchText)
     }
     
-    func searchBarCancelButtonClicked(
-        _ searchBar: UISearchBar
-    ) {
-      stopSearch()
-    }
 }
 
-extension LiveFlightByAirlineViewController: UISearchResultsUpdating {
+//extension LiveFlightByAirlineViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        searchController.showsSearchResultsController = true
+//    }
+//}
+
+// MARK: - UISearchResult Updating and UISearchControllerDelegate  Extension
+  extension LiveFlightByAirlineViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        searchController.showsSearchResultsController = true
+    
     }
-}
+ }
