@@ -49,7 +49,7 @@ class LiveFlightByAirlineViewController: BaseViewController {
     }
     
     private func setupView() {
-        title = "LIVE flight by airline"
+//        title = "LIVE flight by airline"
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
