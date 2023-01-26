@@ -14,16 +14,6 @@ class FlightByRouteController: BaseViewController {
     
     // MARK: - Subviews
     
-//    private lazy var searchController: UISearchController = {
-//        let searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.delegate = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Airline name or ICAO code"
-//        searchController.searchBar.autocapitalizationType = .allCharacters
-//        return searchController
-//    }()
-    
     private lazy var label: UILabel = {
         
         label = UILabel()
@@ -53,7 +43,7 @@ class FlightByRouteController: BaseViewController {
         return departureTextField
     }()
     
-    // Add search icon - magnifyingglass
+    // Add search icon
     lazy var departureIconView: UIImageView = {
         
         let iconImage = UIImage(systemName: "airplane.departure")
@@ -61,51 +51,53 @@ class FlightByRouteController: BaseViewController {
         // Change search incon color
         iconView.tintColor = .gray
         iconView.translatesAutoresizingMaskIntoConstraints = false
+        
         return iconView
     }()
     
     lazy var departureIconViewLeftView: UIView = {
         let iconViewLeftView = UIView()
         iconViewLeftView.translatesAutoresizingMaskIntoConstraints = false
+        
         return iconViewLeftView
     }()
     
-//    private lazy var arrivalTextField: UITextField = {
-//        
-//        arrivalTextField = UITextField()
-//        arrivalTextField.placeholder = "Departure airport"
-//        arrivalTextField.textColor = UIColor.appColor(.textColor)
-//        arrivalTextField.font = UIFont.systemFont(ofSize: 20)
-//        arrivalTextField.keyboardType = UIKeyboardType.default
-//        arrivalTextField.returnKeyType = UIReturnKeyType.search
-//        arrivalTextField.clearButtonMode = UITextField.ViewMode.whileEditing
-//        arrivalTextField.autocorrectionType = UITextAutocorrectionType.no
-//        arrivalTextField.leftViewMode = UITextField.ViewMode.always
-//        arrivalTextField.leftView = departureIconViewLeftView
-//        // Change search incon color
-//        arrivalTextField.tintColor = UIColor.appColor(.textColor)
-//        arrivalTextField.layer.borderColor = UIColor.appColor(.textColor)?.cgColor
-//        arrivalTextField.layer.cornerRadius = 10.0
-//        arrivalTextField.layer.borderWidth = 2
-//        arrivalTextField.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        return arrivalTextField
-//    }()
+    private lazy var arrivalTextField: UITextField = {
+        
+        arrivalTextField = UITextField()
+        arrivalTextField.placeholder = "Arrival airport"
+        arrivalTextField.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        arrivalTextField.font = UIFont.systemFont(ofSize: 20)
+        arrivalTextField.keyboardType = UIKeyboardType.default
+        arrivalTextField.returnKeyType = UIReturnKeyType.search
+        arrivalTextField.clearButtonMode = UITextField.ViewMode.whileEditing
+        arrivalTextField.autocorrectionType = UITextAutocorrectionType.no
+        arrivalTextField.leftViewMode = UITextField.ViewMode.always
+        arrivalTextField.leftView = arrivalIconViewLeftView
+        arrivalTextField.layer.cornerRadius = 10.0
+        arrivalTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return arrivalTextField
+    }()
 //    
-//    // Add search icon - magnifyingglass
-//    lazy var departureIconView: UIImageView = {
-//        
-//        let iconImage = UIImage(systemName: "magnifyingglass")
-//        let iconView = UIImageView(image: iconImage)
-//        iconView.translatesAutoresizingMaskIntoConstraints = false
-//        return iconView
-//    }()
-//    
-//    lazy var departureIconViewLeftView: UIView = {
-//        let iconViewLeftView = UIView()
-//        iconViewLeftView.translatesAutoresizingMaskIntoConstraints = false
-//        return iconViewLeftView
-//    }()
+    // Add search icon - magnifyingglass
+    lazy var arrivalIconView: UIImageView = {
+        
+        let iconImage = UIImage(systemName: "airplane.arrival")
+        let iconView = UIImageView(image: iconImage)
+        // Change search incon color
+        iconView.tintColor = .gray
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return iconView
+    }()
+    
+    lazy var arrivalIconViewLeftView: UIView = {
+        let iconViewLeftView = UIView()
+        iconViewLeftView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return iconViewLeftView
+    }()
     
     lazy var searchButton: UIButton = {
         searchButton = UIButton(type: .system)
@@ -114,7 +106,7 @@ class FlightByRouteController: BaseViewController {
         searchButton.setTitleColor(UIColor.appColor(.textColor), for: .normal)
         searchButton.backgroundColor = UIColor.appColor(.backgroundColor)
         searchButton.layer.cornerRadius = 10.0
-        searchButton.layer.borderWidth = 2.0
+        searchButton.layer.borderWidth = 1.0
         searchButton.layer.borderColor = UIColor.appColor(.textColor)?.cgColor
         searchButton.translatesAutoresizingMaskIntoConstraints = false
        
@@ -150,32 +142,26 @@ class FlightByRouteController: BaseViewController {
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
-//        // Hide back button
-//        navigationItem.hidesBackButton = true
-        navigationController?.navigationBar.backItem?.title = "Custom"
+//
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
         ]
-        
-        // Setup search
-//        setupNavigationBar()
     }
     
     private func setupSubviews() {
         view.addSubview(label)
         view.addSubview(departureTextField)
+        view.addSubview(arrivalTextField)
+        view.addSubview(searchButton)
         
         departureIconViewLeftView.addSubview(departureIconView)
+        arrivalIconViewLeftView.addSubview(arrivalIconView)
     }
     
     private func setupSearchField() {
 
     }
-    
-//    private func setupNavigationBar() {
-//          navigationItem.searchController = searchController
-//      }
     
     // MARK: Constraints
     
@@ -186,25 +172,72 @@ class FlightByRouteController: BaseViewController {
         NSLayoutConstraint.activate([
             
             label.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-            label.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            
-            //            searchController.searchBar.topAnchor.constraint(equalTo: label, constant: 10),
-            //            searchController.searchBar.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 5),
-            //
-            departureTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-            departureTextField.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 5),
-            departureTextField.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -5),
+            label.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 10),
+       
+            departureTextField.topAnchor.constraint(
+                equalTo: label.bottomAnchor,
+                constant: 10
+            ),
+            departureTextField.leadingAnchor.constraint(
+                equalTo: safeAreaGuide.leadingAnchor,
+                constant: 10
+            ),
+            departureTextField.trailingAnchor.constraint(
+                equalTo: safeAreaGuide.trailingAnchor,
+                constant: -10
+            ),
             departureTextField.heightAnchor.constraint(equalToConstant: 40),
+
+            departureIconViewLeftView.heightAnchor.constraint(equalToConstant: 40),
             
-            departureIconViewLeftView.centerXAnchor.constraint(equalTo: departureTextField.leftView!.safeAreaLayoutGuide.centerXAnchor),
-            departureIconViewLeftView.centerYAnchor.constraint(equalTo: departureTextField.leftView!.safeAreaLayoutGuide.centerYAnchor),
-            departureIconViewLeftView.widthAnchor.constraint(equalToConstant: 25),
-            departureIconViewLeftView.heightAnchor.constraint(equalToConstant: 50),
-            
-            departureIconView.leadingAnchor.constraint(equalTo: departureIconViewLeftView.safeAreaLayoutGuide.leadingAnchor, constant:  5),
+            departureIconView.leadingAnchor.constraint(
+                equalTo: departureIconViewLeftView.safeAreaLayoutGuide.leadingAnchor,
+                constant:  5
+            ),
+            departureIconView.trailingAnchor.constraint(
+                equalTo: departureIconViewLeftView.safeAreaLayoutGuide.trailingAnchor,
+                constant:  -5
+            ),
             departureIconView.centerYAnchor.constraint(equalTo: departureIconViewLeftView.safeAreaLayoutGuide.centerYAnchor),
             
+            arrivalTextField.topAnchor.constraint(
+                equalTo: departureTextField.bottomAnchor,
+                constant: 10
+            ),
+            arrivalTextField.leadingAnchor.constraint(
+                equalTo: safeAreaGuide.leadingAnchor,
+                constant: 10
+            ),
+            arrivalTextField.trailingAnchor.constraint(
+                equalTo: safeAreaGuide.trailingAnchor,
+                constant: -10
+            ),
+            arrivalTextField.heightAnchor.constraint(equalToConstant: 40),
+
+            arrivalIconViewLeftView.heightAnchor.constraint(equalToConstant: 40),
+
+            arrivalIconView.leadingAnchor.constraint(
+                equalTo: arrivalIconViewLeftView.safeAreaLayoutGuide.leadingAnchor,
+                constant: 5
+            ),
+            arrivalIconView.trailingAnchor.constraint(
+                equalTo: arrivalIconViewLeftView.safeAreaLayoutGuide.trailingAnchor,
+                constant: -5
+            ),
+            arrivalIconView.centerYAnchor.constraint(equalTo: arrivalIconViewLeftView.safeAreaLayoutGuide.centerYAnchor),
             
+            searchButton.topAnchor.constraint(
+                equalTo: arrivalTextField.bottomAnchor,
+                constant: 10
+            ),
+            searchButton.leadingAnchor.constraint(
+                equalTo: safeAreaGuide.leadingAnchor,
+                constant: 10
+            ),
+            searchButton.trailingAnchor.constraint(
+                equalTo: safeAreaGuide.trailingAnchor,
+                constant: -10
+            ),
         ])
     }
 }
@@ -217,11 +250,6 @@ extension FlightByRouteController {
     func searchFor(_ searchText: String) {
         
     }
-    
-//    func stopSearch() {
-//        searchController.showsSearchResultsController = false
-//        searchController.searchBar.searchTextField.backgroundColor = nil
-//    }
 }
 
 extension FlightByRouteController: UISearchBarDelegate {
@@ -235,15 +263,9 @@ extension FlightByRouteController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(
         _ searchBar: UISearchBar
     ) {
-//      stopSearch()
     }
 }
 
-//extension FlightByRouteController: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//        searchController.showsSearchResultsController = true
-//    }
-//}
 
 // MARK: - UISearchResult Updating and UISearchControllerDelegate  Extension
   extension FlightByRouteController: UISearchResultsUpdating, UISearchControllerDelegate {

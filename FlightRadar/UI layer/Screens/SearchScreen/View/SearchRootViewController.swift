@@ -136,8 +136,10 @@ class SearchRootViewController: BaseViewController, MKMapViewDelegate {
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
+//        navigationController?.navigationBar.backgroundColor = .lightGray
         // Hide back button
         navigationItem.hidesBackButton = true
+        navigationItem.backButtonTitle = ""
         // Change title color
         navigationController?.navigationBar.titleTextAttributes = [
             NSMutableAttributedString.Key.foregroundColor: UIColor.appColor(.textColor)!
