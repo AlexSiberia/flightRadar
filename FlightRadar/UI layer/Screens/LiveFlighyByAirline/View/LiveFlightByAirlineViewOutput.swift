@@ -8,5 +8,6 @@
 import Foundation
 
 protocol LiveFlightByAirlineViewOutput: AnyObject {
-    
+    func didLoadView()
+    func userDidSelect(airlines: AirlineModel)
 }

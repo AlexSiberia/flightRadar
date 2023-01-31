@@ -24,7 +24,7 @@ class SearchScreenByShortcutsViewController: UIViewController {
     
     fileprivate var tableData: SectionedTableViewDataSource?
     
-    var presenter: SearchScreenByShortcutsPresenter?
+    var output: SearchScreenByShortcutsViewOutput?
     
     fileprivate lazy var tableView: UITableView = { [unowned self] in
         let tableView = UITableView(
@@ -44,8 +44,8 @@ class SearchScreenByShortcutsViewController: UIViewController {
         return tableView
     }()
     
-    init(presenter: SearchScreenByShortcutsPresenter) {
-        self.presenter = presenter
+    init(output: SearchScreenByShortcutsViewOutput) {
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,7 +61,7 @@ class SearchScreenByShortcutsViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         
-        presenter?.didLoadView()
+        output?.didLoadView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +87,7 @@ class SearchScreenByShortcutsViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.register(SearchScreenByShortcutsShortcutTableViewCell.self)
-        tableView.register(SearchScreenByShortcutsHeaderTableViewCell.self)
+        tableView.register(HeaderTableViewCell.self)
     }
     
     // MARK: - Layout
@@ -145,7 +145,7 @@ extension SearchScreenByShortcutsViewController: UITableViewDelegate {
             if indexPath.section == 3 {
                 let shortcut = viewData.sections[1]
                     .shortcuts[indexPath.row]
-                    presenter?.userDidSelect(shortcut: shortcut)
+                    output?.userDidSelect(shortcut: shortcut)
             }
             
         }

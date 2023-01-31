@@ -10,6 +10,7 @@ import Foundation
 protocol SearchScreenByShortcutsViewOutput: AnyObject {
     
     func didLoadView()
+    func userDidSelect(shortcut: ShortCutModel)
     //    func userDidSelect(flight: FlightNumberModel)
     //    func userDidSelect(airline: AirlineModel)
 }

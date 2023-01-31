@@ -234,6 +234,10 @@ extension RootCoordinator: PlaneOnMapOutput {
 }
 
 extension RootCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
+    func didSelect(airline: String) {
+        
+    }
+    
     func didSelect(flight: FlightNumberModel) {
         
     }

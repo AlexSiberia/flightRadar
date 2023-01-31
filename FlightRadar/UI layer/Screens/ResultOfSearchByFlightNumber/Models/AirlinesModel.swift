@@ -10,4 +10,5 @@ import UIKit
 struct AirlineModel {
     var airlineBrand:   String
     var aviacompanyLogo: UIImage
+    var action: () -> ()
 }

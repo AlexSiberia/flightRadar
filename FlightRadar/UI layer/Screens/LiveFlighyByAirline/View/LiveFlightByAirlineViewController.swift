@@ -7,9 +7,42 @@
 
 import UIKit
 
+struct LiveFlightByAirlineViewSection {
+    let header: HeaderModel
+    let airlines: [AirlineModel]
+}
+
+struct LiveFlightByAirlineViewData {
+    let sections: [LiveFlightByAirlineViewSection]
+}
+
 class LiveFlightByAirlineViewController: BaseViewController {
     
+    fileprivate var viewData: LiveFlightByAirlineViewData = LiveFlightByAirlineViewData(
+      sections: []
+        )
+    
+    fileprivate var tableData: SectionedTableViewDataSource?
+    
     var output: LiveFlightByAirlineViewOutput?
+    
+    fileprivate lazy var tableView: UITableView = { [unowned self] in
+        let tableView = UITableView(
+            frame: .zero,
+            style: .plain
+        )
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor.appColor(.backgroundColor)
+        tableView.tintColor = UIColor.appColor(.textColor)
+        
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.delegate = self
+        
+        return tableView
+    }()
    
     // MARK: - Subviews
     
@@ -46,6 +79,8 @@ class LiveFlightByAirlineViewController: BaseViewController {
         setupView()
         setupSubviews()
         setupConstraints()
+        
+        output?.didLoadView()
     }
     
     private func setupView() {
@@ -64,7 +99,14 @@ class LiveFlightByAirlineViewController: BaseViewController {
     }
     
     private func setupSubviews() {
-//        view.addSubview(label)
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        
+        view.addSubview(tableView)
+        tableView.register(AirlinesTableViewCell.self)
+        tableView.register(HeaderTableViewCell.self)
     }
     
     private func setupSearchField() {
@@ -83,11 +125,10 @@ class LiveFlightByAirlineViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-//            searchBar.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-//            searchBar.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor)
-            //            label.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-//            label.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-//
+            tableView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
  
         ])
     }
@@ -95,6 +136,33 @@ class LiveFlightByAirlineViewController: BaseViewController {
 
 extension LiveFlightByAirlineViewController: LiveFlightByAirlineViewInput {
     
+    func showLoadingState() {
+        tableView.isHidden = true
+        //        loadingLabel.isHidden = false
+    }
+    
+    func showDataState(_ data: LiveFlightByAirlineViewData) {
+        tableView.isHidden = false
+        //        loadingLabel.isHidden = true
+        
+        viewData = data
+        
+        var dataSources: [UITableViewDataSource] = []
+        
+        for section in viewData.sections {
+            let header = TableViewDataSource.make(for: [section.header])
+            let airlines = TableViewDataSource.make(for: section.airlines)
+            
+            dataSources.append(header)
+            dataSources.append(airlines)
+        }
+        
+        let dataSource = SectionedTableViewDataSource(dataSources: dataSources)
+        tableView.dataSource = dataSource
+        tableData = dataSource
+        
+        tableView.reloadData()
+    }
 }
 
 extension LiveFlightByAirlineViewController {
@@ -125,3 +193,19 @@ extension LiveFlightByAirlineViewController: UISearchBarDelegate {
     
     }
  }
+
+extension LiveFlightByAirlineViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
+            if indexPath.section % 2 == 0 {
+                return
+            }
+            if indexPath.section == 3 {
+                let airlines = viewData.sections[1]
+                    .airlines[indexPath.row]
+                    output?.userDidSelect(airlines: airlines)
+            }
+            
+        }
+}

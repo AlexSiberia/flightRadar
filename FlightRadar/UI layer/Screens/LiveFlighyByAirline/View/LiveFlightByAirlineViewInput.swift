@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LiveFlightByAirlineViewInput: AnyObject {
-    
+    func showDataState(_ data: LiveFlightByAirlineViewData)
 }

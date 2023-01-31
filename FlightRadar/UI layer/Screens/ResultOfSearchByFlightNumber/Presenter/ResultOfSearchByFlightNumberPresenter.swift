@@ -30,8 +30,14 @@ class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreen
         
         airlines.append(
             AirlineModel(
-                airlineBrand: "AmericanA irlines",
-                aviacompanyLogo: UIImage(named: "AmericanAirlines-100") ?? UIImage()
+                airlineBrand: "American Airlines",
+                aviacompanyLogo: UIImage(
+                    named: "AmericanAirlines-100") ?? UIImage(),
+                action: { [weak self] in
+                    
+                    self?.output?.didSelect(airline: "American Airlines")
+                    
+            }
             )
         )
     }
@@ -142,6 +148,6 @@ extension ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberVie
     }
     
     func userDidSelect(airline: AirlineModel) {
-        output?.didSelect(airline: airline)
+        output?.didSelect(airline: airline.airlineBrand)
     }
 }

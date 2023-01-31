@@ -16,9 +16,9 @@ class SearchScreenByShortcutsAssembly: Assembly {
         let presenter = SearchScreenByShortcutsPresenter()
         presenter.output = output.outputScreen
         
-        let view = SearchScreenByShortcutsViewController(presenter: presenter)
+        let view = SearchScreenByShortcutsViewController(output: presenter)
     
-        view.presenter = presenter
+        view.output = presenter
         presenter.view = view
         
         return AssemblyResult(view: view, input: presenter)

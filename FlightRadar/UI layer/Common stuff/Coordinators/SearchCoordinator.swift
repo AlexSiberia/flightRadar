@@ -102,6 +102,10 @@ extension SearchCoordinator: SearchScreenOutput {
 //}
 
 extension SearchCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
+    func didSelect(airline: String) {
+        output?.didSelectSearchByAirportTimetable()
+    }
+    
     func didSelect(flight: FlightNumberModel) {
         output?.didSelectSearchByFightNumber()
     }
