@@ -8,8 +8,8 @@
 import UIKit
 
 struct LiveFlightByAirlineViewSection {
-    let header: HeaderModel
-    let airlines: [AirlineModel]
+    let header: AirlineListHeaderPresentationModel
+    let airlines: [AirlineListPresentationModel]
 }
 
 struct LiveFlightByAirlineViewData {
@@ -84,10 +84,11 @@ class LiveFlightByAirlineViewController: BaseViewController {
     }
     
     private func setupView() {
-//        title = "LIVE flight by airline"
+        title = "LIVE flight by airline"
         
         // Change button color
         navigationController?.navigationBar.tintColor = UIColor.appColor(.textColor)
+//        navigationController?.hidesBarsOnTap = true
 //        // Hide back button
 //        navigationItem.hidesBackButton = true
         // Change title color
@@ -105,8 +106,8 @@ class LiveFlightByAirlineViewController: BaseViewController {
     private func setupTableView() {
         
         view.addSubview(tableView)
-        tableView.register(AirlinesTableViewCell.self)
-        tableView.register(HeaderTableViewCell.self)
+        tableView.register(LiveFlightByAirlineAirlineTableViewCell.self)
+        tableView.register(LiveFlightByAirlineHeaderTableViewCell.self)
     }
     
     private func setupSearchField() {

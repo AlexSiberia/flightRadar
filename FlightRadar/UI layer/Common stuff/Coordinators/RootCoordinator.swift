@@ -238,11 +238,11 @@ extension RootCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
         
     }
     
-    func didSelect(flight: FlightNumberModel) {
+    func didSelect(flight: FlightNumberPresentationModel) {
         
     }
     
-    func didSelect(airline: AirlineModel) {
+    func didSelect(airline: AirlinePresentationModel) {
         
     }
     

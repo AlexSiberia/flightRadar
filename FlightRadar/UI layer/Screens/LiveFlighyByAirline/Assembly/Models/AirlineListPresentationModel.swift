@@ -1,13 +1,13 @@
 //
-//  AirlinesModel.swift
+//  AirlineListPresentationModel.swift
 //  FlightRadar
 //
-//  Created by Alexander Kurbatov on 08.07.2022.
+//  Created by Alexander Kurbatov on 02.02.2023.
 //
 
 import UIKit
 
-struct AirlineModel {
+struct AirlineListPresentationModel {
     var airlineBrand:   String
     var aviacompanyLogo: UIImage
     var action: () -> ()

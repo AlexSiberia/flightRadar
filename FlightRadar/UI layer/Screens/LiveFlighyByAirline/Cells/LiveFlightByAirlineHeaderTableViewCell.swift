@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LiveFlightByAirlineHeaderTableViewCell: ConfigurableCell<HeaderModel> {
+class LiveFlightByAirlineHeaderTableViewCell: ConfigurableCell<AirlineListHeaderPresentationModel> {
   
     private enum LayoutConstants {
         // Common
@@ -39,7 +39,8 @@ class LiveFlightByAirlineHeaderTableViewCell: ConfigurableCell<HeaderModel> {
             reuseIdentifier: reuseIdentifier
         )
         
-        contentView.backgroundColor = UIColor.appColor(.backgroundColor)
+//        contentView.backgroundColor = UIColor.appColor(.backgroundColor)
+        contentView.backgroundColor = UIColor.yellow.withAlphaComponent(0.2)
         contentView.addSubview(headerLabel)
         
         setupCellConstraints()
@@ -51,7 +52,7 @@ class LiveFlightByAirlineHeaderTableViewCell: ConfigurableCell<HeaderModel> {
     
     // MARK: - Public methods
     
-    override func configure(_ model: HeaderModel) {
+    override func configure(_ model: AirlineListHeaderPresentationModel) {
         super.configure(model)
         
         headerLabel.text = model.title

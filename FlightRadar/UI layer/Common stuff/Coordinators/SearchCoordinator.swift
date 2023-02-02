@@ -106,10 +106,10 @@ extension SearchCoordinator: ResultOfSeacrhByFlightNumberScreenOutput {
         output?.didSelectSearchByAirportTimetable()
     }
     
-    func didSelect(flight: FlightNumberModel) {
+    func didSelect(flight: FlightNumberPresentationModel) {
         output?.didSelectSearchByFightNumber()
     }
-    func didSelect(airline: AirlineModel) {
+    func didSelect(airline: AirlinePresentationModel) {
         output?.didSelectSearchByAirportTimetable()
     }
     

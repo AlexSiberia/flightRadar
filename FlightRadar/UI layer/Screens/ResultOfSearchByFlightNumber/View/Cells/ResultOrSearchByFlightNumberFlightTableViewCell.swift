@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNumberModel> {
+class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNumberPresentationModel> {
     
     // MARK: - Subviews
     
@@ -72,7 +72,7 @@ class ResultOrSearchByFlightNumberFlightTableViewCell: ConfigurableCell<FlightNu
     
     // MARK: - Public methods
     
-    override func configure(_ model: FlightNumberModel) {
+    override func configure(_ model: FlightNumberPresentationModel) {
         super.configure(model)
         
         iconView.image = model.aviacompanyLogo

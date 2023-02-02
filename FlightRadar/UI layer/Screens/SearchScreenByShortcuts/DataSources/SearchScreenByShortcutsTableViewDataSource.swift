@@ -18,13 +18,13 @@ extension TableViewDataSource where Model == ShortCutModel, Cell == SearchScreen
     }
 }
 
-//extension TableViewDataSource where Model == HeaderModel, Cell == SearchScreenByShortcutsHeaderTableViewCell {
-//    
-//    static func make(
-//        for headers: [HeaderModel]
-//    ) -> TableViewDataSource {
-//        TableViewDataSource(
-//            models: headers
-//        )
-//    }
-//}
+extension TableViewDataSource where Model == HeaderModel, Cell == SearchScreenByShortcutsHeaderTableViewCell {
+    
+    static func make(
+        for headers: [HeaderModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: headers
+        )
+    }
+}

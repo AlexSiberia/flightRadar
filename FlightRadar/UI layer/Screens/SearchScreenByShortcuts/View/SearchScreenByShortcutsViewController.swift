@@ -87,7 +87,7 @@ class SearchScreenByShortcutsViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.register(SearchScreenByShortcutsShortcutTableViewCell.self)
-        tableView.register(HeaderTableViewCell.self)
+        tableView.register(SearchScreenByShortcutsHeaderTableViewCell.self)
     }
     
     // MARK: - Layout

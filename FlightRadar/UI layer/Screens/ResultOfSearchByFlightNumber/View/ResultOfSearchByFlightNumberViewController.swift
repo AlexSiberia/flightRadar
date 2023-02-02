@@ -8,8 +8,8 @@
 import UIKit
 
 struct ResultOfSearchByFlightNumberViewData {
-    let airlines: [AirlineModel]
-    let flights: [FlightNumberModel]
+    let airlines: [AirlinePresentationModel]
+    let flights: [FlightNumberPresentationModel]
 }
 
 class ResultOfSearchByFlightNumberViewController: UIViewController {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineModel> {
+class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineListPresentationModel> {
     
     private enum LayoutConstants {
         
@@ -30,7 +30,7 @@ class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineModel> {
         return imageView
     }()
     
-    private let shortcutLabel: UILabel = {
+    private let airlineLabel: UILabel = {
         let shortcutLabel = UILabel()
         shortcutLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,7 +53,7 @@ class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineModel> {
         contentView.backgroundColor = UIColor.appColor(.backgroundColor)
         
         contentView.addSubview(iconView)
-        contentView.addSubview(shortcutLabel)
+        contentView.addSubview(airlineLabel)
         
         setupCellConstraints()
     }
@@ -64,12 +64,12 @@ class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineModel> {
     
     // MARK: - Public methods
     
-    override func configure(_ model: AirlineModel) {
+    override func configure(_ model: AirlineListPresentationModel) {
         super.configure(model)
         
         iconView.image = model.aviacompanyLogo
-        shortcutLabel.text = model.airlineBrand
-        shortcutLabel.font = UIFont.systemFont(ofSize: 18).bold()
+        airlineLabel.text = model.airlineBrand
+        airlineLabel.font = UIFont.systemFont(ofSize: 18).bold()
 
     }
     
@@ -101,18 +101,18 @@ class LiveFlightByAirlineAirlineTableViewCell: ConfigurableCell<AirlineModel> {
         
         // Label constraints
         NSLayoutConstraint.activate([
-            shortcutLabel.leadingAnchor.constraint(
+            airlineLabel.leadingAnchor.constraint(
                 equalTo: iconView.trailingAnchor,
                 constant: LayoutConstants.smallDefaultOffset
             ),
-            shortcutLabel.trailingAnchor.constraint(
+            airlineLabel.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
                 constant: -LayoutConstants.defaultOffset
             ),
-            shortcutLabel.topAnchor.constraint(
+            airlineLabel.topAnchor.constraint(
                 equalTo: iconView.topAnchor
             ),
-            shortcutLabel.bottomAnchor.constraint(
+            airlineLabel.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
                 constant: -LayoutConstants.smallDefaultOffset
             ),

@@ -7,24 +7,24 @@
 
 import UIKit
 
-//extension TableViewDataSource where Model == AirlineModel, Cell == LiveFlightByAirlineAirlineTableViewCell {
-//    
-//    static func make(
-//        for airlines: [AirlineModel]
-//    ) -> TableViewDataSource {
-//        TableViewDataSource(
-//            models: airlines
-//        )
-//    }
-//}
-//
-//extension TableViewDataSource where Model == HeaderModel, Cell == LiveFlightByAirlineHeaderTableViewCell {
-//    
-//    static func make(
-//        for headers: [HeaderModel]
-//    ) -> TableViewDataSource {
-//        TableViewDataSource(
-//            models: headers
-//        )
-//    }
-//}
+extension TableViewDataSource where Model == AirlineListPresentationModel, Cell == LiveFlightByAirlineAirlineTableViewCell {
+    
+    static func make(
+        for airlines: [AirlineListPresentationModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: airlines
+        )
+    }
+}
+
+extension TableViewDataSource where Model == AirlineListHeaderPresentationModel, Cell == LiveFlightByAirlineHeaderTableViewCell {
+    
+    static func make(
+        for headers: [AirlineListHeaderPresentationModel]
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: headers
+        )
+    }
+}

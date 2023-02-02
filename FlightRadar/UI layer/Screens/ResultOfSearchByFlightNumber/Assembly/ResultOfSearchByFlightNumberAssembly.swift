@@ -11,7 +11,7 @@ struct ResultOfSearchByFlightNumberScreenContext {
     let searchString: String
     var sortParams: [String: Any]?
     
-    var results: [FlightNumberModel]?
+    var results: [FlightNumberPresentationModel]?
 }
 
 class ResultOfSearchByFlightNumberAssembly: Assembly {

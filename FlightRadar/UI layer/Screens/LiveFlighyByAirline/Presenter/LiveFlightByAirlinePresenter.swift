@@ -20,11 +20,11 @@ class LiveFlightByAirlinePresenter: LiveFlightByAirlineScreenInput {
     // MARK: - Private
     
     private func createViewData() -> LiveFlightByAirlineViewData {
-        var airlines: [AirlineModel] = []
+        var airlines: [AirlineListPresentationModel] = []
         
         
         airlines.append(
-            AirlineModel(
+            AirlineListPresentationModel(
                 airlineBrand: "American Airlines",
                 aviacompanyLogo: UIImage(named: "AmericanAirlines-100") ?? UIImage(),
                 action: { [weak self] in
@@ -34,7 +34,7 @@ class LiveFlightByAirlinePresenter: LiveFlightByAirlineScreenInput {
         )
         
         airlines.append(
-            AirlineModel(
+            AirlineListPresentationModel(
                 airlineBrand: "British Airlines",
                 aviacompanyLogo: UIImage(named: "BritishAirlines-100") ?? UIImage(),
                 action: { [weak self] in
@@ -44,7 +44,7 @@ class LiveFlightByAirlinePresenter: LiveFlightByAirlineScreenInput {
         )
         
         airlines.append(
-            AirlineModel(
+            AirlineListPresentationModel(
                 airlineBrand: "Delta Airlines",
                 aviacompanyLogo: UIImage(named:  "DeltaAirlines-100") ?? UIImage(),
                 action: { [weak self] in
@@ -54,7 +54,7 @@ class LiveFlightByAirlinePresenter: LiveFlightByAirlineScreenInput {
         )
         
         airlines.append(
-            AirlineModel(
+            AirlineListPresentationModel(
                 airlineBrand: "Fedex Airlines",
                 aviacompanyLogo: UIImage(named:  "FedexAirlines-100") ?? UIImage(),
                 action: { [weak self] in
@@ -66,11 +66,11 @@ class LiveFlightByAirlinePresenter: LiveFlightByAirlineScreenInput {
         
         
         let section0: LiveFlightByAirlineViewSection = LiveFlightByAirlineViewSection(
-            header: HeaderModel(title: "#"),
+            header: AirlineListHeaderPresentationModel(title: "#"),
             airlines: []
         )
         let section1: LiveFlightByAirlineViewSection = LiveFlightByAirlineViewSection(
-            header: HeaderModel(title: "A"),
+            header: AirlineListHeaderPresentationModel(title: "A"),
             airlines: airlines
         )
         
@@ -87,7 +87,7 @@ extension LiveFlightByAirlinePresenter: LiveFlightByAirlineViewOutput {
         view?.showDataState(viewData)
     }
     
-    func userDidSelect(airlines: AirlineModel) {
+    func userDidSelect(airlines: AirlineListPresentationModel) {
         
     }
     

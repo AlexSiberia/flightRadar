@@ -15,8 +15,8 @@ class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreen
     
     weak var view: ResultOfSearchByFlightNumberViewInput?
     
-    var airlines: [AirlineModel] = [AirlineModel]()
-    var transports: [FlightNumberModel] = [FlightNumberModel]()
+    var airlines: [AirlinePresentationModel] = [AirlinePresentationModel]()
+    var transports: [FlightNumberPresentationModel] = [FlightNumberPresentationModel]()
     
     func update(_ searchString: String) {
         self.searchString = searchString
@@ -29,7 +29,7 @@ class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreen
     private func createAirlinesArray() {
         
         airlines.append(
-            AirlineModel(
+            AirlinePresentationModel(
                 airlineBrand: "American Airlines",
                 aviacompanyLogo: UIImage(
                     named: "AmericanAirlines-100") ?? UIImage(),
@@ -54,73 +54,73 @@ class ResultOfSearchByFlightNumberPresenter: ResultsOfSearchByFlightNumberScreen
 //        let config = symbolConfig.applying(sizeConf)
         
         transports.append(
-            FlightNumberModel(flightNumber: "AA1",
+            FlightNumberPresentationModel(flightNumber: "AA1",
                               flightDescription: "Air transport",
                               aviacompanyLogo: UIImage(named: "AmericanAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "AmericanAirlines-50", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "BA15",
+            FlightNumberPresentationModel(flightNumber: "BA15",
                               flightDescription: "Air transport",
                               aviacompanyLogo: UIImage(named: "BritishAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "airplane", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "DL11",
+            FlightNumberPresentationModel(flightNumber: "DL11",
                               flightDescription: "Air transport",
                               aviacompanyLogo: UIImage(named: "DeltaAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "ferry", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "C28121",
+            FlightNumberPresentationModel(flightNumber: "C28121",
                               flightDescription: "Air transport",
                               aviacompanyLogo: UIImage(named: "FedexAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "bus", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "AY1",
+            FlightNumberPresentationModel(flightNumber: "AY1",
                               flightDescription: "Air transport",
                               aviacompanyLogo: UIImage(named: "FinnairAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "IB594",
+            FlightNumberPresentationModel(flightNumber: "IB594",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "IberiaAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "KL427",
+            FlightNumberPresentationModel(flightNumber: "KL427",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "KlmAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "LH25",
+            FlightNumberPresentationModel(flightNumber: "LH25",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "Lufthansa-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "WN18",
+            FlightNumberPresentationModel(flightNumber: "WN18",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "SouthwestAirlines-100-2")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "UA1",
+            FlightNumberPresentationModel(flightNumber: "UA1",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "UnitedAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "5X3",
+            FlightNumberPresentationModel(flightNumber: "5X3",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "UpsAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
         )
         transports.append(
-            FlightNumberModel(flightNumber: "VS5",
+            FlightNumberPresentationModel(flightNumber: "VS5",
                               flightDescription: "",
                               aviacompanyLogo: UIImage(named: "VirginAtlanticAirlines-100")!)
 //                              aviacompanyLogo: UIImage(systemName: "car", withConfiguration: config)!)
@@ -143,11 +143,11 @@ extension ResultOfSearchByFlightNumberPresenter: ResultOfSearchByFlightNumberVie
         view?.showDataState(viewData)
     }
     
-    func userDidSelect(flight: FlightNumberModel) {
+    func userDidSelect(flight: FlightNumberPresentationModel) {
         output?.didSelect(flight: flight)
     }
     
-    func userDidSelect(airline: AirlineModel) {
+    func userDidSelect(airline: AirlinePresentationModel) {
         output?.didSelect(airline: airline.airlineBrand)
     }
 }
